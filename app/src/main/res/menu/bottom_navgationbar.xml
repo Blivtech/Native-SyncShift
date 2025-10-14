@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mnu_home"
+        android:title="@string/str_menu_home"
+        android:icon="@drawable/ic_home"
+        />
+    <item
+        android:id="@+id/mnu_employees"
+        android:title="@string/str_menu_employees"
+        android:icon="@drawable/ic_employees"/>
+
+
+    <item
+        android:id="@+id/mnu_reports"
+        android:title="@string/str_menu_reports"
+        android:icon="@drawable/ic_report"
+        />
+
+
+    <item
+        android:id="@+id/mnu_settings"
+        android:title="@string/str_menu_settings"
+        android:icon="@drawable/ic_settings"/>
+
+
+</menu>
