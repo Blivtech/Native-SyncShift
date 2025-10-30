@@ -3,7 +3,12 @@ package com.blivtech.syncshift.view.activity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.blivtech.syncshift.databinding.ActivityRegisterBinding
+import com.blivtech.syncshift.model.CommonApiViewModel
+import com.blivtech.syncshift.model.CommonRepository
+import com.blivtech.syncshift.model.CommonViewModelFactory
+import com.google.gson.JsonObject
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -13,6 +18,20 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val repository = CommonRepository()
+        val factory = CommonViewModelFactory(repository)
+        val viewModel = ViewModelProvider(this, factory)[CommonApiViewModel::class.java]
+
+        viewModel.postData("", JsonObject())
+
+
+
+        viewModel.apiResponse.observe(this){
+
+
+        }
 
         binding.btnRegister.setOnClickListener {
             validateAndRegister()
