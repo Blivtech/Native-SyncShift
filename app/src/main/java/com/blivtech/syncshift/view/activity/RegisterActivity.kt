@@ -1,10 +1,12 @@
 package com.blivtech.syncshift.view.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.blivtech.syncshift.databinding.ActivityRegisterBinding
+import com.blivtech.syncshift.model.ApiState
 import com.blivtech.syncshift.model.CommonApiViewModel
 import com.blivtech.syncshift.model.CommonRepository
 import com.blivtech.syncshift.model.CommonViewModelFactory
@@ -24,22 +26,50 @@ class RegisterActivity : AppCompatActivity() {
         val factory = CommonViewModelFactory(repository)
         val viewModel = ViewModelProvider(this, factory)[CommonApiViewModel::class.java]
 
-        viewModel.postData("", JsonObject())
 
-
-
-        viewModel.apiResponse.observe(this){
-
-
-        }
 
         binding.btnRegister.setOnClickListener {
             validateAndRegister()
+            viewModel.postData("api/userdetails/save-registration/", postObject())
+
+            viewModel.apiResponse.observe(this) { state ->
+                when (state) {
+                    is ApiState.Loading -> {
+                        binding.btnRegister.isEnabled = false
+                    }
+
+                    is ApiState.Success -> {
+                        binding.btnRegister.isEnabled = true
+                        Toast.makeText(this, "Success: ${state.data}", Toast.LENGTH_LONG).show()
+                    }
+
+                    is ApiState.Error -> {
+                        binding.btnRegister.isEnabled = true
+                        Toast.makeText(this, "Error: ${state.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
         }
     }
 
+    private fun postObject(): JsonObject {
+        return JsonObject().apply {
+            addProperty("username", "john_doe")
+            addProperty("password", "securepassword123")
+            addProperty("name", "John Doe")
+            addProperty("mobile_number", "9876543210")
+            addProperty("address", "123 Main Street, City")
+            addProperty("contractor_category", "Electrical")
+            addProperty("active_status", true)
+            addProperty("app_version", "1.0.0")
+            addProperty("updated_date", "2025-10-29T12:00:00")
+            addProperty("active_date", "2025-10-29T10:00:00")
+            addProperty("account_type", "Premium")
+            addProperty("mode", "Manual")
+            addProperty("referal_id", "REF123")
+        }
+    }
     private fun validateAndRegister() {
-
 
         val name = binding.etName.text.toString().trim()
         val phone = binding.etPhone.text.toString().trim()

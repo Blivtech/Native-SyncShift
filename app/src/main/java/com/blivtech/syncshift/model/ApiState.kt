@@ -1,5 +1,6 @@
 package com.blivtech.syncshift.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -49,6 +50,7 @@ class CommonApiViewModel(private val repository: CommonRepository) : ViewModel()
                 override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                     if (response.isSuccessful) {
                         _apiResponse.postValue(ApiState.Success(response.body()))
+
                     } else {
                         _apiResponse.postValue(ApiState.Error(response.message()))
                     }
@@ -56,6 +58,7 @@ class CommonApiViewModel(private val repository: CommonRepository) : ViewModel()
 
                 override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                     _apiResponse.postValue(ApiState.Error(t.localizedMessage ?: "Unknown error"))
+
                 }
             })
         }
