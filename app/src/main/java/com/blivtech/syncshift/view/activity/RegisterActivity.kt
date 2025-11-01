@@ -60,7 +60,7 @@ class RegisterActivity : AppCompatActivity() {
             addProperty("mobile_number", "9876543210")
             addProperty("address", "123 Main Street, City")
             addProperty("contractor_category", "Electrical")
-            addProperty("active_status", true)
+            addProperty("active_status", 0)
             addProperty("app_version", "1.0.0")
             addProperty("updated_date", "2025-10-29T12:00:00")
             addProperty("active_date", "2025-10-29T10:00:00")
