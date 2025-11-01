@@ -6,4 +6,11 @@
     <color name="google_red">#EA4335</color>
     <color name="input_hint">#BDBDBD</color>
     <color name="black">#222222</color>
+    <!-- Register Activity Colors -->
+    <color name="primaryColor">#304FFE</color>
+    <color name="primaryDarkColor">#1A237E</color>
+    <color name="secondaryColor">#536DFE</color>
+    <color name="primaryColor1">#0057FF</color>
+    <color name="borderColor">#BDBDBD</color>
+    <color name="hintColor">#808080</color>
 </resources>

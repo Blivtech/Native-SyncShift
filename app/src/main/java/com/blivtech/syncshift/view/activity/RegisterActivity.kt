@@ -55,27 +55,27 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun postObject(): JsonObject {
         return JsonObject().apply {
-            addProperty("username", "saravana")
-            addProperty("password", "securepassword123")
-            addProperty("name", "John Doe")
-            addProperty("mobile_number", "9876543210")
-            addProperty("address", "123 Main Street, City")
+            addProperty("username", "Sj")//design
+            addProperty("password", "securepassword123")//design
+            addProperty("name", "John Doe")//design
+            addProperty("mobile_number", "9876543210")//design
+            addProperty("address", "123 Main Street, City")//design
             addProperty("contractor_category", "Electrical")
-            addProperty("active_status", 0)
+            addProperty("active_status", "new")
             addProperty("app_version", "1.0.0")
-            addProperty("updated_date", "2025-10-29T12:00:00")
-            addProperty("active_date", "2025-10-29T10:00:00")
+            addProperty("updated_date", "2025-10-29T12:00:00")//empty
+            addProperty("active_date", "2025-10-29T10:00:00")//empty
             addProperty("account_type", "Premium")
-            addProperty("mode", "Manual")
-            addProperty("referal_id", "REF123")
+            addProperty("mode", "Android-App")
+            addProperty("referal_id", "REF123")//optonal
         }
     }
     private fun validateAndRegister() {
 
         val name = binding.etName.text.toString().trim()
-        val phone = binding.etPhone.text.toString().trim()
+        val phone = binding.etMobile.text.toString().trim()
         val address = binding.etAddress.text.toString().trim()
-        val contract = binding.etContract.text.toString().trim()
+        val contract = binding.etCategory.text.toString().trim()
         val referral = binding.etReferral.text.toString().trim()
         val username = binding.etUsername.text.toString().trim()
         val password = binding.etPassword.text.toString().trim()
@@ -84,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
         if (name.isEmpty()) {
             binding.etName.error = "Enter Name"
         } else if (phone.isEmpty()) {
-            binding.etPhone.error = "Enter Phone Number"
+            binding.etMobile.error = "Enter Phone Number"
         } else if (address.isEmpty()) {
             binding.etAddress.error = "Enter Address"
         } else if (referral.isEmpty()) {
