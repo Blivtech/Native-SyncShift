@@ -32,21 +32,22 @@ class RegisterActivity : AppCompatActivity() {
             validateAndRegister()
             viewModel.postData("api/userdetails/save-registration/", postObject())
 
-            viewModel.apiResponse.observe(this) { state ->
-                when (state) {
-                    is ApiState.Loading -> {
-                        binding.btnRegister.isEnabled = false
-                    }
 
-                    is ApiState.Success -> {
-                        binding.btnRegister.isEnabled = true
-                        Toast.makeText(this, "Success: ${state.data}", Toast.LENGTH_LONG).show()
-                    }
+        }
+        viewModel.apiResponse.observe(this) { state ->
+            when (state) {
+                is ApiState.Loading -> {
+                    binding.btnRegister.isEnabled = false
+                }
 
-                    is ApiState.Error -> {
-                        binding.btnRegister.isEnabled = true
-                        Toast.makeText(this, "Error: ${state.message}", Toast.LENGTH_LONG).show()
-                    }
+                is ApiState.Success -> {
+                    binding.btnRegister.isEnabled = true
+                    Toast.makeText(this, "Success: ${state.data}", Toast.LENGTH_LONG).show()
+                }
+
+                is ApiState.Error -> {
+                    binding.btnRegister.isEnabled = true
+                    Toast.makeText(this, "Error: ${state.message}", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -54,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun postObject(): JsonObject {
         return JsonObject().apply {
-            addProperty("username", "john_doe")
+            addProperty("username", "saravana")
             addProperty("password", "securepassword123")
             addProperty("name", "John Doe")
             addProperty("mobile_number", "9876543210")
