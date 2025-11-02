@@ -13,4 +13,6 @@
     <color name="primaryColor1">#0057FF</color>
     <color name="borderColor">#BDBDBD</color>
     <color name="hintColor">#808080</color>
+    <color name="text_title">#000000</color>
+    <color name="text_hint">#8A8A8A</color>
 </resources>

@@ -54,7 +54,7 @@
     <string name="mode">Mode</string>
     <string name="updated_date">Updated Date</string>
     <string name="active_date">Active Date</string>
-    <string name="referral_id">Referral ID</string>
+    <string name="referral_id">Referral ID ( Optional )</string>
     <string name="address">Address</string>
     <string name="app_version">App Version</string>
 

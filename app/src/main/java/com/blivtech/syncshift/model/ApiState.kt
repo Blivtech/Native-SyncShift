@@ -49,6 +49,7 @@ class CommonApiViewModel(private val repository: CommonRepository) : ViewModel()
             repository.postConfigData(url, body).enqueue(object : Callback<JsonElement> {
                 override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                     if (response.isSuccessful) {
+
                         _apiResponse.postValue(ApiState.Success(response.body()))
 
                     } else {
