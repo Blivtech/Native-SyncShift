@@ -16,6 +16,7 @@
 
         private lateinit var binding: ActivityRegisterBinding
 
+
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -25,6 +26,11 @@
             val repository = CommonRepository()
             val factory = CommonViewModelFactory(repository)
             val viewModel = ViewModelProvider(this, factory)[CommonApiViewModel::class.java]
+
+
+
+
+
 
 
 
@@ -85,6 +91,9 @@
                 addProperty("updated_date", "2025-10-29T12:00:00")
                 addProperty("active_date", "2025-10-29T10:00:00")
             }
+
+
+
         }
 
         private fun validateFields(): Boolean {
@@ -113,4 +122,6 @@
                 else -> true
             }
         }
+
+
     }

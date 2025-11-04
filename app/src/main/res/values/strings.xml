@@ -22,6 +22,7 @@
 
 
     <string name="header_name">Ajith Kumar</string>
+    <string name="menu_addemployee">Add Employee</string>
     <string name="menu_mentions">Mentions</string>
     <string name="menu_starred">Starred Messages</string>
     <string name="menu_contact">Contact</string>
