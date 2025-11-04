@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1080dp"
+    android:height="1920dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1920">
+
+    <!-- Background color -->
+    <path
+        android:fillColor="#CBE0F0"
+        android:pathData="M0,0h1080v1920h-1080z" />
+
+    <!-- Wave shape -->
+    <path
+        android:fillColor="#42A5F5"
+        android:pathData="M0,1600
+                          C270,1500 540,1700 810,1600
+                          C1080,1500 1080,1800 1080,1920
+                          L0,1920Z" />
+
+    <path
+        android:fillColor="#64B5F6"
+        android:pathData="M0,1700
+                          C300,1650 600,1850 900,1700
+                          C1080,1600 1080,1920 1080,1920
+                          L0,1920Z" />
+
+</vector>
