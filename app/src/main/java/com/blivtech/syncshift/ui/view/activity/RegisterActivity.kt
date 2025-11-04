@@ -1,0 +1,65 @@
+package com.blivtech.syncshift.ui.view.activity
+
+import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.blivtech.syncshift.data.model.local.ApiState
+import com.blivtech.syncshift.data.model.repository.CommonRepository
+import com.blivtech.syncshift.databinding.ActivityRegisterBinding
+
+import com.blivtech.syncshift.ui.viewModel.RegisterViewModel
+import com.blivtech.syncshift.ui.viewModel.RegisterViewModelFactory
+
+class RegisterActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityRegisterBinding
+    private val viewModel: RegisterViewModel by viewModels {
+        RegisterViewModelFactory(CommonRepository())
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnRegister.setOnClickListener {
+            viewModel.registerUser(
+                name = binding.etName.text.toString(),
+                phone = binding.etMobile.text.toString(),
+                username = binding.etUsername.text.toString(),
+                password = binding.etPassword.text.toString(),
+                address = binding.etAddress.text.toString(),
+                referral = binding.etReferral.text.toString()
+            )
+        }
+
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.apiState.observe(this, Observer { state ->
+            when (state) {
+                is ApiState.Loading -> {
+                    binding.btnRegister.isEnabled = false
+                }
+
+                is ApiState.Success -> {
+                    binding.btnRegister.isEnabled = true
+                    Toast.makeText(this, "Success: ${state.data}", Toast.LENGTH_LONG).show()
+                }
+
+                is ApiState.Error -> {
+                    binding.btnRegister.isEnabled = true
+                    Toast.makeText(this, "Error: ${state.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+
+        viewModel.validationError.observe(this, Observer { errorMessage ->
+            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+        })
+    }
+}
