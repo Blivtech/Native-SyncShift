@@ -19,7 +19,6 @@ class ApiRepository {
         return safeApiCall { api.getData(url) }
     }
 
-
     private suspend fun safeApiCall(apiCall: suspend () -> Response<JsonElement>): ApiState {
         return try {
             val response = apiCall()
@@ -27,7 +26,7 @@ class ApiRepository {
 
             println("🔗 API URL: $url")
             if (response.isSuccessful && response.body() != null) {
-                ApiState.Success(response.body().toString())
+                ApiState.Success(response.body())
             } else {
                 ApiState.Error(response.message() ?: "Unknown error")
             }
