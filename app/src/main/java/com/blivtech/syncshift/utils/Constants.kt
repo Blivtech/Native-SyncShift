@@ -9,6 +9,6 @@ object  Constants {
 
 
     // RequestID\
-    const val STR_RID_Register = "userdetails/save-registration/"
+    const val STR_RID_Register = "userdetails/save-registration"
 
 }

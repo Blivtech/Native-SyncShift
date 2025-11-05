@@ -20,6 +20,8 @@
     <string name="str_menu_reports">Reports</string>
     <string name="str_menu_settings">Settings</string>
 
+    <string name="str_back">Back</string>
+
 
     <string name="header_name">Ajith Kumar</string>
     <string name="menu_mentions">Mentions</string>

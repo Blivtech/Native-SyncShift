@@ -2,7 +2,6 @@ package com.blivtech.syncshift.ui.view.activity
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -12,6 +11,7 @@ import com.blivtech.syncshift.databinding.ActivityRegisterBinding
 
 import com.blivtech.syncshift.ui.viewModel.RegisterViewModel
 import com.blivtech.syncshift.ui.viewModel.RegisterViewModelFactory
+import com.blivtech.syncshift.utils.CommonClass
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -48,7 +48,9 @@ class RegisterActivity : AppCompatActivity() {
 
                 is ApiState.Success -> {
                     binding.btnRegister.isEnabled = true
-                    Toast.makeText(this, "Success: ${state.data}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Success: ${state.response}", Toast.LENGTH_LONG).show()
+                    val massage=state.response?.asJsonObject?.get("message")?.asString?:""
+                    CommonClass. showToast(this,massage)
                 }
 
                 is ApiState.Error -> {
