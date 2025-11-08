@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.data.model.network
+package com.blivtech.syncshift.data.network
 
 
 import com.blivtech.syncshift.utils.Constants

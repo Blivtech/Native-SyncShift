@@ -1,7 +1,6 @@
-package com.blivtech.syncshift.data.model.local
+package com.blivtech.syncshift.data.model
 
 import com.google.gson.JsonElement
-
 
 sealed class ApiState {
     object Loading : ApiState()

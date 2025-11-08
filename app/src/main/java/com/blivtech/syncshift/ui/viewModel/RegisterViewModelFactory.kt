@@ -2,7 +2,7 @@ package com.blivtech.syncshift.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.blivtech.syncshift.data.model.repository.CommonRepository
+import com.blivtech.syncshift.data.repository.CommonRepository
 
 class RegisterViewModelFactory(
     private val repository: CommonRepository

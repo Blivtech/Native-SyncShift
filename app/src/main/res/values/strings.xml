@@ -10,6 +10,7 @@
     <string name="signup">Sign Up</string>
     <string name="Register">Register</string>
     <string name="Register_Page">Register Page!</string>
+    <string name="str_check_internet">No Internet Connection. Please Verify Your Network &amp; Try Again.</string>
 
     <string name="welcome">Welcome</string>
     <string name="welcome_caption">App allows to take pictures of your receipts and save the receipt information</string>

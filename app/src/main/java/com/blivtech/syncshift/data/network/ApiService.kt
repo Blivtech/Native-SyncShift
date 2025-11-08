@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.data.model.network
+package com.blivtech.syncshift.data.network
 
 import retrofit2.Call
 import retrofit2.http.GET
