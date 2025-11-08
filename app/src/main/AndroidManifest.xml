@@ -28,16 +28,24 @@
             android:name=".ui.view.activity.LoginActivity"
             android:exported="false" />
 
+<!--        <activity-->
+<!--            android:name=".ui.view.activity.SplashScreenActivity"-->
+<!--            android:exported="true">-->
+
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
-            android:name=".ui.view.activity.SplashScreenActivity"
+            android:name=".ui.view.activity.Test"
             android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <intent-filter>
+                        <action android:name="android.intent.action.MAIN" />
+                        <category android:name="android.intent.category.LAUNCHER" />
+                    </intent-filter>
+                </activity>
     </application>
 
 </manifest>

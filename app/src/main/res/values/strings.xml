@@ -35,12 +35,18 @@
 
 
     <!-- Register acticity-->
-    <string name="hint_name">Name</string>
-    <string name="hint_mobile_number">Mobile Number</string>
-    <string name="hint_username">Username</string>
-    <string name="hint_password">Password</string>
-    <string name="hint_referral_id">Referral ID</string>
-    <string name="hint_address">Enter Address</string>
+    <string name="name">Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="hreferral_id">Referral ID</string>
+    <string name="address">Enter Address</string>
+
+    <!-- Register acticity-->
+    <string name="hint_username">Enter a username</string>
+    <string name="hint_password">Enter a password</string>
+    <string name="hint_referral_id">Enter a referral id</string>
+    <string name="hint_address">Enter the address</string>
 
 
     <string name="select_category">Select Category</string>
@@ -58,13 +64,55 @@
     <string name="updated_date">Updated Date</string>
     <string name="active_date">Active Date</string>
     <string name="referral_id">Referral ID ( Optional )</string>
-    <string name="address">Address</string>
     <string name="app_version">App Version</string>
 
     <string name="default_app_version">1.0.0</string>
-    <string name="btn_submit">Submit</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="str_registration">Registration</string>
+        <!-- Titles -->
+        <string name="title_add_employee">Add Employee</string>
+        <string name="employee_details">Employee Details</string>
+        <string name="payment_details">Payment Details</string>
+
+        <!-- Labels -->
+        <string name="label_name">Name</string>
+        <string name="label_mobile">Mobile Number</string>
+        <string name="label_joining_date">Joining Date</string>
+        <string name="label_employee_type">Employee Type</string>
+        <string name="label_department_optional">Department (Optional)</string>
+        <string name="label_designation_optional">Designation (Optional)</string>
+        <string name="label_email_optional">Email (Optional)</string>
+        <string name="label_salary">Salary</string>
+        <string name="label_leaves">Leaves / Month</string>
+        <string name="label_overtime">Overtime (Hours)</string>
+        <string name="label_timing">Timing</string>
+        <string name="label_working_days">Working Days</string>
+        <string name="label_multiple_shifts">Multiple Shifts</string>
+
+        <!-- Hints -->
+        <string name="hint_name">Enter employee name</string>
+        <string name="hint_mobile_number">Enter mobile number</string>
+        <string name="hint_joining_date">Select date</string>
+        <string name="hint_select_employee_type">Select employee type</string>
+        <string name="hint_select_department">Select department</string>
+        <string name="hint_designation">Enter designation</string>
+        <string name="hint_email">Enter email</string>
+        <string name="hint_salary">Enter salary</string>
+        <string name="hint_overtime">Enter hours</string>
+
+        <!-- Payment Types -->
+        <string name="pt_monthly">Monthly</string>
+        <string name="pt_daily">Daily</string>
+        <string name="pt_hourly">Hourly</string>
+
+        <!-- Buttons -->
+        <string name="btn_submit">Submit</string>
+
+        <!-- Other -->
+        <string name="default_leave_info">5 Leaves / Month</string>
+        <string name="cd_dropdown">Select</string>
+        <string name="cd_calendar">Pick date</string>
+
 </resources>
