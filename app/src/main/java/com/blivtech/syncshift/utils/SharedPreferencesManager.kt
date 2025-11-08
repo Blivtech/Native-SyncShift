@@ -15,7 +15,7 @@ object SharedPreferencesManager {
 
     /***************************************************************************************************************************************************************************************/
     //Insert login status :
-    fun insertLoginStatus(context: Context, loginStatus: Boolean) {
+    fun setLoginStatus(context: Context, loginStatus: Boolean) {
         val sharedPreferences = context.getSharedPreferences(SyncShift, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean(LogInstatus, loginStatus)

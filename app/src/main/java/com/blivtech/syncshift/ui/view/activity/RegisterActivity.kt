@@ -5,8 +5,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.blivtech.syncshift.data.model.local.ApiState
-import com.blivtech.syncshift.data.model.repository.CommonRepository
+import com.blivtech.syncshift.R
+import com.blivtech.syncshift.data.model.ApiState
+import com.blivtech.syncshift.data.repository.CommonRepository
 import com.blivtech.syncshift.databinding.ActivityRegisterBinding
 
 import com.blivtech.syncshift.ui.viewModel.RegisterViewModel
@@ -26,14 +27,20 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnRegister.setOnClickListener {
-            viewModel.registerUser(
-                name = binding.etName.text.toString(),
-                phone = binding.etMobile.text.toString(),
-                username = binding.etUsername.text.toString(),
-                password = binding.etPassword.text.toString(),
-                address = binding.etAddress.text.toString(),
-                referral = binding.etReferral.text.toString()
-            )
+            if(CommonClass.isInternetAvailable(this)){
+                viewModel.registerUser(
+                    name = binding.etName.text.toString(),
+                    phone = binding.etMobile.text.toString(),
+                    username = binding.etUsername.text.toString(),
+                    password = binding.etPassword.text.toString(),
+                    address = binding.etAddress.text.toString(),
+                    referral = binding.etReferral.text.toString()
+                )
+            }else{
+                CommonClass.showToast(this,getString(R.string.str_check_internet))
+            }
+
+
         }
 
         observeViewModel()
@@ -48,9 +55,10 @@ class RegisterActivity : AppCompatActivity() {
 
                 is ApiState.Success -> {
                     binding.btnRegister.isEnabled = true
-                    Toast.makeText(this, "Success: ${state.response}", Toast.LENGTH_LONG).show()
+                  //  Toast.makeText(this, "Success: ${state.response}", Toast.LENGTH_LONG).show()
                     val massage=state.response?.asJsonObject?.get("message")?.asString?:""
                     CommonClass. showToast(this,massage)
+                    CommonClass.launchActivity(this, LoginActivity::class.java)
                 }
 
                 is ApiState.Error -> {

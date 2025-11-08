@@ -1,7 +1,7 @@
-package com.blivtech.syncshift.data.model.repository
+package com.blivtech.syncshift.data.repository
 
-import com.blivtech.syncshift.data.model.local.ApiState
-import com.blivtech.syncshift.data.model.network.RetrofitInstance
+import com.blivtech.syncshift.data.model.ApiState
+import com.blivtech.syncshift.data.network.RetrofitInstance
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import retrofit2.Response

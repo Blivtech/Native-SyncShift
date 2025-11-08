@@ -1,8 +1,8 @@
 package com.blivtech.syncshift.ui.viewModel
 
 import androidx.lifecycle.*
-import com.blivtech.syncshift.data.model.local.ApiState
-import com.blivtech.syncshift.data.model.repository.CommonRepository
+import com.blivtech.syncshift.data.model.ApiState
+import com.blivtech.syncshift.data.repository.CommonRepository
 import com.blivtech.syncshift.utils.TimeUtils
 import com.google.gson.JsonObject
 import kotlinx.coroutines.launch

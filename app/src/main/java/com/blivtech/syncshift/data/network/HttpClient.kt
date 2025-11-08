@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.data.model.network
+package com.blivtech.syncshift.data.network
 
 import okhttp3.OkHttpClient
 import javax.net.ssl.SSLContext

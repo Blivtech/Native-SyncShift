@@ -20,9 +20,8 @@ class SplashViewModel : ViewModel() {
     val navigateTo: LiveData<Destination> get() = _navigateTo
 
     enum class Destination {
-         //Navigate to the configuration screen.
-        LOGIN,         //Navigate to the login screen.
-        DASHBOARD           //Navigate to the home screen.
+        LOGIN,
+        DASHBOARD
     }
 
 

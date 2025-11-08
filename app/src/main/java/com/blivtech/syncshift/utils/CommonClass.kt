@@ -1,9 +1,13 @@
 package com.blivtech.syncshift.utils
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresPermission
 
 object CommonClass {
 
@@ -20,4 +24,13 @@ object CommonClass {
         val intent = Intent(context, targetActivity)
         context.startActivity(intent)
     }
+
+    fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork
+        val capabilities = connectivityManager.getNetworkCapabilities(network)
+        return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
+    }
+
 }
