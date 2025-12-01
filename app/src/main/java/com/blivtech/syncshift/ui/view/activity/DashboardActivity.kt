@@ -39,6 +39,7 @@ class DashboardActivity: AppCompatActivity() {
 
 
 
+
         binding.bottomnavigation.setOnItemSelectedListener { item ->
             if (item.itemId == R.id.mnu_home) {
                 replaceFragment(HomeFragment())
@@ -68,13 +69,7 @@ class DashboardActivity: AppCompatActivity() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
-        binding.imgThreeLine.setOnClickListener {
-            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            } else {
-                binding.drawerLayout.openDrawer(GravityCompat.START)
-            }
-        }
+
 
 
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {

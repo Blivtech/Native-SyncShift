@@ -72,48 +72,65 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="str_registration">Registration</string>
-        <!-- Titles -->
-        <string name="title_add_employee">Add Employee</string>
-        <string name="employee_details">Employee Details</string>
-        <string name="payment_details">Payment Details</string>
+    <!-- Titles -->
+    <string name="title_add_employee">Add Employee</string>
+    <string name="employee_details">Employee Details</string>
+    <string name="payment_details">Payment Details</string>
 
-        <!-- Labels -->
-        <string name="label_name">Name</string>
-        <string name="label_mobile">Mobile Number</string>
-        <string name="label_joining_date">Joining Date</string>
-        <string name="label_employee_type">Employee Type</string>
-        <string name="label_department_optional">Department (Optional)</string>
-        <string name="label_designation_optional">Designation (Optional)</string>
-        <string name="label_email_optional">Email (Optional)</string>
-        <string name="label_salary">Salary</string>
-        <string name="label_leaves">Leaves / Month</string>
-        <string name="label_overtime">Overtime (Hours)</string>
-        <string name="label_timing">Timing</string>
-        <string name="label_working_days">Working Days</string>
-        <string name="label_multiple_shifts">Multiple Shifts</string>
+    <!-- Labels -->
+    <string name="label_name">Name</string>
+    <string name="label_mobile">Mobile Number</string>
+    <string name="label_joining_date">Joining Date</string>
+    <string name="label_employee_type">Employee Type</string>
+    <string name="label_department_optional">Department (Optional)</string>
+    <string name="label_designation_optional">Designation (Optional)</string>
+    <string name="label_email_optional">Email (Optional)</string>
+    <string name="label_salary">Salary</string>
+    <string name="label_leaves">Leaves / Month</string>
+    <string name="label_overtime">Overtime (Hours)</string>
+    <string name="label_timing">Timing</string>
+    <string name="label_working_days">Working Days</string>
+    <string name="label_multiple_shifts">Multiple Shifts</string>
 
-        <!-- Hints -->
-        <string name="hint_name">Enter employee name</string>
-        <string name="hint_mobile_number">Enter mobile number</string>
-        <string name="hint_joining_date">Select date</string>
-        <string name="hint_select_employee_type">Select employee type</string>
-        <string name="hint_select_department">Select department</string>
-        <string name="hint_designation">Enter designation</string>
-        <string name="hint_email">Enter email</string>
-        <string name="hint_salary">Enter salary</string>
-        <string name="hint_overtime">Enter hours</string>
+    <!-- Hints -->
+    <string name="hint_name">Enter employee name</string>
+    <string name="hint_mobile_number">Enter mobile number</string>
+    <string name="hint_joining_date">Select date</string>
+    <string name="hint_select_employee_type">Select employee type</string>
+    <string name="hint_select_department">Select department</string>
+    <string name="hint_designation">Enter designation</string>
+    <string name="hint_email">Enter email</string>
+    <string name="hint_salary">Enter salary</string>
+    <string name="hint_overtime">Enter hours</string>
 
-        <!-- Payment Types -->
-        <string name="pt_monthly">Monthly</string>
-        <string name="pt_daily">Daily</string>
-        <string name="pt_hourly">Hourly</string>
+    <!-- Payment Types -->
+    <string name="pt_monthly">Monthly</string>
+    <string name="pt_daily">Daily</string>
+    <string name="pt_hourly">Hourly</string>
 
-        <!-- Buttons -->
-        <string name="btn_submit">Submit</string>
+    <!-- Buttons -->
+    <string name="btn_submit">Submit</string>
 
-        <!-- Other -->
-        <string name="default_leave_info">5 Leaves / Month</string>
-        <string name="cd_dropdown">Select</string>
-        <string name="cd_calendar">Pick date</string>
+    <!-- Other -->
+    <string name="default_leave_info">5 Leaves / Month</string>
+    <string name="cd_dropdown">Select</string>
+    <string name="cd_calendar">Pick date</string>
+
+    <!-- home fragment -->
+    <string name="attendance_summary">Attendance Summary</string>
+    <string name="present">Present</string>
+    <string name="absent">Absent</string>
+    <string name="half_day">Half Day</string>
+    <string name="what_to_do">What would you like to do?</string>
+
+    <string name="menu_attendance">Attendance</string>
+    <string name="menu_advance">Advance</string>
+    <string name="menu_employee_document">Employee Document</string>
+    <string name="menu_overtime">Over Time</string>
+    <string name="menu_salary">Salary</string>
+    <string name="menu_inactive_employee">Inactive Emp</string>
+    <string name="menu_missed_date">Missed Date</string>
+    <string name="menu_edit">Edit</string>
+
 
 </resources>

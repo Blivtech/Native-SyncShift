@@ -17,36 +17,27 @@
         android:theme="@style/Theme.NativeSyncShift"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.view.activity.AllEmployeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.activity.AttendanceActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.view.activity.DashboardActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.view.activity.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".ui.view.activity.LoginActivity"
             android:exported="false" />
-
-<!--        <activity-->
-<!--            android:name=".ui.view.activity.SplashScreenActivity"-->
-<!--            android:exported="true">-->
-
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-        <activity
-            android:name=".ui.view.activity.Test"
-            android:exported="true">
-
-        <intent-filter>
-                        <action android:name="android.intent.action.MAIN" />
-                        <category android:name="android.intent.category.LAUNCHER" />
-                    </intent-filter>
-                </activity>
     </application>
 
 </manifest>

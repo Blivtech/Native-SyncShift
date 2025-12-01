@@ -17,7 +17,7 @@
     <color name="text_hint">#8A8A8A</color>
     <!-- addemployee -->
 
-
+    <color name="transparent">#00000000</color>
     <!-- Primary Brand Shades -->
     <color name="primary">#0057FF</color>
     <color name="primary_dark">#0038A8</color>
@@ -34,7 +34,37 @@
     <!-- Day Selected States -->
     <color name="day_selected">#0057FF</color>
     <color name="day_unselected">#E8E8E8</color>
+    <!-- home fragment -->
+    <color name="home_bg">#F3F6FF</color>
+    <color name="card_bg">#FFFFFF</color>
 
+
+    <!-- Background -->
+    <color name="bg_light">#F6ECEC</color>
+
+    <!-- Text Colors -->
+    <color name="text_dark">#1E1E1E</color>
+    <color name="text_gray">#6D6D6D</color>
+
+    <!-- Work Plan Colors -->
+    <color name="border_gray">#DADADA</color>
+    <color name="placeholder_gray">#A8A8A8</color>
+
+    <!-- Buttons -->
+    <color name="teal_700">#00796B</color>
+    <color name="teal_600">#009688</color>
+
+    <!-- Work Status Backgrounds -->
+    <color name="present_bg">#D4F8D8</color>      <!-- Light Green -->
+    <color name="absent_bg">#FFD6D6</color>       <!-- Light Red -->
+    <color name="halfday_bg">#FFF1CE</color>      <!-- Light Yellow -->
+
+    <!-- Card Shadows -->
+    <color name="shadow_light">#33000000</color>
+
+    <!-- BottomSheet Text -->
+    <color name="sheet_title">#222222</color>
+    <color name="sheet_item">#333333</color>
 
 
 </resources>

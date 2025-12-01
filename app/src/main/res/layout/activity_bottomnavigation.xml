@@ -28,25 +28,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            app:itemIconTint="@color/blue"
             app:itemTextColor="@color/blue"
             app:menu="@menu/bottom_navgationbar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
-
-        <ImageView
-            android:id="@+id/img_three_line"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_hamburger"
-            android:layout_margin="16dp"
-            android:contentDescription="Open Drawer"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:clickable="true"
-            android:focusable="true"/>
 
 
         <View
