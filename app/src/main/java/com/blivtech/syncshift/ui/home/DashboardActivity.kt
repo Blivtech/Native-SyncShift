@@ -1,25 +1,16 @@
-package com.blivtech.syncshift.ui.view.activity
+package com.blivtech.syncshift.ui.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ActivityBottomnavigationBinding
-import com.blivtech.syncshift.ui.view.fragment.ContactFragment
-import com.blivtech.syncshift.ui.view.fragment.EmployeesFragment
-import com.blivtech.syncshift.ui.view.fragment.HomeFragment
-import com.blivtech.syncshift.ui.view.fragment.LinkDeviceFragment
-import com.blivtech.syncshift.ui.view.fragment.MentionsFragment
-import com.blivtech.syncshift.ui.view.fragment.ReportsFragment
-import com.blivtech.syncshift.ui.view.fragment.SettingsFragment
-import com.blivtech.syncshift.ui.view.fragment.StarredFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class DashboardActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomnavigationBinding
@@ -38,8 +29,6 @@ class DashboardActivity: AppCompatActivity() {
 
 
 
-
-
         binding.bottomnavigation.setOnItemSelectedListener { item ->
             if (item.itemId == R.id.mnu_home) {
                 replaceFragment(HomeFragment())
@@ -52,25 +41,6 @@ class DashboardActivity: AppCompatActivity() {
             }
             true
         }
-
-
-        binding.navigationView.setNavigationItemSelectedListener { item ->
-            if (item.itemId == R.id.nav_mentions) {
-                replaceFragment(MentionsFragment())
-            } else if (item.itemId == R.id.nav_starred) {
-                replaceFragment(StarredFragment())
-            } else if (item.itemId == R.id.nav_contact) {
-                replaceFragment(ContactFragment())
-            } else if (item.itemId == R.id.nav_link_device) {
-                replaceFragment(LinkDeviceFragment())
-            } else if (item.itemId == R.id.nav_logout) {
-                Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show()
-            }
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }
-
-
 
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {

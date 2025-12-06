@@ -133,4 +133,7 @@
     <string name="menu_edit">Edit</string>
 
 
+    <string name="str_loading">Loading...</string>
+
+
 </resources>

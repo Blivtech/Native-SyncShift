@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.ui.view.activity
+package com.blivtech.syncshift.ui.splash
 
 import android.os.Bundle
 import android.annotation.SuppressLint
@@ -6,8 +6,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.ViewModelProvider
 import androidx.appcompat.app.AppCompatActivity
 import com.blivtech.syncshift.databinding.ActivitySplashBinding
-import com.blivtech.syncshift.ui.viewModel.SplashViewModel
+import com.blivtech.syncshift.ui.home.DashboardActivity
+import com.blivtech.syncshift.ui.login.LoginActivity
 import com.blivtech.syncshift.utils.CommonClass
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /*
@@ -16,9 +18,7 @@ Developed By   : Saravana Kumar P
 
 
 
-
-@Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
-@SuppressLint("CustomSplashScreen")
+@AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var splashViewModel: SplashViewModel
     private lateinit var binding: ActivitySplashBinding
@@ -31,7 +31,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         splashViewModel = ViewModelProvider(this)[SplashViewModel::class.java]
 
-        splashViewModel.init(this)
+        splashViewModel.startNavigation()
 
         navigation()
     }

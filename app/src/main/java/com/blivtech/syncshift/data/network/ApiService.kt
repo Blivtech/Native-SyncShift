@@ -1,6 +1,7 @@
 package com.blivtech.syncshift.data.network
 
-import retrofit2.Call
+import com.blivtech.syncshift.data.model.request.LoginRequest
+import com.blivtech.syncshift.data.model.response.LoginResponse
 import retrofit2.http.GET
 import retrofit2.http.Url
 import retrofit2.http.Body
@@ -18,6 +19,9 @@ interface ApiService {
     @POST
    suspend fun postData(@Url url: String, @Body jsonObject: JsonObject): Response<JsonElement>
 
-
+    @POST("?action=login")
+    suspend fun login(
+        @Body request: LoginRequest
+    ): LoginResponse
 
 }
