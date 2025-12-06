@@ -1,7 +1,6 @@
-package com.blivtech.syncshift.ui.home
+package com.blivtech.syncshift.ui.home.fragment.home
 
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,7 +15,6 @@ class HomeFragment : Fragment() {
 
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,11 +26,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.m1.setOnClickListener {
-
-//            val intent= Intent(requireContext(),AttendanceActivity::class.java)
-//            startActivity(intent)
-        }
 
 
     }

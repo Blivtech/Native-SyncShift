@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ActivityBottomnavigationBinding
+import com.blivtech.syncshift.ui.home.fragment.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
