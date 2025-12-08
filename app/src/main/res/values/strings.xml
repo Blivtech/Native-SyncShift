@@ -30,7 +30,6 @@
     <string name="menu_starred">Starred Messages</string>
     <string name="menu_contact">Contact</string>
     <string name="menu_link_device">Link a Device</string>
-    <string name="menu_logout">Log Out</string>
     <string name="open_drawer">Open Navigation Drawer</string>
     <string name="close_drawer">Close Navigation Drawer</string>
 
@@ -124,6 +123,7 @@
     <string name="what_to_do">What would you like to do?</string>
 
     <string name="menu_attendance">Attendance</string>
+    <string name="menu_add_employee">Add Employee</string>
     <string name="menu_advance">Advance</string>
     <string name="menu_employee_document">Employee Document</string>
     <string name="menu_overtime">Over Time</string>
@@ -131,9 +131,21 @@
     <string name="menu_inactive_employee">Inactive Emp</string>
     <string name="menu_missed_date">Missed Date</string>
     <string name="menu_edit">Edit</string>
+    <string name="menu_logout">Logout</string>
 
 
     <string name="str_loading">Loading...</string>
+    <string name="select_employee">Select Employee</string>
+    <string name="upload_documents">Upload Documents</string>
+    <string name="upload_note">*Maximum 5 documents in JPG, JPEG, PNG and PDF formats are allowed.</string>
+    <string name="date">Date</string>
+    <string name="select_date">Select Date</string>
+    <string name="amount">Amount</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="description">Description</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="submit">Submit</string>
+    <string name="str_powered_by">Powered by</string>
 
 
 </resources>

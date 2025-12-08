@@ -3,68 +3,117 @@ package com.blivtech.syncshift.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ActivityBottomnavigationBinding
 import dagger.hilt.android.AndroidEntryPoint
-
-
 @AndroidEntryPoint
-class DashboardActivity: AppCompatActivity() {
+class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomnavigationBinding
-
-
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding=ActivityBottomnavigationBinding.inflate(layoutInflater)
+        binding = ActivityBottomnavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
 
-        replaceFragment(HomeFragment())
+        setupCustomBottomNav()
+    }
 
-
-
-
-        binding.bottomnavigation.setOnItemSelectedListener { item ->
-            if (item.itemId == R.id.mnu_home) {
-                replaceFragment(HomeFragment())
-            } else if (item.itemId == R.id.mnu_employees) {
-                replaceFragment(EmployeesFragment())
-            } else if (item.itemId == R.id.mnu_reports) {
-                replaceFragment(ReportsFragment())
-            } else if (item.itemId == R.id.mnu_settings) {
-                replaceFragment(SettingsFragment())
-            }
-            true
+    private fun setupCustomBottomNav() {
+        binding.tabHome.setOnClickListener {
+            navController.navigate(R.id.homeFragment)
+            highlightTab(1)
         }
 
-        binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
-            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+        binding.tabEmployees.setOnClickListener {
+            navController.navigate(R.id.employeesFragment)
+            highlightTab(2)
+        }
 
-                val scale = 1 - (slideOffset * 0.1f)
-                binding.mainContent.apply {
-                    scaleX = scale
-                    scaleY = scale
-                    translationX = drawerView.width * slideOffset * 0.9f
-                }
-            }
+        binding.tabReports.setOnClickListener {
+            navController.navigate(R.id.reportFragment)
+            highlightTab(3)
+        }
 
-            override fun onDrawerOpened(drawerView: View) {}
-            override fun onDrawerClosed(drawerView: View) {}
-            override fun onDrawerStateChanged(newState: Int) {}
-        })
+        highlightTab(1)
     }
 
 
-private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, fragment)
-            .commit()
+    private fun highlightTab(selected: Int) {
+
+        // Hide all text first
+        val allTexts = listOf(
+            binding.textHome,
+            binding.textEmployees,
+            binding.textReports
+        )
+
+        allTexts.forEach { txt ->
+            if (txt.visibility == View.VISIBLE) animateHide(txt)
+        }
+
+        // Reset all icons to UNSELECTED
+        binding.iconHome.setImageResource(R.drawable.svg_home_unselected)
+        binding.iconEmployees.setImageResource(R.drawable.svg_employees_unselected)
+        binding.iconReports.setImageResource(R.drawable.svg_report_unselected)
+
+        // Apply selected changes
+        when (selected) {
+            1 -> {
+                binding.iconHome.setImageResource(R.drawable.svg_home_selected)
+                animateShow(binding.textHome)
+            }
+            2 -> {
+                binding.iconEmployees.setImageResource(R.drawable.svg_employees_selected)
+                animateShow(binding.textEmployees)
+            }
+            3 -> {
+                binding.iconReports.setImageResource(R.drawable.svg_report_selected)
+                animateShow(binding.textReports)
+            }
+        }
+    }
+
+    private fun animateShow(view: View) {
+        view.apply {
+            visibility = View.VISIBLE
+            alpha = 0f
+            scaleX = 0.6f
+            scaleY = 0.6f
+            translationY = 20f
+
+            animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .translationY(0f)
+                .setDuration(180)
+                .start()
+        }
+    }
+
+    private fun animateHide(view: View) {
+        view.apply {
+            animate()
+                .alpha(0f)
+                .scaleX(0.6f)
+                .scaleY(0.6f)
+                .setDuration(180)
+                .withEndAction {
+                    visibility = View.GONE
+                }
+                .start()
+        }
     }
 
 
 }
+

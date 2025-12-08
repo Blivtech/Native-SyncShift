@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFF</color>
-    <color name="blue">#2563eb</color>
+    <color name="blue">#2e15b7</color>
     <color name="facebook_blue">#1877F2</color>
     <color name="google_red">#EA4335</color>
     <color name="input_hint">#BDBDBD</color>
@@ -66,5 +66,6 @@
     <color name="sheet_title">#222222</color>
     <color name="sheet_item">#333333</color>
 
+    <color name="clr_grey_3">#8B8A8A</color>
 
 </resources>
