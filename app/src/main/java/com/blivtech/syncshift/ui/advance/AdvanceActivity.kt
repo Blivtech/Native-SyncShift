@@ -2,6 +2,7 @@ package com.blivtech.syncshift.ui.advance
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ActivityAdvanceBinding
 class AdvanceActivity :AppCompatActivity() {
 
@@ -10,9 +11,10 @@ class AdvanceActivity :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding=ActivityAdvanceBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_add_employee)
+
 
     }
+
 
 }

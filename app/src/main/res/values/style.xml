@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.MyApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
+
     <item name="colorPrimary">@color/primaryColor1</item>
     <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
     <item name="colorOnPrimary">@color/white</item>
@@ -10,6 +11,8 @@
     <item name="colorOnSecondary">@color/white</item>
 
     </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
     <style name="InputTextStyle">
         <item name="android:textColor">@color/text_hint</item>
         <item name="android:textSize">14sp</item>
@@ -28,6 +31,7 @@
         <item name="android:textSize">26sp</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
+
 
     <style name="ButtonTextStyle">
         <item name="android:fontFamily">@font/poppins_bold</item>
