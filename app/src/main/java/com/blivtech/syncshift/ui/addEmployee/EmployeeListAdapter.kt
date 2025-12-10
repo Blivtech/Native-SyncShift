@@ -1,41 +1,78 @@
 package com.blivtech.syncshift.ui.addEmployee
 
+import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.blivtech.syncshift.R
+import com.blivtech.syncshift.databinding.ItemEmployeeBinding
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 
-class EmployeeListAdapter : RecyclerView.Adapter<EmployeeListAdapter.ViewHolder>() {
+class EmployeeListAdapter :
+    ListAdapter<EmployeeRequest, EmployeeListAdapter.EmployeeViewHolder>(DiffCallback) {
 
-    private val items = mutableListOf<EmployeeRequest>()
+    inner class EmployeeViewHolder(val binding: ItemEmployeeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    fun submitList(newList: List<EmployeeRequest>) {
-        items.clear()
-        items.addAll(newList)
-        notifyDataSetChanged()
+        fun bind(item: EmployeeRequest) = binding.apply {
+
+            // Name + ID
+            tvName.text = "${item.employee_name} (${item.employee_id})"
+
+            // City
+            tvCity.text = item.city
+
+            // WhatsApp-style Initials
+            val initials = getInitials(item.employee_name)
+            tvInitials.text = initials
+            binding.bgCircle.background.setTint(getWhatsAppColor())
+        }
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val name: TextView = view.findViewById(R.id.tvName)
-        val designation: TextView = view.findViewById(R.id.tvAge)
-        val city: TextView = view.findViewById(R.id.tvCity)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeViewHolder {
+        val binding = ItemEmployeeBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return EmployeeViewHolder(binding)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_employee, parent, false)
-        return ViewHolder(v)
+    override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val employee = items[position]
-        holder.name.text = employee.employee_name
-        holder.designation.text = employee.designation
-        holder.city.text = employee.city
+    object DiffCallback : DiffUtil.ItemCallback<EmployeeRequest>() {
+        override fun areItemsTheSame(
+            oldItem: EmployeeRequest,
+            newItem: EmployeeRequest
+        ) = oldItem.employee_id == newItem.employee_id
+
+        override fun areContentsTheSame(
+            oldItem: EmployeeRequest,
+            newItem: EmployeeRequest
+        ) = oldItem == newItem
+    }
+    fun getInitials(name: String): String {
+        val parts = name.trim().split(" ")
+
+        return when (parts.size) {
+            0 -> ""
+            1 -> parts[0].take(1).uppercase()
+            else -> (parts[0].take(1) + parts.last().take(1)).uppercase()
+        }
     }
 
-    override fun getItemCount(): Int = items.size
+    fun getWhatsAppColor(): Int {
+        val colors = listOf(
+            Color.parseColor("#1EBEA5"),
+            Color.parseColor("#25D366"),
+            Color.parseColor("#128C7E"),
+            Color.parseColor("#34B7F1"),
+            Color.parseColor("#075E54")
+        )
+        return colors.random()
+    }
+
 }
