@@ -1,97 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="3dp">
+    android:padding="5dp"
+    android:background="@drawable/backgroud_divider_line"
+    android:backgroundTint="@color/white"
+    android:layout_margin="5dp"
+   >
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/bgCircle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_circle" />
+
+        <TextView
+            android:id="@+id/tvInitials"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="2dp"
+            android:text="SK"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_width="0dp"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content">
 
-        <!-- Profile -->
-        <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/ic_male_round"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <!-- TEXT BLOCK (Name + Age + City) -->
-        <LinearLayout
-            android:id="@+id/textBlock"
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toEndOf="@id/imgProfile"
-            app:layout_constraintTop_toTopOf="@id/imgProfile"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tvAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Age: 25"
-                android:textSize="13sp"
-                android:textColor="#555"/>
-
-            <TextView
-                android:id="@+id/tvCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="City: Chennai"
-                android:textSize="13sp"
-                android:textColor="#555"/>
-        </LinearLayout>
-
-        <!-- BUTTON ROW (Perfectly aligned under the text block) -->
-        <LinearLayout
-            android:id="@+id/buttonRow"
-            android:orientation="horizontal"
+        <TextView
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="@id/textBlock"
-            app:layout_constraintTop_toBottomOf="@id/textBlock">
+            android:text="Sarava"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/btnPresent"
-                android:layout_width="70dp"
-                android:layout_height="32dp"
-                android:gravity="center"
-                android:text="Present"
-                android:textSize="13sp"
-                android:background="@drawable/filter_unselected"
-                android:textColor="#333"/>
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            android:id="@+id/tvEmbID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="EM0001"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="10sp"
+            android:textColor="#555"/>
 
-            <TextView
-                android:id="@+id/btnAbsent"
-                android:layout_width="70dp"
-                android:layout_height="32dp"
-                android:gravity="center"
-                android:text="Absent"
-                android:textSize="13sp"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/filter_unselected"
-                android:textColor="#333"/>
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chennai"
+            android:textColor="#555"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="10sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmbID"
+            app:layout_constraintStart_toStartOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
