@@ -6,16 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.blivtech.syncshift.data.model.local.EmployeeEntity
 import com.blivtech.syncshift.databinding.ItemEmployeeBinding
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 
 class EmployeeListAdapter :
-    ListAdapter<EmployeeRequest, EmployeeListAdapter.EmployeeViewHolder>(DiffCallback) {
+    ListAdapter<EmployeeEntity, EmployeeListAdapter.EmployeeViewHolder>(DiffCallback) {
 
     inner class EmployeeViewHolder(val binding: ItemEmployeeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: EmployeeRequest) = binding.apply {
+        fun bind(item: EmployeeEntity) = binding.apply {
 
             // Name + ID
             tvName.text = "${item.employee_name} (${item.employee_id})"
@@ -43,15 +44,15 @@ class EmployeeListAdapter :
         holder.bind(getItem(position))
     }
 
-    object DiffCallback : DiffUtil.ItemCallback<EmployeeRequest>() {
+    object DiffCallback : DiffUtil.ItemCallback<EmployeeEntity>() {
         override fun areItemsTheSame(
-            oldItem: EmployeeRequest,
-            newItem: EmployeeRequest
+            oldItem: EmployeeEntity,
+            newItem: EmployeeEntity
         ) = oldItem.employee_id == newItem.employee_id
 
         override fun areContentsTheSame(
-            oldItem: EmployeeRequest,
-            newItem: EmployeeRequest
+            oldItem: EmployeeEntity,
+            newItem: EmployeeEntity
         ) = oldItem == newItem
     }
     fun getInitials(name: String): String {
@@ -66,12 +67,31 @@ class EmployeeListAdapter :
 
     fun getWhatsAppColor(): Int {
         val colors = listOf(
-            Color.parseColor("#1EBEA5"),
-            Color.parseColor("#25D366"),
-            Color.parseColor("#128C7E"),
-            Color.parseColor("#34B7F1"),
-            Color.parseColor("#075E54")
+            Color.parseColor("#1EBEA5"), // WhatsApp green
+            Color.parseColor("#25D366"), // light green
+            Color.parseColor("#128C7E"), // dark teal
+            Color.parseColor("#075E54"), // WhatsApp dark green
+            Color.parseColor("#34B7F1"), // light blue
+
+            Color.parseColor("#2ECC71"), // emerald
+            Color.parseColor("#27AE60"), // green
+            Color.parseColor("#16A085"), // teal
+            Color.parseColor("#00BFA5"), // aqua green
+            Color.parseColor("#00ACC1"), // cyan
+
+            Color.parseColor("#039BE5"), // blue
+            Color.parseColor("#0288D1"), // deep blue
+            Color.parseColor("#26C6DA"), // sky blue
+            Color.parseColor("#4DD0E1"), // light cyan
+            Color.parseColor("#80DEEA"), // pastel cyan
+
+            Color.parseColor("#A5D6A7"), // soft green
+            Color.parseColor("#81C784"), // pastel green
+            Color.parseColor("#66BB6A"), // medium green
+            Color.parseColor("#4CAF50"), // material green
+            Color.parseColor("#009688")  // material teal
         )
+
         return colors.random()
     }
 

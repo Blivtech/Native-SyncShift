@@ -33,22 +33,5 @@ class ReportsFragment : Fragment() {
         return view
     }
 
-    private fun loadEmployees() {
-        val progress= ProgressDialog(requireActivity())
 
-        viewModel.employeeListState.observe(viewLifecycleOwner) { resource ->
-            when (resource) {
-                is Resource.Loading ->  progress.show(requireActivity().window)
-                is Resource.Success -> {
-                    progress.dismiss(requireActivity().window)
-                    resource.data?.data?.let { adapter.submitList(it) }
-                }
-                is Resource.Error -> {
-                    progress.dismiss(requireActivity().window)
-
-                    Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
 }

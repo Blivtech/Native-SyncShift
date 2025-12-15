@@ -6,9 +6,8 @@
     android:layout_height="wrap_content"
     android:padding="5dp"
     android:background="@drawable/backgroud_divider_line"
-    android:backgroundTint="@color/white"
-    android:layout_margin="5dp"
-   >
+    android:backgroundTint="@color/card_background_color"
+    android:layout_margin="5dp">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -34,7 +33,7 @@
             android:layout_marginTop="2dp"
             android:text="SK"
             android:textColor="@android:color/white"
-            android:textSize="15sp"
+            android:textSize="@dimen/text_medium_16sp"
             android:fontFamily="@font/poppins_medium"
             android:textStyle="bold" />
 
@@ -58,7 +57,7 @@
             android:fontFamily="@font/poppins_medium"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_normal_14sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -70,7 +69,7 @@
             android:text="EM0001"
             android:fontFamily="@font/poppins_medium"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="10sp"
+            android:textSize="@dimen/text_small_12sp"
             android:textColor="#555"/>
 
         <TextView
@@ -80,7 +79,7 @@
             android:text="Chennai"
             android:textColor="#555"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="10sp"
+            android:textSize="@dimen/text_small_12sp"
             app:layout_constraintTop_toBottomOf="@+id/tvEmbID"
             app:layout_constraintStart_toStartOf="parent"
             />

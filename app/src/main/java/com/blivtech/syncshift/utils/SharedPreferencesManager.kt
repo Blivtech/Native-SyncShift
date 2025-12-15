@@ -51,10 +51,10 @@ object SharedPreferencesManager {
 
 
 
-    fun getLoginData(context: Context): LoginData? {
+    fun getLoginData(context: Context): LoginData {
         val sharedPreferences = context.getSharedPreferences(SyncShift, Context.MODE_PRIVATE)
 
-        val btCode = sharedPreferences.getString("bt_code", null) ?: return null
+        val btCode = sharedPreferences.getString("bt_code", "") ?:""
 
 
         return LoginData(
