@@ -56,8 +56,8 @@ class RegisterActivity : AppCompatActivity() {
                 is ApiState.Success -> {
                     binding.btnRegister.isEnabled = true
                   //  Toast.makeText(this, "Success: ${state.response}", Toast.LENGTH_LONG).show()
-                    val massage=state.response?.asJsonObject?.get("message")?.asString?:""
-                    CommonClass. showToast(this,massage)
+                    val message=state.response?.asJsonObject?.get("message")?.asString?:""
+                    CommonClass. showToast(this,message)
                     CommonClass.launchActivity(this, LoginActivity::class.java)
                 }
 

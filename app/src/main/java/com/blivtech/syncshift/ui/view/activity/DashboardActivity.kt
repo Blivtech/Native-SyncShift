@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ActivityBottomnavigationBinding
 import com.blivtech.syncshift.ui.view.fragment.ContactFragment
@@ -17,13 +18,14 @@ import com.blivtech.syncshift.ui.view.fragment.MentionsFragment
 import com.blivtech.syncshift.ui.view.fragment.ReportsFragment
 import com.blivtech.syncshift.ui.view.fragment.SettingsFragment
 import com.blivtech.syncshift.ui.view.fragment.StarredFragment
-
+import com.blivtech.syncshift.ui.viewModel.DemoViewModel
 
 
 class DashboardActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomnavigationBinding
 
+    private lateinit var demoViewModel: DemoViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +37,14 @@ class DashboardActivity: AppCompatActivity() {
 
         replaceFragment(HomeFragment())
 
+        demoViewModel= ViewModelProvider(this)[DemoViewModel::class.java]
 
+        demoViewModel.addition(1,3)
+
+
+        demoViewModel.addition.observe(this){
+            print(it.toString())
+        }
 
 
 

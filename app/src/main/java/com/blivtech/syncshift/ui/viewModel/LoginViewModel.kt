@@ -21,6 +21,8 @@ class LoginViewModel(private val repository: ApiRepository) : ViewModel() {
             }
 
             val response = repository.postData("login", json)
+
+
             _loginState.value = response
         }
     }

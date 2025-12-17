@@ -45,7 +45,7 @@ class RegisterViewModel(private val repository: CommonRepository) : ViewModel() 
 
         viewModelScope.launch {
             _apiState.value = ApiState.Loading
-            _apiState.value = repository.registerUser(postData)
+            _apiState.value =     repository.registerUser(postData)
         }
     }
 
