@@ -34,7 +34,6 @@ class HomeFragmentViewModel @Inject constructor(  @ApplicationContext private va
             GridItem(R.drawable.img_edit,context.getString(R.string.menu_edit)),
             GridItem(R.drawable.img_edit,context.getString(R.string.menu_logout)),
 
-
             )
 
         _items.value = list

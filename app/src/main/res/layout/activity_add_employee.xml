@@ -1,190 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:padding="16dp"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
 
+        <!-- Header -->
         <TextView
             android:id="@+id/tvHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/title_add_employee"
+            android:text="Add Employee"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:gravity="center"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Employee details -->
-        <TextView
-            android:id="@+id/tvSection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/employee_details"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="18dp"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader"
-            app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- Name -->
+        <!-- Employee Name -->
         <TextView
             android:id="@+id/labelName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_name"
-            android:textSize="13sp"
-            android:textColor="#7A7A7A"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tvSection"
+            android:text="Employee Name"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvHeader"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <EditText
-            android:id="@+id/etName"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilName"
             android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:background="@drawable/bg_input"
-            android:hint="@string/hint_name"
-            android:paddingStart="12dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
             app:layout_constraintTop_toBottomOf="@id/labelName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Mobile -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Enter employee name"
+                android:paddingStart="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!-- Mobile Number -->
         <TextView
             android:id="@+id/labelMobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_mobile"
-            android:textSize="13sp"
-            android:textColor="#7A7A7A"
+            android:text="Mobile Number"
             android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/etName"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/tilName"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mobileContainer"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMobile"
             android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:background="@drawable/bg_input"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
             app:layout_constraintTop_toBottomOf="@id/labelMobile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <TextView
-                android:id="@+id/tvCountryCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+91"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <ImageView
-                android:id="@+id/ivMobileDrop"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_arrow_drop_down"
-                app:layout_constraintStart_toEndOf="@id/tvCountryCode"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="6dp"/>
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMobile"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:hint="@string/hint_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Enter mobile number"
                 android:inputType="phone"
                 android:maxLength="10"
-                android:background="@android:color/transparent"
-                android:paddingStart="12dp"
-                app:layout_constraintStart_toEndOf="@id/ivMobileDrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:paddingStart="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Joining date -->
+
+
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/labelEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tilMobile"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
+            app:layout_constraintTop_toBottomOf="@id/labelEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Enter email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!-- City -->
+        <TextView
+            android:id="@+id/labelCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tilEmail"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
+            app:layout_constraintTop_toBottomOf="@id/labelCity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Enter city"
+                android:paddingStart="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Department -->
+        <TextView
+            android:id="@+id/labelDept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tilCity"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDepartment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
+            app:layout_constraintTop_toBottomOf="@id/labelDept"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/etDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Select department"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!-- Designation -->
+        <TextView
+            android:id="@+id/labelDesignation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Designation"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tilDepartment"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDesignation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
+            app:layout_constraintTop_toBottomOf="@id/labelDesignation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/etDesignation"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Select designation"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!-- DATE OF BIRTH -->
+        <TextView
+            android:id="@+id/labelDOB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tilDesignation"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
+            app:layout_constraintTop_toBottomOf="@id/labelDOB"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDob"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Select date"
+                android:drawableEnd="@drawable/ic_ccalendar"
+                android:focusable="false"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <!-- JOINING DATE -->
         <TextView
             android:id="@+id/labelJoin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_joining_date"
-            android:textSize="13sp"
-            android:textColor="#7A7A7A"
+            android:text="Joining Date"
             android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/mobileContainer"
+            app:layout_constraintTop_toBottomOf="@id/tilDob"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/actJoiningDate"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilJoin"
             android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            android:hint="@string/hint_joining_date"
-            android:background="@drawable/bg_input"
-            android:paddingStart="12dp"
-            android:drawableEnd="@drawable/ic_calendar"
-            android:focusable="false"
-            android:clickable="true"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
             app:layout_constraintTop_toBottomOf="@id/labelJoin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Employee Type -->
-        <TextView
-            android:id="@+id/labelType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_employee_type"
-            android:textSize="13sp"
-            android:textColor="#7A7A7A"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/actJoiningDate"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/actEmployeeType"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            android:hint="@string/hint_select_employee_type"
-            android:background="@drawable/bg_input"
-            android:paddingStart="12dp"
-            android:drawableEnd="@drawable/ic_arrow_drop_down"
-            android:focusable="false"
-            app:layout_constraintTop_toBottomOf="@id/labelType"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etJoiningDate"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Select date"
+                android:drawableEnd="@drawable/ic_ccalendar"
+                android:focusable="false"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Payment -->
         <TextView
-            android:id="@+id/tvPayment"
+            android:id="@+id/tvSalarytype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/payment_details"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginTop="18dp"
-            app:layout_constraintTop_toBottomOf="@id/actEmployeeType"
+            app:layout_constraintTop_toBottomOf="@id/tilJoin"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.button.MaterialButtonToggleGroup
@@ -194,7 +300,7 @@
             android:layout_marginTop="12dp"
             app:singleSelection="true"
             app:selectionRequired="true"
-            app:layout_constraintTop_toBottomOf="@id/tvPayment"
+            app:layout_constraintTop_toBottomOf="@id/tvSalarytype"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -219,11 +325,11 @@
                 android:textColor="@color/toggle_text_selector"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnHourly"
+                android:id="@+id/btnWeekly"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:text="Hourly"
+                android:text="Weekly"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/toggle_bg_selector"
                 android:textColor="@color/toggle_text_selector"/>
@@ -242,60 +348,65 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilSalary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            app:boxBackgroundMode="none"
             app:layout_constraintTop_toBottomOf="@id/labelSalary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSalary"
-                android:background="@drawable/bg_input"
-                android:hint="@string/hint_salary"
-                android:inputType="number"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="Enter salary amount"
+                android:inputType="number"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Leaves -->
         <TextView
             android:id="@+id/labelLeaves"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_leaves"
+            android:text="Leaves in / Month / Daily / Weekly"
             android:textSize="13sp"
             android:textColor="#7A7A7A"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="14dp"
             app:layout_constraintTop_toBottomOf="@id/tilSalary"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <EditText
-            android:id="@+id/etLeaves"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilLeaves"
             android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/bg_input"
-            android:paddingStart="12dp"
-            android:inputType="number"
-            android:text="0"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none"
             app:layout_constraintTop_toBottomOf="@id/labelLeaves"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/etLeaves"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_input"
+                android:hint="0"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Submit -->
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btnSubmit"
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_marginTop="20dp"
-            android:text="@string/btn_submit"
-            android:textAllCaps="false"
+            android:text="Submit"
             android:textColor="@color/white"
             android:backgroundTint="@color/blue"
-            app:layout_constraintTop_toBottomOf="@id/etLeaves"
+            app:layout_constraintTop_toBottomOf="@id/tilLeaves"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

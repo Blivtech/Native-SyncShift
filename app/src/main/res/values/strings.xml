@@ -74,7 +74,7 @@
     <!-- Titles -->
     <string name="title_add_employee">Add Employee</string>
     <string name="employee_details">Employee Details</string>
-    <string name="payment_details">Payment Details</string>
+    <string name="payment_details">Salary Types</string>
 
     <!-- Labels -->
     <string name="label_name">Name</string>

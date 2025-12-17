@@ -16,6 +16,7 @@ import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.ui.addEmployee.EmployeeListAdapter
 import com.blivtech.syncshift.ui.addEmployee.EmployeeViewModel
 import com.blivtech.syncshift.ui.components.ProgressDialog
+import com.blivtech.syncshift.utils.SharedPreferencesManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,9 +37,10 @@ class EmployeesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = EmployeeListAdapter()
         recyclerView.adapter = adapter
+
         val employee = EmployeeRequest(
             employee_id = "EMP001",
-            bt_code = "BT1001",
+            bt_code = SharedPreferencesManager.getLoginData(requireContext()).bt_code,
             employee_name = "Saravanan",
             city = "Chennai",
             salary_type = "Monthly",
