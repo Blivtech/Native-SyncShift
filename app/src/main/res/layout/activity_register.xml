@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/hint_name"
+                android:text="@string/name"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvHeading" />
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/hint_mobile_number"
+                android:text="@string/mobile_number"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etName" />
@@ -167,7 +167,7 @@
                 android:layout_marginTop="14dp"
                 android:fontFamily="@font/poppins_medium"
 
-                android:text="@string/hint_username"
+                android:text="@string/username"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/mobileContainer" />
@@ -194,7 +194,7 @@
                 android:layout_marginTop="14dp"
                 android:fontFamily="@font/poppins_medium"
 
-                android:text="@string/hint_password"
+                android:text="@string/password"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etUsername" />

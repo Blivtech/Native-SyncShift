@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_addemployee"
+        android:title="@string/menu_addemployee"
+        android:icon="@drawable/ic_adduser"/>
+
+
+
     <item android:id="@+id/nav_mentions"
         android:title="@string/menu_mentions"
         android:icon="@drawable/ic_mentions"/>

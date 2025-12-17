@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFF</color>
-    <color name="blue">#2563eb</color>
+    <color name="blue">#2e15b7</color>
     <color name="facebook_blue">#1877F2</color>
     <color name="google_red">#EA4335</color>
     <color name="input_hint">#BDBDBD</color>
@@ -15,4 +15,58 @@
     <color name="hintColor">#808080</color>
     <color name="text_title">#000000</color>
     <color name="text_hint">#8A8A8A</color>
+    <color name="background_color">#F5F5F5 </color>
+    <color name="card_background_color">#FFFFFF  </color>
+    <color name="button_color">#3F51B5</color>
+    <color name="transparent">#00000000</color>
+    <!-- Primary Brand Shades -->
+    <color name="primary">#0057FF</color>
+    <color name="primary_dark">#0038A8</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#7A7A7A</color>
+    <color name="hint_color">#A3A3A3</color>
+
+    <!-- Input Colors -->
+    <color name="input_bg">#F8F8F8</color>
+    <color name="stroke_color">#DDDDDD</color>
+
+    <!-- Day Selected States -->
+    <color name="day_selected">#0057FF</color>
+    <color name="day_unselected">#E8E8E8</color>
+    <!-- home fragment -->
+    <color name="home_bg">#F3F6FF</color>
+    <color name="card_bg">#FFFFFF</color>
+
+
+    <!-- Background -->
+    <color name="bg_light">#F6ECEC</color>
+
+    <!-- Text Colors -->
+    <color name="text_dark">#1E1E1E</color>
+    <color name="text_gray">#6D6D6D</color>
+
+    <!-- Work Plan Colors -->
+    <color name="border_gray">#DADADA</color>
+    <color name="placeholder_gray">#A8A8A8</color>
+
+    <!-- Buttons -->
+    <color name="teal_700">#00796B</color>
+    <color name="teal_600">#009688</color>
+
+    <!-- Work Status Backgrounds -->
+    <color name="present_bg">#D4F8D8</color>      <!-- Light Green -->
+    <color name="absent_bg">#FFD6D6</color>       <!-- Light Red -->
+    <color name="halfday_bg">#FFF1CE</color>      <!-- Light Yellow -->
+
+    <!-- Card Shadows -->
+    <color name="shadow_light">#33000000</color>
+
+    <!-- BottomSheet Text -->
+    <color name="sheet_title">#222222</color>
+    <color name="sheet_item">#333333</color>
+
+    <color name="clr_grey_3">#8B8A8A</color>
+
 </resources>

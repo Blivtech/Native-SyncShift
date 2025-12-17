@@ -1,17 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".ui.view.fragment.HomeFragment">
+    android:background="@color/background_color"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <!-- Attendance Summary -->
     <TextView
+        android:id="@+id/tvBalanceHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:layout_gravity="center"
-        android:text="@string/str_menu_home" />
-</FrameLayout>
+        android:text="Attendance Summary"
+        android:textColor="@color/text_dark"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Summary Cards Row -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/summaryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBalanceHint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_present"
+            android:background="@drawable/backgroud_divider_line"
+            android:backgroundTint="@color/present_bg"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cl_halfday"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Present"
+                android:textColor="@color/text_gray"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPresent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="0"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_halfday"
+            android:layout_width="0dp"
+            android:layout_margin="5dp"
+
+            android:layout_height="60dp"
+            android:background="@drawable/backgroud_divider_line"
+            android:backgroundTint="@color/halfday_bg"
+            android:padding="5dp"
+            app:layout_constraintEnd_toStartOf="@+id/cl_absent"
+            app:layout_constraintStart_toEndOf="@+id/cl_present"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Half Day"
+                android:textColor="@color/text_gray"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvhalfday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="0"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_absent"
+            android:layout_width="0dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/backgroud_divider_line"
+            android:backgroundTint="@color/absent_bg"
+            android:layout_height="60dp"
+            android:padding="5dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cl_halfday"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Absent"
+                android:textColor="@color/text_gray"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_absent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="0"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!-- Menu Title -->
+    <TextView
+        android:id="@+id/tvWhatToDo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What would you like to do?"
+        android:textColor="@color/text_dark"
+        android:textSize="15sp"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginTop="22dp"
+        app:layout_constraintTop_toBottomOf="@id/summaryLayout"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWhatToDo"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="63dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

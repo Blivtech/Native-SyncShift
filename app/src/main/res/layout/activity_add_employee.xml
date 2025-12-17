@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:background="@color/background_color"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Add Employee"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/text_title_20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/labelName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Employee Name"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter employee name"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelName" />
+
+
+        <!-- Mobile Number -->
+        <TextView
+            android:id="@+id/labelMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Mobile Number"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etName" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter Mobile Number"
+            android:padding="10dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelMobile"></com.google.android.material.textfield.TextInputEditText>
+
+        <TextView
+            android:id="@+id/labelEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Email"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etMobile" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelEmail" />
+
+        <TextView
+            android:id="@+id/labelCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="City"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter city"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCity" />
+
+
+        <!-- Department -->
+        <TextView
+            android:id="@+id/labelDept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Department"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCity" />
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:drawableEnd="@drawable/svg_calendar"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Select department"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDept" />
+
+
+        <!-- Designation -->
+        <TextView
+            android:id="@+id/labelDesignation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Designation"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etDepartment" />
+
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etDesignation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:drawableEnd="@drawable/svg_down_arrow"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Select designation"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDesignation" />
+
+        <TextView
+            android:id="@+id/labelDOB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Date of Birth"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etDesignation" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:drawableEnd="@drawable/svg_calendar"
+            android:focusable="false"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Select date"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDOB" />
+
+        <TextView
+            android:id="@+id/labelJoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Joining Date"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etDob" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etJoiningDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:drawableEnd="@drawable/svg_calendar"
+            android:focusable="false"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Select date"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelJoin" />
+
+        <TextView
+            android:id="@+id/tvSalarytype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/payment_details"
+            android:textSize="@dimen/text_normal_14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etJoiningDate" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/togglePay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSalarytype"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMonthly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/toggle_bg_selector"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
+                android:text="Monthly"
+                android:textAllCaps="false"
+                android:textColor="@color/toggle_text_selector"
+                android:textSize="@dimen/text_normal_14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDaily"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/toggle_bg_selector"
+
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
+                android:text="Daily"
+                android:textAllCaps="false"
+                android:textColor="@color/toggle_text_selector"
+                android:textSize="@dimen/text_normal_14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWeekly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/toggle_bg_selector"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
+                android:text="Weekly"
+                android:textAllCaps="false"
+                android:textColor="@color/toggle_text_selector"
+                android:textSize="@dimen/text_normal_14sp" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+        <!-- Salary -->
+        <TextView
+            android:id="@+id/labelSalary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/label_salary"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/togglePay" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter salary amount"
+            android:inputType="number"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelSalary" />
+
+        <TextView
+            android:id="@+id/labelLeaves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Leaves in / Month / Daily / Weekly"
+            android:textColor="#7A7A7A"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSalary" />
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etLeaves"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="0"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelLeaves" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:background="@drawable/background_button_blue"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etLeaves" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

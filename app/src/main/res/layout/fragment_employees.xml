@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@color/background_color"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/blue"
-    tools:context=".ui.view.fragment.EmployeesFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/tv_search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/backgroud_divider_line"
+        android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/svg_search"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:hint="@string/str_search"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="10dp"
         android:textColor="@color/black"
-        android:textSize="25sp"
-        android:layout_gravity="center"
-        android:text="@string/str_menu_employees" />
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelFor,SpUsage" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_search"
+        app:layout_constraintStart_toStartOf="@+id/tv_search"
+        app:layout_constraintTop_toBottomOf="@+id/tv_search" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

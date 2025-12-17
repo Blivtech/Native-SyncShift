@@ -1,0 +1,221 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvSelectEmployee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_employee"
+                android:textColor="#7A7A7A"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <ImageButton
+                android:id="@+id/btnSelectEmployee"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/background_circle"
+                android:backgroundTint="#2766D3"
+                android:contentDescription="@string/select_employee"
+                app:layout_constraintTop_toBottomOf="@id/tvSelectEmployee"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold"
+                app:layout_constraintTop_toTopOf="@id/btnSelectEmployee"
+                app:layout_constraintBottom_toBottomOf="@id/btnSelectEmployee"
+                app:layout_constraintStart_toStartOf="@id/btnSelectEmployee"
+                app:layout_constraintEnd_toEndOf="@id/btnSelectEmployee" />
+
+            <TextView
+                android:id="@+id/tvUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_documents"
+                android:textColor="#7A7A7A"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/btnSelectEmployee"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/btnUploadDocuments"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvUpload"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/vector_upload" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/upload_documents"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_medium" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_note"
+                android:textSize="12sp"
+                android:textColor="#999999"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/btnUploadDocuments"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textColor="#7A7A7A"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tvNote"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:endIconDrawable="@drawable/ic_calendar"
+                app:endIconMode="custom"
+                app:layout_constraintTop_toBottomOf="@id/tvDateLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/select_date"
+                    android:fontFamily="@font/poppins_medium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvAmountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/amount"
+                android:textColor="#7A7A7A"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/dateLayout"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/amountLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvAmountLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_amount"
+                    android:inputType="number"
+                    android:fontFamily="@font/poppins_medium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvDescriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="#7A7A7A"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/amountLayout"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descriptionLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvDescriptionLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="top"
+                    android:hint="@string/enter_description"
+                    android:inputType="textMultiLine"
+                    android:fontFamily="@font/poppins_medium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:text="@string/submit"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/poppins_bold"
+                android:backgroundTint="#0240D1"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/backgroud_divider_line"
+                app:layout_constraintTop_toBottomOf="@id/descriptionLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
