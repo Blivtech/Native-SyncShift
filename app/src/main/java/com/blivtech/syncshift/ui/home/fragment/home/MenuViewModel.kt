@@ -11,7 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeFragmentViewModel @Inject constructor(  @ApplicationContext private val context: Context):ViewModel() {
+class MenuViewModel @Inject constructor(@ApplicationContext private val context: Context):ViewModel() {
 
     private val _items = MutableLiveData<List<GridItem>>()
     val items: LiveData<List<GridItem>> get() = _items

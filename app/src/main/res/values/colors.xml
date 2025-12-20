@@ -15,14 +15,13 @@
     <color name="hintColor">#808080</color>
     <color name="text_title">#000000</color>
     <color name="text_hint">#8A8A8A</color>
-    <color name="background_color">#F5F5F5 </color>
-    <color name="card_background_color">#FFFFFF  </color>
-    <color name="button_color">#3F51B5</color>
+
     <color name="transparent">#00000000</color>
     <!-- Primary Brand Shades -->
     <color name="primary">#0057FF</color>
     <color name="primary_dark">#0038A8</color>
-
+    <color name="clr_green_80">#00c689</color>
+    <color name="clr_green_10">#d9f7ee</color>
     <!-- Text Colors -->
     <color name="text_primary">#1A1A1A</color>
     <color name="text_secondary">#7A7A7A</color>
@@ -38,18 +37,21 @@
     <!-- home fragment -->
     <color name="home_bg">#F3F6FF</color>
     <color name="card_bg">#FFFFFF</color>
+    <color name="button_color">#137fec</color>
 
 
     <!-- Background -->
-    <color name="bg_light">#F6ECEC</color>
+    <color name="background_color">#f6f7f9 </color>
+    <color name="card_background_color">#FFFFFF  </color>
 
     <!-- Text Colors -->
-    <color name="text_dark">#1E1E1E</color>
-    <color name="text_gray">#6D6D6D</color>
+    <color name="text_dark">#111827</color>
+    <color name="text_gray">#7d8390</color>
 
     <!-- Work Plan Colors -->
     <color name="border_gray">#DADADA</color>
     <color name="placeholder_gray">#A8A8A8</color>
+    <color name="navication_color">#475569</color>
 
     <!-- Buttons -->
     <color name="teal_700">#00796B</color>

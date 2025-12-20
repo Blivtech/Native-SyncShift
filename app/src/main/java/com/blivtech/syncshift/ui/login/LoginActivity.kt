@@ -2,11 +2,11 @@ package com.blivtech.syncshift.ui.login
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.data.model.Resource
 import com.blivtech.syncshift.data.model.request.LoginRequest
 import com.blivtech.syncshift.databinding.ActivityLoginBinding
+import com.blivtech.syncshift.ui.BaseActivity
 import com.blivtech.syncshift.ui.components.ProgressDialog
 import com.blivtech.syncshift.ui.home.DashboardActivity
 import com.blivtech.syncshift.utils.CommonClass
@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels()
@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        applyDisplayCutout(binding.main)
 
         observeLogin()
         onClickListener()
@@ -65,8 +66,8 @@ class LoginActivity : AppCompatActivity() {
       binding.btnLogin.setOnClickListener {
           if(CommonClass.isInternetAvailable(this)){
               val request = LoginRequest(
-                  username = binding.etUsername.text.toString(),
-                  password = binding.etPassword.text.toString(),
+                  username = binding.etUsername.text.toString().trim(),
+                  password = binding.etPassword.text.toString().trim(),
                   mode = "Android-App",
                   app_version = "1.0.1",
                   updated_date = ""   // Auto added in UseCase
@@ -79,4 +80,6 @@ class LoginActivity : AppCompatActivity() {
           }
       }
   }
+
+
 }

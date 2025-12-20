@@ -33,4 +33,6 @@ object CommonClass {
         return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
     }
 
+
+
 }

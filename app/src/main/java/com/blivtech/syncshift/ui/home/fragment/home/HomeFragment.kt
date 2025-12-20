@@ -21,8 +21,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HomeFragmentViewModel by viewModels()
-    private lateinit var menuAdapter: MenuAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,33 +34,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup RecyclerView
-        binding.rvList.layoutManager = GridLayoutManager(requireContext(), 3)
-        menuAdapter = MenuAdapter { menuItem ->
-            when (menuItem.title) {
-                getString(R.string.menu_logout) -> {
-                    CommonClass.launchActivity(requireContext(), LoginActivity::class.java)
-                    SharedPreferencesManager.setLoginStatus(requireContext(), false)
-                    requireActivity().finish()
-                }
-                getString(R.string.menu_add_employee) -> {
-                    CommonClass.launchActivity(requireContext(), AddEmployee::class.java)
-                }
-                else -> {
-                    CommonClass.showToast(requireContext(), "Under Development")
-                }
-            }
-        }
 
-        binding.rvList.adapter = menuAdapter
-
-        // Observe menu items
-        viewModel.items.observe(viewLifecycleOwner) { menuList ->
-            menuAdapter.submitList(menuList)
-        }
-
-        // Load menu items
-        viewModel.loadMenuItems()
     }
 
     override fun onDestroyView() {

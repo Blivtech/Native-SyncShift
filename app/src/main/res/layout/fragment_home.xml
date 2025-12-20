@@ -36,7 +36,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_present"
-            android:background="@drawable/backgroud_divider_line"
+            android:background="@drawable/bg_radius"
             android:backgroundTint="@color/present_bg"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -77,7 +77,7 @@
             android:layout_margin="5dp"
 
             android:layout_height="60dp"
-            android:background="@drawable/backgroud_divider_line"
+            android:background="@drawable/bg_radius"
             android:backgroundTint="@color/halfday_bg"
             android:padding="5dp"
             app:layout_constraintEnd_toStartOf="@+id/cl_absent"
@@ -113,7 +113,7 @@
             android:id="@+id/cl_absent"
             android:layout_width="0dp"
             android:layout_margin="5dp"
-            android:background="@drawable/backgroud_divider_line"
+            android:background="@drawable/bg_radius"
             android:backgroundTint="@color/absent_bg"
             android:layout_height="60dp"
             android:padding="5dp"

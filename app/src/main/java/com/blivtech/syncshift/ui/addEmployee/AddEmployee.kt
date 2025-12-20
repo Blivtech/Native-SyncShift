@@ -4,12 +4,13 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.data.model.Resource
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
+import com.blivtech.syncshift.ui.BaseActivity
 import com.blivtech.syncshift.ui.components.ProgressDialog
 import com.blivtech.syncshift.utils.SharedPreferencesManager
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -19,16 +20,21 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
 @AndroidEntryPoint
-class AddEmployee : AppCompatActivity() {
+class AddEmployee : BaseActivity() {
 
     private val viewModel: EmployeeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_employee)
-
+        applyDisplayCutout(findViewById<TextInputEditText>(R.id.main))
+        application
         observeViewModel()
         setupClick()
+        val tittle = findViewById<TextView>(R.id.tv_tittle)
+
+        tittle.text="Add Employee"
+
     }
 
     @SuppressLint("WrongViewCast")

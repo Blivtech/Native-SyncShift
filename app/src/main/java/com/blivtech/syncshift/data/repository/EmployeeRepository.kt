@@ -5,7 +5,6 @@ import com.blivtech.syncshift.data.model.local.EmployeeDao
 import com.blivtech.syncshift.data.model.local.EmployeeEntity
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.data.model.response.AddEmployeeResponse
-import com.blivtech.syncshift.data.model.response.GetEmployeeListResponse
 import com.blivtech.syncshift.data.network.ApiService
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -20,7 +19,15 @@ class EmployeeRepository @Inject constructor(
             val response = api.addEmployee(employee)
 
             if (response.isSuccessful && response.body() != null) {
-                Resource.Success(response.body()!!)
+
+                val body = response.body()!!
+
+                body.data?.let { dto ->
+                    dao.insertEmployee(dto.toEntity())
+                }
+
+                Resource.Success(body)
+
             } else {
                 Resource.Error("Error: ${response.code()} ${response.message()}")
             }
@@ -32,6 +39,10 @@ class EmployeeRepository @Inject constructor(
 
     fun observeEmployees(): Flow<List<EmployeeEntity>> = dao.getEmployees()
 
+     suspend  fun insertEmployee(data: EmployeeEntity) {
+         dao.insertEmployee(data)
+
+    }
 
     suspend fun syncEmployees(btcode: String): Resource<Unit> {
         return try {

@@ -6,33 +6,40 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.blivtech.syncshift.data.model.AvatarColor
 import com.blivtech.syncshift.data.model.local.EmployeeEntity
-import com.blivtech.syncshift.databinding.ItemEmployeeBinding
-import com.blivtech.syncshift.data.model.request.EmployeeRequest
+import com.blivtech.syncshift.databinding.ChildItemEmployeeBinding
+import com.blivtech.syncshift.utils.TimeUtils
 
 class EmployeeListAdapter :
     ListAdapter<EmployeeEntity, EmployeeListAdapter.EmployeeViewHolder>(DiffCallback) {
 
-    inner class EmployeeViewHolder(val binding: ItemEmployeeBinding) :
+    inner class EmployeeViewHolder(val binding: ChildItemEmployeeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: EmployeeEntity) = binding.apply {
 
-            // Name + ID
-            tvName.text = "${item.employee_name} (${item.employee_id})"
+            txtName.text = "${item.employee_name} (${item.employee_id})"
+            txtRole.text = item.designation
+            txtPhonenumber.text = item.phone
+            txtJoined.text = TimeUtils.getConvertedDate(
+                TimeUtils.FORMAT_5,
+                TimeUtils.FORMAT_9,
+                item.joining_date
+            )
 
-            // City
-            tvCity.text = item.city
-
-            // WhatsApp-style Initials
             val initials = getInitials(item.employee_name)
             tvInitials.text = initials
-            binding.bgCircle.background.setTint(getWhatsAppColor())
+
+            val avatarColor = getWhatsAppColor(item.employee_name)
+
+            bgCircle.background.setTint(avatarColor.bgColor)
+            tvInitials.setTextColor(avatarColor.textColor)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeViewHolder {
-        val binding = ItemEmployeeBinding.inflate(
+        val binding = ChildItemEmployeeBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -65,34 +72,43 @@ class EmployeeListAdapter :
         }
     }
 
-    fun getWhatsAppColor(): Int {
+    fun getWhatsAppColor(name: String): AvatarColor {
+
         val colors = listOf(
-            Color.parseColor("#1EBEA5"), // WhatsApp green
-            Color.parseColor("#25D366"), // light green
-            Color.parseColor("#128C7E"), // dark teal
-            Color.parseColor("#075E54"), // WhatsApp dark green
-            Color.parseColor("#34B7F1"), // light blue
-
-            Color.parseColor("#2ECC71"), // emerald
-            Color.parseColor("#27AE60"), // green
-            Color.parseColor("#16A085"), // teal
-            Color.parseColor("#00BFA5"), // aqua green
-            Color.parseColor("#00ACC1"), // cyan
-
-            Color.parseColor("#039BE5"), // blue
-            Color.parseColor("#0288D1"), // deep blue
-            Color.parseColor("#26C6DA"), // sky blue
-            Color.parseColor("#4DD0E1"), // light cyan
-            Color.parseColor("#80DEEA"), // pastel cyan
-
-            Color.parseColor("#A5D6A7"), // soft green
-            Color.parseColor("#81C784"), // pastel green
-            Color.parseColor("#66BB6A"), // medium green
-            Color.parseColor("#4CAF50"), // material green
-            Color.parseColor("#009688")  // material teal
+            AvatarColor(
+                bgColor = Color.parseColor("#FCE4EC"), // light pink
+                textColor = Color.parseColor("#AD1457") // dark pink
+            ),
+            AvatarColor(
+                bgColor = Color.parseColor("#E8F5E9"), // light green
+                textColor = Color.parseColor("#2E7D32") // dark green
+            ),
+            AvatarColor(
+                bgColor = Color.parseColor("#E0F2F1"), // light teal
+                textColor = Color.parseColor("#00695C") // dark teal
+            ),
+            AvatarColor(
+                bgColor = Color.parseColor("#E3F2FD"), // light blue
+                textColor = Color.parseColor("#1565C0") // dark blue
+            ),
+            AvatarColor(
+                bgColor = Color.parseColor("#F3E5F5"), // light purple
+                textColor = Color.parseColor("#6A1B9A") // dark purple
+            ),
+            AvatarColor(
+                bgColor = Color.parseColor("#FFFDE7"), // light yellow
+                textColor = Color.parseColor("#F9A825") // dark yellow
+            ),
+            AvatarColor(
+                bgColor = Color.parseColor("#ECEFF1"), // light grey
+                textColor = Color.parseColor("#37474F") // dark grey
+            )
         )
 
-        return colors.random()
+        val index = kotlin.math.abs(name.hashCode()) % colors.size
+        return colors[index]
     }
+
+
 
 }

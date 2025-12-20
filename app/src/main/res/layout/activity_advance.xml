@@ -37,7 +37,7 @@
                 android:id="@+id/btnSelectEmployee"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:background="@drawable/background_circle"
+                android:background="@drawable/bg_circle"
                 android:backgroundTint="#2766D3"
                 android:contentDescription="@string/select_employee"
                 app:layout_constraintTop_toBottomOf="@id/tvSelectEmployee"
@@ -212,7 +212,7 @@
                 android:backgroundTint="#0240D1"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="24dp"
-                android:background="@drawable/backgroud_divider_line"
+                android:background="@drawable/bg_radius"
                 app:layout_constraintTop_toBottomOf="@id/descriptionLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>

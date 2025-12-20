@@ -1,0 +1,103 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="57dp"
+    android:height="46dp"
+    android:viewportWidth="57"
+    android:viewportHeight="46">
+
+
+
+    <!-- Inner rounded container -->
+    <path
+        android:fillColor="#ECF1F6"
+        android:pathData="
+            M10,6
+            C7.8,10.3 8.7,15.9 8.7,20.7
+            V31
+            C8.6,35 9.8,38.2 13,43
+            C17.4,45.2 23.2,44.3 28.1,44.35
+            H42.6
+            C46.9,43.8 48.3,42.3 51,39
+            C53.3,34.4 52.2,28.1 52.25,23.2
+            V12.1
+            C51.9,8.6 51.2,6.8 49,4
+            C43.3,-0.4 36.9,0.5 30.1,0.5
+            H26.2
+            C16.9,0.4 16.9,0.4 10,6 Z" />
+
+    <!-- Shield right side -->
+    <path
+        android:fillColor="#2C88E4"
+        android:pathData="
+            M38,15
+            C38.6,26.9 38.6,26.9 35,31
+            C32,33 32,33 29.6,32.9
+            C26.2,31.7 25,30 23,27
+            C21.7,23.1 21.9,20 22,16
+            C27.8,12.4 31.7,12.9 38,15 Z" />
+
+    <!-- Shield center vertical -->
+    <path
+        android:fillColor="#A2CCF4"
+        android:pathData="
+            M31,15
+            V23
+            H36
+            C35.8,25.3 35.8,25.3 35,28
+            C32.4,29.8 32.4,29.8 30,31
+            V23
+            H24
+            V17
+            C28.7,15 28.7,15 31,15 Z" />
+
+    <!-- Shield top -->
+    <path
+        android:fillColor="#147EE8"
+        android:pathData="
+            M29,13
+            C33.5,14 33.5,14 38,15
+            V22
+            H31
+            V15
+            H29 Z" />
+
+    <!-- Shield bottom -->
+    <path
+        android:fillColor="#3089E1"
+        android:pathData="
+            M31,22
+            H38
+            C37.7,25.9 37.2,27.8 34.8,31
+            C32,33 32,33 29.3,32.9
+            C27,32 27,32 26,30
+            C30,29.4 30,29.4 31.9,25.9
+            L33,23
+            H31 Z" />
+
+    <!-- Left accent -->
+    <path
+        android:fillColor="#157FEB"
+        android:pathData="
+            M25,24
+            H30
+            V31
+            L24,29
+            Z" />
+
+    <!-- Right accent -->
+    <path
+        android:fillColor="#CAE1F7"
+        android:pathData="
+            M31,23
+            H36
+            C35.7,25.4 35.7,25.4 35,28
+            C33,29.3 33,29.3 31,30 Z" />
+
+    <path
+        android:fillColor="#D7E5F2"
+        android:pathData="
+            M25,18
+            C27.5,18.5 27.5,18.5 30,19
+            V22
+            H25 Z" />
+
+</vector>

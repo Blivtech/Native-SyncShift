@@ -1,15 +1,26 @@
 package com.blivtech.syncshift.ui.home
 
+import android.content.pm.ActivityInfo
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.res.ResourcesCompat.getColor
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ActivityBottomnavigationBinding
+import com.blivtech.syncshift.ui.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-class DashboardActivity : AppCompatActivity() {
+class DashboardActivity : BaseActivity() {
 
     private lateinit var binding: ActivityBottomnavigationBinding
     private lateinit var navController: NavController
@@ -19,67 +30,91 @@ class DashboardActivity : AppCompatActivity() {
 
         binding = ActivityBottomnavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        applyDisplayCutout(binding.main)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         setupCustomBottomNav()
+        observeNavigation()
     }
 
     private fun setupCustomBottomNav() {
         binding.tabHome.setOnClickListener {
-            navController.navigate(R.id.homeFragment)
-            highlightTab(1)
+            navigateTo(R.id.homeFragment)
         }
 
         binding.tabEmployees.setOnClickListener {
-            navController.navigate(R.id.employeesFragment)
-            highlightTab(2)
+            navigateTo(R.id.employeesFragment)
         }
 
         binding.tabReports.setOnClickListener {
-            navController.navigate(R.id.reportFragment)
-            highlightTab(3)
+            navigateTo(R.id.reportFragment)
+        }
+        binding.tabMenu.setOnClickListener {
+            navigateTo(R.id.menuFragment)
         }
 
+        // Default tab
         highlightTab(1)
     }
 
+    private fun observeNavigation() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> highlightTab(1)
+                R.id.employeesFragment -> highlightTab(2)
+                R.id.reportFragment -> highlightTab(3)
+                R.id.menuFragment -> highlightTab(4)
+            }
+        }
+    }
+
+    private fun navigateTo(destinationId: Int) {
+        if (navController.currentDestination?.id != destinationId) {
+            navController.navigate(destinationId)
+        }
+    }
 
     private fun highlightTab(selected: Int) {
 
-        // Hide all text first
-        val allTexts = listOf(
-            binding.textHome,
-            binding.textEmployees,
-            binding.textReports
-        )
 
-        allTexts.forEach { txt ->
-            if (txt.visibility == View.VISIBLE) animateHide(txt)
-        }
+        setTabState(binding.iconHome, binding.textHome, false)
+        setTabState(binding.iconEmployees, binding.textEmployees, false)
+        setTabState(binding.iconReports, binding.textReports, false)
+        setTabState(binding.iconMenu, binding.textMenu, false)
 
-        // Reset all icons to UNSELECTED
-        binding.iconHome.setImageResource(R.drawable.svg_home_unselected)
-        binding.iconEmployees.setImageResource(R.drawable.svg_employees_unselected)
-        binding.iconReports.setImageResource(R.drawable.svg_report_unselected)
-
-        // Apply selected changes
         when (selected) {
             1 -> {
-                binding.iconHome.setImageResource(R.drawable.svg_home_selected)
+                setTabState(binding.iconHome, binding.textHome, true)
                 animateShow(binding.textHome)
             }
             2 -> {
-                binding.iconEmployees.setImageResource(R.drawable.svg_employees_selected)
+                setTabState(binding.iconEmployees, binding.textEmployees, true)
                 animateShow(binding.textEmployees)
             }
             3 -> {
-                binding.iconReports.setImageResource(R.drawable.svg_report_selected)
+                setTabState(binding.iconReports, binding.textReports, true)
                 animateShow(binding.textReports)
             }
+           4 -> {
+                setTabState(binding.iconMenu, binding.textMenu, true)
+                animateShow(binding.iconMenu)
+            }
         }
+    }
+
+    // 🔥 ICON + TEXT COLOR HANDLER
+    private fun setTabState(icon: ImageView, text: TextView, selected: Boolean) {
+        val color = if (selected) {
+            getColor(R.color.button_color)
+        } else {
+            getColor(R.color.navication_color)
+        }
+
+        icon.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+        text.setTextColor(color)
     }
 
     private fun animateShow(view: View) {
@@ -88,7 +123,7 @@ class DashboardActivity : AppCompatActivity() {
             alpha = 0f
             scaleX = 0.6f
             scaleY = 0.6f
-            translationY = 20f
+            translationY = 16f
 
             animate()
                 .alpha(1f)
@@ -101,19 +136,15 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun animateHide(view: View) {
-        view.apply {
-            animate()
-                .alpha(0f)
-                .scaleX(0.6f)
-                .scaleY(0.6f)
-                .setDuration(180)
-                .withEndAction {
-                    visibility = View.GONE
-                }
-                .start()
-        }
+        view.animate()
+            .alpha(0f)
+            .scaleX(0.6f)
+            .scaleY(0.6f)
+            .setDuration(180)
+            .withEndAction { view.visibility = View.GONE }
+            .start()
     }
-
-
 }
+
+
 

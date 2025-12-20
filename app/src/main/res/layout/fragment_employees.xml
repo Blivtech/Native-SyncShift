@@ -9,14 +9,20 @@
     android:layout_height="match_parent">
 
 
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
-        android:id="@+id/tv_search"
+        android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
-        android:background="@drawable/backgroud_divider_line"
+        android:background="@drawable/bg_edit_box"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/svg_search"
         android:drawablePadding="8dp"
@@ -30,17 +36,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
         tools:ignore="LabelFor,SpUsage" />
+
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/txt_employees_count"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/text_normal_14sp"
+        android:textColor="@color/text_gray"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/et_search"
+        app:layout_constraintTop_toBottomOf="@+id/et_search"
+        android:layout_height="wrap_content"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_search"
-        app:layout_constraintStart_toStartOf="@+id/tv_search"
-        app:layout_constraintTop_toBottomOf="@+id/tv_search" />
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="@+id/txt_employees_count"
+        app:layout_constraintTop_toBottomOf="@+id/txt_employees_count"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
