@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -31,9 +34,6 @@ android {
 
 
     }
-
-
-
 
 
     compileOptions {
@@ -70,6 +70,10 @@ dependencies {
     implementation(libs.rxjava2)
     implementation(libs.rxandroid)
 
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
+
+    implementation(libs.material)
 
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
@@ -80,6 +84,18 @@ dependencies {
     implementation(libs.fragment.ktx)
 
 
+    // Dagger-Hilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+
+    // For Hilt support in fragments/activities
+    implementation("androidx.hilt:hilt-navigation-fragment:1.1.0")
+    implementation("androidx.hilt:hilt-work:1.1.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -1,73 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
+    android:background="@color/background_color"
+    android:id="@+id/main"
     android:layout_height="match_parent">
 
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_content"
+    <LinearLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="70dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tabHome"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/bottomnavigation"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iconHome"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_home"
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
+
+            <TextView
+                android:id="@+id/textHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Home"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_normal_14sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/iconHome"
+                app:layout_constraintStart_toStartOf="@+id/iconHome"
+                app:layout_constraintTop_toBottomOf="@+id/iconHome" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomnavigation"
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tabReports"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            app:itemIconTint="@color/blue"
-            app:itemTextColor="@color/blue"
-            app:menu="@menu/bottom_navgationbar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/iconReports"
+                android:src="@drawable/svg_report"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <ImageView
-            android:id="@+id/img_three_line"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_hamburger"
-            android:layout_margin="16dp"
-            android:contentDescription="Open Drawer"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:clickable="true"
-            android:focusable="true"/>
+            <TextView
+                android:id="@+id/textReports"
+                android:text="Reports"
+                android:visibility="visible"
+                android:layout_marginStart="6dp"
+                android:textSize="@dimen/text_normal_14sp"
+                android:textColor="@color/text_dark"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/iconReports"
+                app:layout_constraintStart_toStartOf="@+id/iconReports"
+                app:layout_constraintTop_toBottomOf="@+id/iconReports"
+                android:layout_height="wrap_content" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:id="@+id/drawer_overlay"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tabEmployees"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#80000000"
-            android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/iconEmployees"
+                android:src="@drawable/svg_all_employee"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
+
+            <TextView
+                android:id="@+id/textEmployees"
+                app:layout_constraintEnd_toEndOf="@+id/iconEmployees"
+                app:layout_constraintStart_toStartOf="@+id/iconEmployees"
+                app:layout_constraintTop_toBottomOf="@+id/iconEmployees"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_normal_14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold"
+                android:text="Employees"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@android:color/white"
-        app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/drawer_menu"/>
-</androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tabMenu"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iconMenu"
+                android:src="@drawable/svg_menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/textMenu"
+                android:text="Menu"
+                android:visibility="visible"
+                android:layout_marginStart="6dp"
+                android:textSize="@dimen/text_normal_14sp"
+                android:textColor="@color/text_dark"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/iconMenu"
+                app:layout_constraintStart_toStartOf="@+id/iconMenu"
+                app:layout_constraintTop_toBottomOf="@+id/iconMenu"
+                android:layout_height="wrap_content" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

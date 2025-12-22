@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp">
+
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_phonenumber"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/bgCircle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_circle" />
+
+            <TextView
+                android:id="@+id/tvInitials"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="2dp"
+                android:text="SK"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_medium_16sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sarah Jenkins"
+            android:textSize="@dimen/text_normal_14sp"
+            android:textStyle="bold"
+            android:textColor="#1F2937"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toEndOf="@id/frameLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtStatus"
+            android:layout_marginStart="16dp"/>
+
+        <!-- Role -->
+        <TextView
+            android:id="@+id/txtRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Site Supervisor"
+            android:fontFamily="@font/poppins_medium"
+
+            android:textSize="@dimen/text_small_12sp"
+            android:textColor="#6B7280"
+            app:layout_constraintStart_toStartOf="@id/txtName"
+            app:layout_constraintTop_toBottomOf="@id/txtName"/>
+
+        <TextView
+            android:id="@+id/txt_phonenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:padding="5dp"
+                android:text="+1 (555) 012-3456"
+                android:background="@drawable/bg_light_blue_with_radius"
+                android:drawableLeft="@drawable/svg_phone"
+                android:textSize="@dimen/text_small_12sp"
+                app:layout_constraintStart_toStartOf="@id/txtName"
+                app:layout_constraintTop_toBottomOf="@id/txtRole"
+                android:textColor="#2563EB"
+                />
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_light_green"
+            android:drawableLeft="@drawable/vector_verified"
+            android:padding="3dp"
+            android:text="VERIFIED"
+            android:textColor="#00c689"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txtName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtName" />
+        <TextView
+            android:id="@+id/txtJoined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Joined Jan 12, 2023"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/text_small_12sp"
+            android:textColor="#6B7280"
+            app:layout_constraintStart_toStartOf="@id/txt_phonenumber"
+            app:layout_constraintTop_toBottomOf="@id/txt_phonenumber"
+            android:layout_marginTop="3dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
