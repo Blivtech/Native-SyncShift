@@ -16,7 +16,7 @@
         android:id="@+id/tv_tittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Employees"
+        android:text=""
         android:textSize="@dimen/text_large_18sp"
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_medium"

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.FragmentMenuBinding
 import com.blivtech.syncshift.ui.addEmployee.AddEmployee
+import com.blivtech.syncshift.ui.attendance.AttendanceActivity
 import com.blivtech.syncshift.ui.login.LoginActivity
 import com.blivtech.syncshift.utils.CommonClass
 import com.blivtech.syncshift.utils.SharedPreferencesManager
@@ -48,6 +49,9 @@ class MenuFragment: Fragment() {
                 }
                 getString(R.string.menu_add_employee) -> {
                     CommonClass.launchActivity(requireContext(), AddEmployee::class.java)
+                }
+                getString(R.string.menu_edit) -> {
+                    CommonClass.launchActivity(requireContext(), AttendanceActivity::class.java)
                 }
                 else -> {
                     CommonClass.showToast(requireContext(), "Under Development")

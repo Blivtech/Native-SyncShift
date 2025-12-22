@@ -21,6 +21,10 @@
         <activity
             android:name=".ui.home.DashboardActivity"
             android:exported="false"/>
+        <activity
+            android:name=".ui.attendance.AttendanceActivity"
+            android:exported="false"/>
+
 
         <activity
             android:name=".ui.addEmployee.AddEmployee"
