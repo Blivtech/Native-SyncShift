@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="16dp">
+
+        <!-- Toolbar -->
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Advance Request"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- EMPLOYEES -->
+        <TextView
+            android:id="@+id/tvEmployees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMPLOYEES"
+            android:textSize="12sp"
+            android:textColor="#8A8A8A"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 Selected"
+            android:textSize="12sp"
+            android:textColor="#4D6CFA"
+            android:background="@drawable/bg_selected_chip"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvEmployees"/>
+
+        <!-- Add Employee -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardEmployee"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:layout_constraintTop_toBottomOf="@id/tvEmployees">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_input"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tvAddEmployee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add employee..."
+                    android:textColor="#9E9E9E"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Selected names -->
+        <TextView
+            android:id="@+id/tvSelectedNames"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ajithkumar, Sena, +2 others"
+            android:textSize="13sp"
+            android:textColor="#616161"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/cardEmployee"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvViewAll"/>
+
+        <TextView
+            android:id="@+id/tvViewAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View All"
+            android:textSize="13sp"
+            android:textColor="#4D6CFA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvSelectedNames"/>
+
+        <!-- AMOUNT -->
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AMOUNT"
+            android:textSize="12sp"
+            android:textColor="#8A8A8A"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tvSelectedNames"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="$ 0.00"
+            android:textSize="20sp"
+            android:inputType="numberDecimal"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvAmount"/>
+
+        <!-- DATE NEEDED -->
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATE NEEDED"
+            android:textSize="12sp"
+            android:textColor="#8A8A8A"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/etAmount"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="mm/dd/yyyy"
+
+            android:focusable="false"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDate"/>
+
+        <!-- REMARKS -->
+        <TextView
+            android:id="@+id/tvRemarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REMARKS / PURPOSE"
+            android:textSize="12sp"
+            android:textColor="#8A8A8A"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/etDate"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/etRemarks"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="e.g., Travel expenses for client meeting..."
+            android:gravity="top"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvRemarks"/>
+
+        <!-- ATTACHMENTS -->
+        <TextView
+            android:id="@+id/tvAttachment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ATTACHMENTS"
+            android:textSize="12sp"
+            android:textColor="#8A8A8A"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/etRemarks"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/btnAttachment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Add Receipt or Document"
+            android:gravity="center"
+            android:textColor="#6E6E6E"
+            android:background="@drawable/bg_dashed"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvAttachment"/>
+
+        <!-- SAVE BUTTON -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Request  ✓"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_save_button"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/btnAttachment"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
