@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Left user -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="
+            M7,11
+            A3,3 0 1,1 7,5
+            A3,3 0 0,1 7,11
+            Z"/>
+
+    <!-- Right user -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="
+            M17,11
+            A3,3 0 1,1 17,5
+            A3,3 0 0,1 17,11
+            Z"/>
+
+    <!-- Bodies -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="
+            M2,20
+            C2,17 5,15 7,15
+            C9,15 12,17 12,20
+            H2
+            Z"/>
+
+    <path
+        android:fillColor="#000000"
+        android:pathData="
+            M12,20
+            C12,17 15,15 17,15
+            C19,15 22,17 22,20
+            H12
+            Z"/>
+</vector>

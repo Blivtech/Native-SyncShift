@@ -9,6 +9,7 @@ import com.blivtech.syncshift.data.enumi.DayPlanType
 import com.blivtech.syncshift.data.enumi.DurationType
 import com.blivtech.syncshift.databinding.ActivityAttendanceBinding
 import com.blivtech.syncshift.ui.BaseActivity
+import com.blivtech.syncshift.ui.bottomsheet.ShiftTimingBottomSheet
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,10 +34,9 @@ class AttendanceActivity : BaseActivity() {
 
         binding.toolbar.tvTittle.text="Attendance"
         selectDayPlan(binding.cardWorkingDay, DayPlanType.WORKING_DAY)
-        selectDuration(DurationType.FULL_DAY)
+
     }
 
-    /* ---------------- DAY PLAN ---------------- */
 
     private fun setupDayPlanClicks() = with(binding) {
 
@@ -55,6 +55,7 @@ class AttendanceActivity : BaseActivity() {
         cardLeave.setOnClickListener {
             selectDayPlan(cardLeave, DayPlanType.LEAVE)
         }
+
     }
 
     private fun selectDayPlan(
@@ -85,7 +86,6 @@ class AttendanceActivity : BaseActivity() {
         }
     }
 
-    /* ---------------- DURATION ---------------- */
 
     private fun setupDurationClicks() = with(binding) {
 
@@ -120,13 +120,10 @@ class AttendanceActivity : BaseActivity() {
     /* ---------------- SHIFT TYPE ---------------- */
 
     private fun setupShiftClick() = with(binding) {
-        cardShiftType.setOnClickListener {
-            // Open BottomSheet / Dialog
-            Toast.makeText(
-                this@AttendanceActivity,
-                "Shift selector clicked",
-                Toast.LENGTH_SHORT
-            ).show()
+        binding.cardShiftType.setOnClickListener {
+            ShiftTimingBottomSheet { shift ->
+                binding.tvShiftName.text = shift.name
+            }.show(supportFragmentManager, "ShiftTimingBottomSheet")
         }
     }
 
