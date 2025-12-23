@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.blivtech.syncshift.data.model.AvatarColor
-import com.blivtech.syncshift.data.model.local.EmployeeEntity
+import com.blivtech.syncshift.data.model.response.AvatarColor
+import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
 import com.blivtech.syncshift.databinding.ChildItemEmployeeBinding
 import com.blivtech.syncshift.utils.TimeUtils
 

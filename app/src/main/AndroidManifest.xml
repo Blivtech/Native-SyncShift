@@ -25,6 +25,9 @@
             android:name=".ui.attendance.AttendanceActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".ui.attendance.AttendanceSelectionActvity"
+            android:exported="false"/>
 
         <activity
             android:name=".ui.addEmployee.AddEmployee"

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.blivtech.syncshift.data.model.GridItem
+import com.blivtech.syncshift.data.model.response.GridItem
 import com.blivtech.syncshift.databinding.ChildItemMenuBinding
 
 class MenuAdapter(

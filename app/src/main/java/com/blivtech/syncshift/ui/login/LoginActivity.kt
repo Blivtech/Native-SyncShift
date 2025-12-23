@@ -3,7 +3,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.blivtech.syncshift.R
-import com.blivtech.syncshift.data.model.Resource
+import com.blivtech.syncshift.data.model.response.Resource
 import com.blivtech.syncshift.data.model.request.LoginRequest
 import com.blivtech.syncshift.databinding.ActivityLoginBinding
 import com.blivtech.syncshift.ui.BaseActivity

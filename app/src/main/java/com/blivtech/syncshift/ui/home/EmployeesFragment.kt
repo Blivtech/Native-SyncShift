@@ -43,6 +43,11 @@ class EmployeesFragment : Fragment() {
         setupSearch()
         fetchEmployees()
         observeEmployees()
+        setToolbar()
+    }
+
+    private fun setToolbar() {
+        binding.toolbarLayout.tvTittle.text="All Employees"
     }
 
     private fun setupRecyclerView() {

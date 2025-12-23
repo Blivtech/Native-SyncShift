@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.blivtech.syncshift.R
-import com.blivtech.syncshift.data.model.Resource
+import com.blivtech.syncshift.data.model.response.Resource
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.ui.BaseActivity
 import com.blivtech.syncshift.ui.components.ProgressDialog

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:padding="10dp">
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/bgCircle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_circle" />
+
+            <TextView
+                android:id="@+id/tvInitials"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="2dp"
+                android:text="SK"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_medium_16sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <!-- Name -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="John Doe"
+            android:textColor="#000"
+
+            android:textSize="@dimen/text_normal_14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/btnCall"
+            app:layout_constraintStart_toEndOf="@id/frameLayout"
+            app:layout_constraintTop_toTopOf="@id/frameLayout" />
+
+        <!-- Role -->
+        <TextView
+            android:id="@+id/tvRole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Senior Electrician"
+            android:textColor="#1E6BFF"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+        <!-- Phone -->
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="+1 555-0123"
+            android:textColor="#6B7280"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvRole" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border_gray"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@id/btnAbsent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPhone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPresent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Present"
+            android:textAllCaps="false"
+            android:textColor="#2E7D32"
+            android:textSize="@dimen/text_normal_14sp"
+            app:backgroundTint="@color/clr_green_10"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@id/btnAbsent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            app:rippleColor="#A5D6A7"
+            app:strokeColor="#2E7D32" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAbsent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Absent"
+            android:textAllCaps="false"
+            android:textColor="#D32F2F"
+            android:textSize="@dimen/text_normal_14sp"
+            android:visibility="gone"
+            app:backgroundTint="#FDECEC"
+            app:cornerRadius="8dp"
+
+            app:layout_constraintEnd_toStartOf="@id/btnNotIn"
+            app:layout_constraintStart_toEndOf="@id/btnPresent"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            app:rippleColor="#F5C6C6" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNotIn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Not In Yet"
+            android:textAllCaps="false"
+            android:textColor="#5E35B1"
+            android:textSize="@dimen/text_normal_14sp"
+            app:backgroundTint="#F3F0FF"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnCall"
+            app:layout_constraintStart_toEndOf="@id/btnAbsent"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            app:rippleColor="#D6CCFF" />
+
+        <!--        &lt;!&ndash; Call Button &ndash;&gt;-->
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_light_blue_with_radius"
+            android:padding="5dp"
+            android:src="@drawable/svg_phone"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

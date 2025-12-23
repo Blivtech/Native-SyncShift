@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blivtech.syncshift.R
-import com.blivtech.syncshift.data.model.ShiftTiming
+import com.blivtech.syncshift.data.model.response.ShiftTiming
 import com.blivtech.syncshift.databinding.ItemShiftTimingBinding
 
 class ShiftTimingAdapter(

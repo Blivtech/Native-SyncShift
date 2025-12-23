@@ -5,7 +5,6 @@
     android:viewportWidth="24"
     android:viewportHeight="24">
 
-    <!-- Left user -->
     <path
         android:fillColor="#000000"
         android:pathData="
@@ -14,7 +13,6 @@
             A3,3 0 0,1 7,11
             Z"/>
 
-    <!-- Right user -->
     <path
         android:fillColor="#000000"
         android:pathData="
@@ -23,7 +21,6 @@
             A3,3 0 0,1 17,11
             Z"/>
 
-    <!-- Bodies -->
     <path
         android:fillColor="#000000"
         android:pathData="

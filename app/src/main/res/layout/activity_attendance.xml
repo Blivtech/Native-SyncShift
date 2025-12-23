@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
     android:background="@color/background_color">
 
     <!-- Toolbar -->
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Scrollable Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -33,65 +32,65 @@
                 android:id="@+id/txtShiftType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shift Type"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_normal_14sp"
-                android:textColor="@color/text_dark"
                 android:fontFamily="@font/poppins_medium"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:text="Shift Type"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_normal_14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardShiftType"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                app:cardCornerRadius="14dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#E0E0E0"
-                app:layout_constraintTop_toBottomOf="@id/txtShiftType"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/txtShiftType"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/iconClock"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/svg_clock"
-                        app:tint="@color/button_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:tint="@color/button_color" />
 
                     <TextView
                         android:id="@+id/tvShiftName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="General Shift"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/text_normal_14sp"
-                        android:textColor="@color/text_dark"
-                        android:fontFamily="@font/poppins_medium"
                         android:layout_marginStart="12dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="General Shift"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/text_normal_14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/iconClock"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/svg_down_arrow"
-                        app:tint="@color/text_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:tint="@color/text_gray" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -102,14 +101,14 @@
                 android:id="@+id/txtDayPlan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Day Plan"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_normal_14sp"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/poppins_medium"
                 android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@id/cardShiftType"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:fontFamily="@font/poppins_medium"
+                android:text="Day Plan"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_normal_14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardShiftType" />
 
             <!-- Working Day -->
             <com.google.android.material.card.MaterialCardView
@@ -118,28 +117,28 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="#3F51FF"
-                app:layout_constraintTop_toBottomOf="@id/txtDayPlan"
+                app:layout_constraintEnd_toStartOf="@id/cardHoliday"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cardHoliday">
+                app:layout_constraintTop_toBottomOf="@id/txtDayPlan"
+                app:strokeColor="#3F51FF"
+                app:strokeWidth="2dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:text="Working Day"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_normal_14sp"
-                    android:textColor="@color/text_dark"
-                    android:fontFamily="@font/poppins_medium"
                     android:background="@color/white"
                     android:drawableStart="@drawable/svg_workingday"
                     android:drawablePadding="12dp"
-                    android:drawableTint="#3F51FF"/>
+                    android:drawableTint="#3F51FF"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:text="Working Day"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/text_normal_14sp"
+                    android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Holiday -->
@@ -148,28 +147,28 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#DDDDDD"
-                app:layout_constraintTop_toTopOf="@id/cardWorkingDay"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cardWorkingDay"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="@id/cardWorkingDay"
+                app:strokeColor="#DDDDDD"
+                app:strokeWidth="1dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:text="Holiday"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_normal_14sp"
-                    android:textColor="@color/text_dark"
-                    android:fontFamily="@font/poppins_medium"
                     android:background="@color/white"
                     android:drawableStart="@drawable/svg_umberlla"
                     android:drawablePadding="12dp"
-                    android:drawableTint="#FF9800"/>
+                    android:drawableTint="#FF9800"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:text="Holiday"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/text_normal_14sp"
+                    android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Weekly Off -->
@@ -179,28 +178,28 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#DDDDDD"
-                app:layout_constraintTop_toBottomOf="@id/cardWorkingDay"
+                app:layout_constraintEnd_toStartOf="@id/cardLeave"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cardLeave">
+                app:layout_constraintTop_toBottomOf="@id/cardWorkingDay"
+                app:strokeColor="#DDDDDD"
+                app:strokeWidth="1dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:text="Weekly Off"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_normal_14sp"
-                    android:textColor="@color/text_dark"
-                    android:fontFamily="@font/poppins_medium"
                     android:background="@color/white"
                     android:drawableStart="@drawable/svg_weeklyoff"
                     android:drawablePadding="12dp"
-                    android:drawableTint="#9C27B0"/>
+                    android:drawableTint="#9C27B0"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:text="Weekly Off"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/text_normal_14sp"
+                    android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Leave -->
@@ -209,28 +208,28 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="8dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#DDDDDD"
-                app:layout_constraintTop_toTopOf="@id/cardWeeklyOff"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cardWeeklyOff"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="@id/cardWeeklyOff"
+                app:strokeColor="#DDDDDD"
+                app:strokeWidth="1dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:text="Leave"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_normal_14sp"
-                    android:textColor="@color/text_dark"
-                    android:fontFamily="@font/poppins_medium"
                     android:background="@color/white"
                     android:drawableStart="@drawable/vector_upload"
                     android:drawablePadding="12dp"
-                    android:drawableTint="#F44336"/>
+                    android:drawableTint="#F44336"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:text="Leave"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/text_normal_14sp"
+                    android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
 
             <!-- ================= DURATION ================= -->
@@ -240,13 +239,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Duration"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_normal_14sp"
-                android:textColor="@color/text_dark"
                 android:fontFamily="@font/poppins_medium"
-                app:layout_constraintTop_toBottomOf="@id/cardWeeklyOff"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:text="Duration"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_normal_14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardWeeklyOff" />
 
             <LinearLayout
                 android:id="@+id/layoutDuration"
@@ -254,56 +253,55 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_edit_box"
-                android:padding="4dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/txtDuration"
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/txtDuration">
 
                 <TextView
                     android:id="@+id/tvFullDay"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/bg_segment_selected"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:text="Full Day"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_normal_14sp"
-                    android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/button_color"
-                    android:background="@drawable/bg_segment_selected"/>
+                    android:textSize="@dimen/text_normal_14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvHalfDay"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:text="Half Day"
-                    android:textSize="@dimen/text_normal_14sp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/text_gray"/>
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/text_normal_14sp" />
             </LinearLayout>
-
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardMovePresence"
-                android:layout_marginTop="20dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                app:cardCornerRadius="26dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#C9D6FF"
-                app:layout_constraintTop_toBottomOf="@+id/layoutDuration"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/layoutDuration"
+                app:strokeColor="#C9D6FF"
+                app:strokeWidth="1dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:background="@color/white"
                     android:layout_height="match_parent"
+                    android:background="@color/white"
                     android:paddingHorizontal="16dp">
 
                     <TextView
@@ -311,21 +309,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Move to Employee Presence"
+                        android:textColor="@color/button_color"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:textColor="@color/button_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_arrow_right"
-                        app:tint="@color/button_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:tint="@color/button_color" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -338,13 +336,13 @@
                 android:layout_height="64dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#E0E0E0"
-                app:layout_constraintTop_toBottomOf="@id/cardMovePresence"
+                app:layout_constraintEnd_toStartOf="@id/cardAbsent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cardAbsent">
+                app:layout_constraintTop_toBottomOf="@id/cardMovePresence"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -359,33 +357,33 @@
                         android:backgroundTint="@color/clr_red_10"
                         android:padding="6dp"
                         android:src="@drawable/ic_users"
-                        app:tint="@color/clr_green_80"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:tint="@color/clr_green_80" />
 
                     <TextView
                         android:id="@+id/txtPresentCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24"
-                        android:textSize="@dimen/text_normal_14sp"
-                        android:textColor="@color/text_dark"
-                        android:textStyle="bold"
+                        android:layout_marginStart="8dp"
                         android:fontFamily="@font/poppins_medium"
+                        android:text="24"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/text_normal_14sp"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@id/imgPresent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginStart="8dp"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PRESENT"
-                        android:textSize="@dimen/text_normal_14sp"
                         android:fontFamily="@font/poppins_medium"
+                        android:text="PRESENT"
                         android:textColor="@color/text_gray"
+                        android:textSize="@dimen/text_normal_14sp"
                         app:layout_constraintStart_toStartOf="@id/txtPresentCount"
-                        app:layout_constraintTop_toBottomOf="@id/txtPresentCount"/>
+                        app:layout_constraintTop_toBottomOf="@id/txtPresentCount" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -396,15 +394,15 @@
                 android:id="@+id/cardAbsent"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="8dp"
-                app:cardCornerRadius="16dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#E0E0E0"
-                app:layout_constraintTop_toBottomOf="@id/cardMovePresence"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cardPresent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/cardMovePresence"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -419,32 +417,32 @@
                         android:backgroundTint="@color/clr_red_10"
                         android:padding="6dp"
                         android:src="@drawable/ic_user_remove"
-                        app:tint="@color/google_red"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:tint="@color/google_red" />
 
                     <TextView
                         android:id="@+id/txtAbsentCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:text="2"
+                        android:textColor="@color/text_dark"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="@color/text_dark"
-                        android:layout_marginStart="8dp"
                         app:layout_constraintStart_toEndOf="@id/imgAbsent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ABSENT"
-                        android:textSize="@dimen/text_normal_14sp"
                         android:fontFamily="@font/poppins_medium"
+                        android:text="ABSENT"
                         android:textColor="@color/text_gray"
+                        android:textSize="@dimen/text_normal_14sp"
                         app:layout_constraintStart_toStartOf="@id/txtAbsentCount"
-                        app:layout_constraintTop_toBottomOf="@id/txtAbsentCount"/>
+                        app:layout_constraintTop_toBottomOf="@id/txtAbsentCount" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -455,14 +453,14 @@
                 android:id="@+id/txtRemarks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Remarks"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_normal_14sp"
-                android:textColor="@color/text_dark"
-                android:fontFamily="@font/poppins_medium"
                 android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@id/cardPresent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:fontFamily="@font/poppins_medium"
+                android:text="Remarks"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_normal_14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardPresent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutRemarks"
@@ -470,23 +468,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:boxBackgroundMode="outline"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusBottomEnd="16dp"
-                app:layout_constraintTop_toBottomOf="@id/txtRemarks"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/txtRemarks">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:gravity="top"
-                    android:textSize="@dimen/text_normal_14sp"
-                    android:textColor="@color/text_dark"
                     android:fontFamily="@font/poppins_medium"
+                    android:gravity="top"
                     android:hint="Add any additional notes about your attendance here..."
-                    android:padding="12dp"/>
+                    android:padding="12dp"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/text_normal_14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -495,19 +493,19 @@
                 android:id="@+id/btnSubmit"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="20dp"
                 android:text="Submit Entry"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
-                app:cornerRadius="28dp"
                 app:backgroundTint="@color/button_color"
-                app:layout_constraintTop_toBottomOf="@+id/layoutRemarks"
+                app:cornerRadius="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/layoutRemarks" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </ScrollView>

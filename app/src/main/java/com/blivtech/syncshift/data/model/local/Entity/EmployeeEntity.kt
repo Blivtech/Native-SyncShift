@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.data.model.local
+package com.blivtech.syncshift.data.model.local.Entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +8,6 @@ data class EmployeeEntity(
 
     @PrimaryKey
     val employee_id: String,
-
     val bt_code: String,
     val employee_name: String,
     val city: String,

@@ -1,8 +1,8 @@
 package com.blivtech.syncshift.data.repository
 
-import com.blivtech.syncshift.data.model.Resource
-import com.blivtech.syncshift.data.model.local.EmployeeDao
-import com.blivtech.syncshift.data.model.local.EmployeeEntity
+import com.blivtech.syncshift.data.model.response.Resource
+import com.blivtech.syncshift.data.model.local.Dao.EmployeeDao
+import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.data.model.response.AddEmployeeResponse
 import com.blivtech.syncshift.data.network.ApiService

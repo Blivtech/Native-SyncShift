@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.data.model
+package com.blivtech.syncshift.data.model.response
 
 sealed class Resource<T>(
     val data: T? = null,

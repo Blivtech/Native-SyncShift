@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blivtech.syncshift.data.model.Resource
+import com.blivtech.syncshift.data.model.response.Resource
 import com.blivtech.syncshift.data.model.request.LoginRequest
 import com.blivtech.syncshift.data.model.response.LoginResponse
 import com.blivtech.syncshift.domain.usecase.LoginUseCase

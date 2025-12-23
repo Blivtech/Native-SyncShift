@@ -2,8 +2,9 @@ package com.blivtech.syncshift.data.network
 
 import android.content.Context
 import androidx.room.Room
-import com.blivtech.syncshift.data.model.local.RoomDatabase
-import com.blivtech.syncshift.data.model.local.EmployeeDao
+import com.blivtech.syncshift.data.model.local.AppDatabase
+import com.blivtech.syncshift.data.model.local.Dao.AttendanceDao
+import com.blivtech.syncshift.data.model.local.Dao.EmployeeDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,16 +18,21 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): RoomDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room.databaseBuilder(
             context,
-            RoomDatabase::class.java,
+            AppDatabase::class.java,
             "syncshift_db"   // single DB name
         ).build()
     }
 
     @Provides
-    fun provideEmployeeDao(db: RoomDatabase): EmployeeDao {
+    fun provideEmployeeDao(db: AppDatabase): EmployeeDao {
         return db.employeeDao()
     }
+
+    @Provides
+    fun provideAttendanceDao(
+        database: AppDatabase
+    ): AttendanceDao = database.attendanceDao()
 }

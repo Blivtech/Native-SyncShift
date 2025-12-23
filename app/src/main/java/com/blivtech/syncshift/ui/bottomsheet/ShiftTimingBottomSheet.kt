@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blivtech.syncshift.R
-import com.blivtech.syncshift.data.model.ShiftTiming
+import com.blivtech.syncshift.data.model.response.ShiftTiming
 import com.blivtech.syncshift.databinding.BottomSheetShiftTimingBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

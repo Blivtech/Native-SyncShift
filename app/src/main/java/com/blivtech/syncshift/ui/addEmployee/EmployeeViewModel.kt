@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blivtech.syncshift.data.model.Resource
-import com.blivtech.syncshift.data.model.local.EmployeeEntity
+import com.blivtech.syncshift.data.model.response.Resource
+import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.data.model.response.AddEmployeeResponse
 import com.blivtech.syncshift.domain.usecase.AddEmployeeUseCase

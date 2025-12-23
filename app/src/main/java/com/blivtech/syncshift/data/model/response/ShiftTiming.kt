@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.data.model
+package com.blivtech.syncshift.data.model.response
 
 data class ShiftTiming(
     val id: Int,

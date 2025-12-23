@@ -10,6 +10,7 @@ import com.blivtech.syncshift.data.enumi.DurationType
 import com.blivtech.syncshift.databinding.ActivityAttendanceBinding
 import com.blivtech.syncshift.ui.BaseActivity
 import com.blivtech.syncshift.ui.bottomsheet.ShiftTimingBottomSheet
+import com.blivtech.syncshift.utils.CommonClass
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,10 +32,17 @@ class AttendanceActivity : BaseActivity() {
         setupDayPlanClicks()
         setupDurationClicks()
         setupShiftClick()
+        setupPresenceClick()
 
         binding.toolbar.tvTittle.text="Attendance"
         selectDayPlan(binding.cardWorkingDay, DayPlanType.WORKING_DAY)
 
+    }
+
+    private fun setupPresenceClick() {
+        binding.cardMovePresence.setOnClickListener {
+            CommonClass.launchActivity(this, AttendanceSelectionActvity::class.java)
+        }
     }
 
 
@@ -139,6 +147,5 @@ class AttendanceActivity : BaseActivity() {
             "DayPlan = $selectedDayPlan, Duration = $selectedDuration"
         )
 
-        // API / DB / ViewModel call here
     }
 }
