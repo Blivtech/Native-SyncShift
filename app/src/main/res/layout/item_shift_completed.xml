@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        android:foreground="?attr/selectableItemBackground">
+
+        <!-- TOP COLOR STRIP -->
+        <View
+            android:id="@+id/viewTopStrip"
+            android:layout_width="0dp"
+            android:layout_height="6dp"
+            android:background="#4CAF50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- SHIFT ICON -->
+        <ImageView
+            android:id="@+id/imgShiftIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_user_profile"
+            android:padding="8dp"
+            android:src="@drawable/ic_shift"
+            app:layout_constraintTop_toBottomOf="@id/viewTopStrip"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- SHIFT NAME -->
+        <TextView
+            android:id="@+id/tvShiftName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Morning Shift"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            app:layout_constraintStart_toEndOf="@id/imgShiftIcon"
+            app:layout_constraintTop_toTopOf="@id/imgShiftIcon"
+            app:layout_constraintEnd_toStartOf="@id/imgStatus"/>
+
+        <!-- SHIFT TIME -->
+        <TextView
+            android:id="@+id/tvShiftTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="08:00 AM - 04:00 PM"
+            android:textSize="13sp"
+            android:textColor="#666"
+            app:layout_constraintStart_toStartOf="@id/tvShiftName"
+            app:layout_constraintTop_toBottomOf="@id/tvShiftName"/>
+
+        <!-- STATUS ICON (TICK) -->
+        <ImageView
+            android:id="@+id/imgStatus"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_complete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgShiftIcon"/>
+
+        <!-- PRESENT / ABSENT -->
+        <LinearLayout
+            android:id="@+id/layoutCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/imgShiftIcon"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tvPresent"
+                android:text="● Present 42"
+                android:textSize="14sp"
+                android:textColor="#2E7D32"/>
+
+            <TextView
+                android:layout_marginHorizontal="12dp"
+                android:text="|"
+                android:textColor="#CCC"/>
+
+            <TextView
+                android:id="@+id/tvAbsent"
+                android:text="● Absent 3"
+                android:textSize="14sp"
+                android:textColor="#D32F2F"/>
+        </LinearLayout>
+
+        <!-- ACTION BUTTONS -->
+        <LinearLayout
+            android:id="@+id/layoutActions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutCount"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btnDetails"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="Details"
+                android:background="@drawable/bg_outline_button"
+                android:textColor="#333"/>
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp"
+                android:text="Edit"
+                android:background="@drawable/bg_outline_button"
+                android:textColor="#333"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

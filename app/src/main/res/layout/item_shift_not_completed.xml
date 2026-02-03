@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_dashed_border"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- SHIFT ICON -->
+        <ImageView
+            android:id="@+id/imgShiftIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:background="#eff2fd"
+            android:padding="8dp"
+            android:src="@drawable/ic_nightshift"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- SHIFT NAME -->
+        <TextView
+            android:id="@+id/tvShiftName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Night Shift"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toEndOf="@id/imgShiftIcon"
+            app:layout_constraintTop_toTopOf="@id/imgShiftIcon"
+            app:layout_constraintEnd_toStartOf="@id/layoutStatus"/>
+
+        <!-- SHIFT TIME -->
+        <TextView
+            android:id="@+id/tvShiftTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00 AM - 08:00 AM"
+            android:textSize="13sp"
+            android:textColor="#757575"
+            app:layout_constraintStart_toStartOf="@id/tvShiftName"
+            app:layout_constraintTop_toBottomOf="@id/tvShiftName"/>
+
+        <!-- NOT COMPLETED BADGE (ICON + TEXT) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_not_completed"
+            android:paddingStart="8dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/imgStatus"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_notcomplete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOT COMPLETED"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#F57C00"
+                android:layout_marginStart="6dp"
+                app:layout_constraintStart_toEndOf="@id/imgStatus"
+                app:layout_constraintTop_toTopOf="@id/imgStatus"
+                app:layout_constraintBottom_toBottomOf="@id/imgStatus"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- DO ATTENDANCE BUTTON -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDoAttendance"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+
+            android:text="Do Attendance"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:textColor="@android:color/white"
+
+            app:backgroundTint="#1E88E5"
+            app:cornerRadius="14dp"
+
+            app:icon="@drawable/ic_doattendance"
+            app:iconTint="@android:color/white"
+            app:iconPadding="10dp"
+            app:iconGravity="textStart"
+
+            app:layout_constraintTop_toBottomOf="@id/imgShiftIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
