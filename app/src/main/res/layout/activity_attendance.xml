@@ -479,6 +479,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
+                    android:id="@+id/et_remark"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="top"
                     android:hint="Add any additional notes about your attendance here..."

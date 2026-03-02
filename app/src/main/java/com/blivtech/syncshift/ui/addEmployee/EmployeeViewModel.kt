@@ -19,20 +19,16 @@ class EmployeeViewModel @Inject constructor(
     private val addEmployeeUseCase: AddEmployeeUseCase
 ) : ViewModel() {
 
-    /* -------------------- ADD EMPLOYEE STATE -------------------- */
-
     private val _employeeState = MutableLiveData<Resource<AddEmployeeResponse>>()
     val employeeState: LiveData<Resource<AddEmployeeResponse>> get() = _employeeState
 
 
-    /* -------------------- SYNC STATE -------------------- */
 
     private val _employeeSyncState =
         MutableStateFlow<Resource<Unit>>(Resource.Loading())
     val employeeSyncState: StateFlow<Resource<Unit>> = _employeeSyncState
 
 
-    /* -------------------- EMPLOYEE LIST (ROOM) -------------------- */
 
     private val employeesFlow: StateFlow<List<EmployeeEntity>> =
         addEmployeeUseCase.observeEmployees()

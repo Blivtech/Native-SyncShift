@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">SyncShift</string>
+    <string name="app_mode">Android-App</string>
+    <string name="app_version_number">S.1.0</string>
+
     <string name="welcome_back">Welcome Back!</string>
     <string name="username_hint">UserName</string>
     <string name="password_hint">Password</string>

@@ -1,13 +1,20 @@
 package com.blivtech.syncshift.data.enumi
 
-enum class DayPlanType {
-    WORKING_DAY,
-    HOLIDAY,
-    WEEKLY_OFF,
-    LEAVE
+enum class DayPlanType(
+    val code: String,
+    val label: String
+) {
+    WORKING_DAY("W", "Working Day"),
+    HOLIDAY("H", "Holiday"),
+    WEEKLY_OFF("W", "Weekly Off"),
+    LEAVE("L", "Leave")
 }
 
-enum class DurationType {
-    FULL_DAY,
-    HALF_DAY
+enum class DurationType(
+    val code: String,
+    val label: String
+) {
+    FULL_DAY("FD", "Full Day"),
+    HALF_DAY("HD", "Half Day")
 }
+

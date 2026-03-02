@@ -36,14 +36,6 @@ class AddEmployeeUseCase @Inject constructor(
             return Resource.Error("Select joining date")
         }
 
-//        if (!isValidDate(employee.date_of_birth)) {
-//            return Resource.Error("Invalid DOB format (yyyy-MM-dd)")
-//        }
-//
-//        if (!isValidDate(employee.joining_date)) {
-//            return Resource.Error("Invalid Joining Date format (yyyy-MM-dd)")
-//        }
-
         val salaryCode = when (employee.salary_type.lowercase()) {
             "daily" -> "1"
             "weekly" -> "2"

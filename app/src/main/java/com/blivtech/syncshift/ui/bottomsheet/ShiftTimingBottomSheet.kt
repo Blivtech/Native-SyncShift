@@ -18,10 +18,10 @@ class ShiftTimingBottomSheet(
     private var selectedShift: ShiftTiming? = null
 
     private val shifts = mutableListOf(
-        ShiftTiming(1, "General Shift", "09:00 AM - 06:00 PM", true),
-        ShiftTiming(2, "First Shift", "06:00 AM - 02:00 PM"),
-        ShiftTiming(3, "Second Shift", "02:00 PM - 10:00 PM"),
-        ShiftTiming(4, "Night Shift", "10:00 PM - 06:00 AM")
+        ShiftTiming("G", "General Shift", "09:00 AM - 06:00 PM",true),
+        ShiftTiming("S1", "First Shift", "06:00 AM - 02:00 PM"),
+        ShiftTiming("S2", "Second Shift", "02:00 PM - 10:00 PM"),
+        ShiftTiming("S3", "Night Shift", "10:00 PM - 06:00 AM"),
     )
 
     override fun onCreateView(

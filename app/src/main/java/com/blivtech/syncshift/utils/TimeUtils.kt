@@ -29,6 +29,8 @@ object TimeUtils {
     const val FORMAT_18 = "M"
     const val FORMAT_19 = "MMM-dd"
     const val FORMAT_20 = "EEEE"
+    const val FORMAT_21 = "yyyyMMdd"
+
 
 
 

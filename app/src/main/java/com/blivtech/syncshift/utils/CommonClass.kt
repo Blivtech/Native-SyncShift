@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.RequiresPermission
@@ -32,7 +33,9 @@ object CommonClass {
         val capabilities = connectivityManager.getNetworkCapabilities(network)
         return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
     }
-
+    fun getDeviceName(): String {
+        return "${Build.MANUFACTURER}(${Build.MODEL})"
+    }
 
 
 }

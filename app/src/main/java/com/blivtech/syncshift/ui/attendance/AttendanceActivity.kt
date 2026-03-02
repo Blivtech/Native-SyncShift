@@ -3,24 +3,35 @@ package com.blivtech.syncshift.ui.attendance
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.data.enumi.DayPlanType
 import com.blivtech.syncshift.data.enumi.DurationType
+import com.blivtech.syncshift.data.model.request.AttendanceRequest
+import com.blivtech.syncshift.data.model.request.DayPlanRequest
+import com.blivtech.syncshift.data.model.response.ShiftTiming
 import com.blivtech.syncshift.databinding.ActivityAttendanceBinding
 import com.blivtech.syncshift.ui.BaseActivity
+import com.blivtech.syncshift.ui.addEmployee.EmployeeViewModel
 import com.blivtech.syncshift.ui.bottomsheet.ShiftTimingBottomSheet
 import com.blivtech.syncshift.utils.CommonClass
+import com.blivtech.syncshift.utils.SharedPreferencesManager
+import com.blivtech.syncshift.utils.TimeUtils
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.getValue
 
 @AndroidEntryPoint
 class AttendanceActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAttendanceBinding
+    private val viewModel: AttendanceViewModel by viewModels()
 
-    private var selectedDayPlan: DayPlanType? = DayPlanType.WORKING_DAY
+    private var selectedDayPlan: DayPlanType = DayPlanType.WORKING_DAY
     private var selectedDuration: DurationType = DurationType.FULL_DAY
+    private lateinit var shiftTiming: ShiftTiming
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +54,7 @@ class AttendanceActivity : BaseActivity() {
         binding.cardMovePresence.setOnClickListener {
             CommonClass.launchActivity(this, AttendanceSelectionActvity::class.java)
         }
+        binding.btnSubmit.setOnClickListener { submit() }
     }
 
 
@@ -65,6 +77,8 @@ class AttendanceActivity : BaseActivity() {
         }
 
     }
+
+
 
     private fun selectDayPlan(
         selectedCard: MaterialCardView,
@@ -125,27 +139,45 @@ class AttendanceActivity : BaseActivity() {
         }
     }
 
-    /* ---------------- SHIFT TYPE ---------------- */
 
     private fun setupShiftClick() = with(binding) {
         binding.cardShiftType.setOnClickListener {
             ShiftTimingBottomSheet { shift ->
                 binding.tvShiftName.text = shift.name
+                shiftTiming=shift
             }.show(supportFragmentManager, "ShiftTimingBottomSheet")
         }
     }
 
-    /* ---------------- GET VALUES ---------------- */
 
     private fun submit() {
+        if(shiftTiming==null){
+            Toast.makeText(this, "Select Shift", Toast.LENGTH_SHORT).show()
+            return
+        }
         if (selectedDayPlan == null) {
             Toast.makeText(this, "Select Day Plan", Toast.LENGTH_SHORT).show()
             return
         }
-
-        Log.d("DayPlan",
-            "DayPlan = $selectedDayPlan, Duration = $selectedDuration"
+       val userData=SharedPreferencesManager.getLoginData(context = this)
+        val requestData = DayPlanRequest(
+            planid ="${userData.bt_code}-${TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_21)}-${shiftTiming.code}" ,
+            btcode = userData.bt_code,
+            activityDate = TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_5),
+            shiftCode = shiftTiming.code,
+            shiftName = shiftTiming.name,
+            workPlan = selectedDayPlan.label,
+            workplanCode = selectedDayPlan.code,
+            durationType = selectedDuration.label,
+            durationCode = selectedDuration.code,
+            Remark = binding.etRemark.text.toString(),
+            AppMode =getString(R.string.app_mode),
+            AppVersion = getString(R.string.app_version_number),
+            DeviceName = CommonClass.getDeviceName(),
+            created_by =userData.bt_code,
+            attendance =emptyList()
         )
+        viewModel.submitAttendance(requestData)
 
     }
 }

@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.blivtech.syncshift.data.model.local.Entity.AttendanceEntity
+import com.blivtech.syncshift.data.model.request.AttendanceRequest
 import com.blivtech.syncshift.data.model.response.data.EmployeeAttendanceUI
 import kotlinx.coroutines.flow.Flow
 @Dao
@@ -29,5 +30,19 @@ interface AttendanceDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAttendance(attendance: AttendanceEntity)
+
+    @Query("""
+        SELECT 
+            e.employee_name AS name,
+            a.employee_id   AS code,
+            CASE 
+                WHEN a.status = 'PRESENT' THEN 0
+                ELSE 1
+            END AS status
+        FROM attendance a
+        INNER JOIN employee e
+            ON a.employee_id = e.employee_id
+    """)
+    suspend fun getAttendanceRequestList(): List<AttendanceRequest>
 }
 
