@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Currently Active -->
+
     <TextView
         android:id="@+id/tvActive"
         android:layout_width="wrap_content"
@@ -82,6 +82,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <!-- Active Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cvActive"
         android:layout_width="0dp"
@@ -106,8 +107,8 @@
                 android:layout_height="48dp">
 
                 <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:src="@drawable/ic_building"
                     android:scaleType="centerCrop"
                     android:background="@drawable/bg_circle"/>
@@ -150,6 +151,7 @@
 
     </androidx.cardview.widget.CardView>
 
+
     <TextView
         android:id="@+id/tvSwitch"
         android:layout_width="wrap_content"
@@ -157,12 +159,12 @@
         android:text="SWITCH TO"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:padding="10dp"
         android:textColor="#9AA0A6"
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toBottomOf="@id/cvActive"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <!-- List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCompanies"
         android:layout_width="0dp"
@@ -173,15 +175,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+
     <TextView
         android:id="@+id/btnJoin"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:gravity="center"
         android:text="+ Join another company"
         android:textSize="16sp"
         android:textColor="#1A73E8"
-        android:padding="10dp"
         android:background="@drawable/bg_join_dashed"
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
