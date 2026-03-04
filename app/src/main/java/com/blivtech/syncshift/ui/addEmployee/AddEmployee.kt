@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.blivtech.syncshift.R
-import com.blivtech.syncshift.data.model.response.Resource
+import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.ui.BaseActivity
 import com.blivtech.syncshift.ui.components.ProgressDialog
@@ -96,7 +96,7 @@ class AddEmployee : BaseActivity() {
 
             val employee = EmployeeRequest(
                 employee_id = "",
-                bt_code = userdata.bt_code,
+                bt_code = userdata.btcode,
                 employee_name = etName.text.toString(),
                 city = etCity.text.toString(),
                 salary_type = salaryType,
@@ -121,18 +121,18 @@ class AddEmployee : BaseActivity() {
 
         viewModel.employeeState.observe(this) {
             when (it) {
-                is Resource.Loading -> {
+                is UiState.Loading -> {
                     progress.show(this.window)
                 }
 
-                is Resource.Success -> {
+                is UiState.Success -> {
                     progress.dismiss(this.window)
                     Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT).show()
                     finish()
 
                 }
 
-                is Resource.Error -> {
+                is UiState.Error -> {
                     progress.dismiss(this.window)
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }

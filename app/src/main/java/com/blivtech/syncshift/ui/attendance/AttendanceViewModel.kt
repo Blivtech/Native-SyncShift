@@ -1,25 +1,20 @@
 package com.blivtech.syncshift.ui.attendance
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blivtech.syncshift.data.enumi.AttendanceStatus
 import com.blivtech.syncshift.data.model.request.DayPlanRequest
-import com.blivtech.syncshift.data.model.response.Resource
+import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.response.data.EmployeeAttendanceUI
 import com.blivtech.syncshift.data.repository.AttendanceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
@@ -29,8 +24,8 @@ class AttendanceViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val selectedDate = MutableStateFlow(getCurrentDate())
-    private val _saveState = MutableStateFlow<Resource<Unit>>(Resource.Error("df"))
-    val saveState: StateFlow<Resource<Unit>> = _saveState
+    private val _saveState = MutableStateFlow<UiState<Unit>>(UiState.Error("df"))
+    val saveState: StateFlow<UiState<Unit>> = _saveState
     val attendanceList: StateFlow<List<EmployeeAttendanceUI>> =
         selectedDate
             .flatMapLatest { date ->

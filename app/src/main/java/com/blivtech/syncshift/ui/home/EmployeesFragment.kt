@@ -69,7 +69,7 @@ class EmployeesFragment : Fragment() {
     private fun fetchEmployees() {
         val btCode = SharedPreferencesManager
             .getLoginData(requireContext())
-            .bt_code
+            .btcode
 
         viewModel.fetchEmployees(btCode)
     }

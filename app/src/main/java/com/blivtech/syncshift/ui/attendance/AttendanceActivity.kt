@@ -161,8 +161,8 @@ class AttendanceActivity : BaseActivity() {
         }
        val userData=SharedPreferencesManager.getLoginData(context = this)
         val requestData = DayPlanRequest(
-            planid ="${userData.bt_code}-${TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_21)}-${shiftTiming.code}" ,
-            btcode = userData.bt_code,
+            planid ="${userData.btcode}-${TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_21)}-${shiftTiming.code}" ,
+            btcode = userData.btcode,
             activityDate = TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_5),
             shiftCode = shiftTiming.code,
             shiftName = shiftTiming.name,
@@ -174,7 +174,7 @@ class AttendanceActivity : BaseActivity() {
             AppMode =getString(R.string.app_mode),
             AppVersion = getString(R.string.app_version_number),
             DeviceName = CommonClass.getDeviceName(),
-            created_by =userData.bt_code,
+            created_by =userData.btcode,
             attendance =emptyList()
         )
         viewModel.submitAttendance(requestData)

@@ -2,8 +2,7 @@ package com.blivtech.syncshift.utils
 
 import android.content.Context
 import android.annotation.SuppressLint
-import com.blivtech.syncshift.data.model.response.LoginData
-import com.google.gson.JsonObject
+import com.blivtech.syncshift.data.model.response.LoginResponse
 
 @SuppressLint("CommitPrefEdits")
 object SharedPreferencesManager {
@@ -30,44 +29,36 @@ object SharedPreferencesManager {
 
 
     //Insert login app setup details :
-    fun insertLoginData(context: Context, data: LoginData) {
+    fun insertLoginData(context: Context, data: LoginResponse) {
         val sp = context.getSharedPreferences(SyncShift, Context.MODE_PRIVATE)
         val editor = sp.edit()
 
-        editor.putString("bt_code", data.bt_code)
+        editor.putString("bt_code", data.btcode)
         editor.putString("username", data.username)
-        editor.putString("name", data.name)
-        editor.putString("mobile_number", data.mobile_number)
-        editor.putString("address", data.address)
-        editor.putString("category", data.category)
-        editor.putString("account_type", data.account_type)
-        editor.putString("app_version", data.app_version)
-        editor.putString("active_date", data.active_date)
+        editor.putString("name", data.btname)
+        editor.putString("mobile_number", data.mobileNumber)
+        editor.putString("usertype", data.usertype)
+        editor.putString("active_date", "")
 
-        editor.putBoolean(LogInstatus, true) // Optional: Login status flag
+        editor.putBoolean(LogInstatus, true)
 
         editor.apply()
     }
 
 
-
-    fun getLoginData(context: Context): LoginData {
+    fun getLoginData(context: Context): LoginResponse {
         val sharedPreferences = context.getSharedPreferences(SyncShift, Context.MODE_PRIVATE)
 
         val btCode = sharedPreferences.getString("bt_code", "") ?:""
 
-
-        return LoginData(
-            bt_code = btCode,
+        return LoginResponse(
+            btcode = btCode,
             username = sharedPreferences.getString("username", "") ?: "",
-            name = sharedPreferences.getString("name", "") ?: "",
-            mobile_number = sharedPreferences.getString("mobile_number", "") ?: "",
-            address = sharedPreferences.getString("address", "") ?: "",
-            category = sharedPreferences.getString("category", "") ?: "",
-            account_type = sharedPreferences.getString("account_type", "") ?: "",
-            app_version = sharedPreferences.getString("app_version", "") ?: "",
-            active_date = sharedPreferences.getString("active_date", "") ?: ""
-        )
+            btname = sharedPreferences.getString("name", "") ?: "",
+            mobileNumber = sharedPreferences.getString("mobile_number", "") ?: "",
+            usertype = sharedPreferences.getString("usertype", "") ?: "",
+
+            )
     }
 
 }

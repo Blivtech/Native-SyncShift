@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blivtech.syncshift.data.model.response.Resource
+import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.data.model.response.AddEmployeeResponse
@@ -19,14 +19,14 @@ class EmployeeViewModel @Inject constructor(
     private val addEmployeeUseCase: AddEmployeeUseCase
 ) : ViewModel() {
 
-    private val _employeeState = MutableLiveData<Resource<AddEmployeeResponse>>()
-    val employeeState: LiveData<Resource<AddEmployeeResponse>> get() = _employeeState
+    private val _employeeState = MutableLiveData<UiState<AddEmployeeResponse>>()
+    val employeeState: LiveData<UiState<AddEmployeeResponse>> get() = _employeeState
 
 
 
     private val _employeeSyncState =
-        MutableStateFlow<Resource<Unit>>(Resource.Loading())
-    val employeeSyncState: StateFlow<Resource<Unit>> = _employeeSyncState
+        MutableStateFlow<UiState<Unit>>(UiState.Loading)
+    val employeeSyncState: StateFlow<UiState<Unit>> = _employeeSyncState
 
 
 
@@ -75,7 +75,7 @@ class EmployeeViewModel @Inject constructor(
 
     fun addEmployee(employee: EmployeeRequest) {
         viewModelScope.launch {
-            _employeeState.value = Resource.Loading()
+            _employeeState.value = UiState.Loading
             _employeeState.value = addEmployeeUseCase.save(employee)
         }
     }
@@ -85,7 +85,7 @@ class EmployeeViewModel @Inject constructor(
 
     fun fetchEmployees(btCode: String) {
         viewModelScope.launch {
-            _employeeSyncState.value = Resource.Loading()
+            _employeeSyncState.value = UiState.Loading
             _employeeSyncState.value = addEmployeeUseCase.get(btCode)
         }
     }

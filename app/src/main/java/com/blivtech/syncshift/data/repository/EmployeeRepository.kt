@@ -1,6 +1,6 @@
 package com.blivtech.syncshift.data.repository
 
-import com.blivtech.syncshift.data.model.response.Resource
+import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.local.Dao.EmployeeDao
 import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
@@ -14,7 +14,7 @@ class EmployeeRepository @Inject constructor(
 
 ) {
 
-    suspend fun addEmployee(employee: EmployeeRequest): Resource<AddEmployeeResponse> {
+    suspend fun addEmployee(employee: EmployeeRequest): UiState<AddEmployeeResponse> {
         return try {
             val response = api.addEmployee(employee)
 
@@ -26,14 +26,14 @@ class EmployeeRepository @Inject constructor(
                     dao.insertEmployee(dto.toEntity())
                 }
 
-                Resource.Success(body)
+                UiState.Success(body,"")
 
             } else {
-                Resource.Error("Error: ${response.code()} ${response.message()}")
+                UiState.Error("Error: ${response.code()} ${response.message()}")
             }
 
         } catch (e: Exception) {
-            Resource.Error(e.message ?: "Unknown error")
+            UiState.Error(e.message ?: "Unknown error")
         }
     }
 
@@ -44,7 +44,7 @@ class EmployeeRepository @Inject constructor(
 
     }
 
-    suspend fun syncEmployees(btcode: String): Resource<Unit> {
+    suspend fun syncEmployees(btcode: String): UiState<Unit> {
         return try {
             val response = api.getEmployees(btcode)
             if (response.isSuccessful && response.body() != null) {
@@ -56,13 +56,13 @@ class EmployeeRepository @Inject constructor(
                 dao.clearEmployees()
                 dao.insertEmployees(entityList)
 
-                Resource.Success(Unit)
+                UiState.Success(Unit,"")
             } else {
-                Resource.Error("API Error ${response.code()}")
+                UiState.Error("API Error ${response.code()}")
             }
 
         } catch (e: Exception) {
-            Resource.Error(e.message ?: "Unknown error")
+            UiState.Error(e.message ?: "Unknown error")
         }
     }
     private fun EmployeeRequest.toEntity(): EmployeeEntity {

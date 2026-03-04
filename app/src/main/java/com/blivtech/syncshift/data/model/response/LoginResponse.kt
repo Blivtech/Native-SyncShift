@@ -1,19 +1,21 @@
 package com.blivtech.syncshift.data.model.response
 
 data class LoginResponse(
-    val success: Boolean,
-    val message: String,
-    val data: LoginData?
+    val btcode: String,
+    val btname: String,
+    val username: String,
+    val mobileNumber: String,
+    val usertype: String,
+    val company_details: List<CompanyDetails> = emptyList())
+
+data class CompanyDetails(
+    val id: Long,
+    val btcode: String,
+    val companycode: String,
+    val companyname: String,
+    val towncode: String,
+    val townname: String,
+    val companytype: String,
+    val createdAt: String
 )
 
-data class LoginData(
-    val bt_code: String,
-    val username: String,
-    val name: String,
-    val mobile_number: String,
-    val address: String,
-    val category: String,
-    val account_type: String,
-    val app_version: String,
-    val active_date: String
-)

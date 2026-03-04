@@ -5,7 +5,7 @@ import com.blivtech.syncshift.data.model.local.Dao.AttendanceDao
 import com.blivtech.syncshift.data.model.local.Entity.AttendanceEntity
 import com.blivtech.syncshift.data.model.request.AttendanceRequest
 import com.blivtech.syncshift.data.model.request.DayPlanRequest
-import com.blivtech.syncshift.data.model.response.Resource
+import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.response.data.EmployeeAttendanceUI
 import com.blivtech.syncshift.data.network.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -43,23 +43,23 @@ class AttendanceRepository @Inject constructor(
 
 
 
-    fun saveDayPlan(request: DayPlanRequest): Flow<Resource<Unit>> = flow {
-        emit(Resource.Loading())
+    fun saveDayPlan(request: DayPlanRequest): Flow<UiState<Unit>> = flow {
+
         val finalrequest=request.copy(attendance = getAttendanceList())
         try {
             val response = api.saveDayPlan(finalrequest)
 
             if (response.isSuccessful) {
-                emit(Resource.Success(Unit))
+
             } else {
                 emit(
-                    Resource.Error(
+                    UiState.Error(
                         response.message().ifEmpty { "Failed to save attendance" }
                     )
                 )
             }
         } catch (e: Exception) {
-            emit(Resource.Error(e.localizedMessage ?: "Something went wrong"))
+            emit(UiState.Error(e.localizedMessage ?: "Something went wrong"))
         }
     }
 
