@@ -34,7 +34,6 @@ class MenuViewModel @Inject constructor(@ApplicationContext private val context:
             GridItem(R.drawable.img_edit,context.getString(R.string.menu_edit)),
             GridItem(R.drawable.img_edit,context.getString(R.string.menu_logout)),
 
-
             )
 
         _items.value = list

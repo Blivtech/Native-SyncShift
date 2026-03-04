@@ -78,7 +78,7 @@
     <!-- Titles -->
     <string name="title_add_employee">Add Employee</string>
     <string name="employee_details">Employee Details</string>
-    <string name="payment_details">Payment Details</string>
+    <string name="payment_details">Salary Types</string>
 
     <!-- Labels -->
     <string name="label_name">Name</string>
@@ -150,6 +150,13 @@
     <string name="enter_description">Enter Description</string>
     <string name="submit">Submit</string>
     <string name="str_powered_by">Powered by</string>
+
+    <string name="morning_shift">Morning Shift</string>
+    <string name="morning_time">08:00 AM - 04:00 PM</string>
+    <string name="completed">COMPLETED</string>
+    <string name="details">Details</string>
+    <string name="edit">Edit</string>
+
 
 
 </resources>

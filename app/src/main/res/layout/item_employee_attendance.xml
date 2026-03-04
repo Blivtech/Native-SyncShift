@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardProfile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_user_profile"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <View
+            android:id="@+id/viewOnline"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_green_dot"
+            app:layout_constraintBottom_toBottomOf="@id/cardProfile"
+            app:layout_constraintEnd_toEndOf="@id/cardProfile"/>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ajith kumar"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/cardProfile"
+            app:layout_constraintTop_toTopOf="@id/cardProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"/>
+
+
+        <TextView
+            android:id="@+id/tvRole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Android Developer"
+            android:textSize="13sp"
+            android:textColor="#2979FF"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/imgMobile"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_mobile"
+            app:layout_constraintStart_toStartOf="@id/tvRole"
+            app:layout_constraintTop_toBottomOf="@id/tvRole"
+            android:layout_marginTop="6dp"/>
+
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="+91 9952707908"
+            android:textSize="13sp"
+            android:textColor="#616161"
+            app:layout_constraintStart_toEndOf="@id/imgMobile"
+            app:layout_constraintTop_toTopOf="@id/imgMobile"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="6dp"/>
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#EEEEEE"
+            app:layout_constraintTop_toBottomOf="@id/imgMobile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"/>
+
+
+        <Button
+            android:id="@+id/btnAbsent"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Mark as Absent"
+            android:textAllCaps="false"
+            android:textColor="#D32F2F"
+            android:textStyle="bold"
+            android:backgroundTint="#FDEAEA"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnNotYet"
+            app:layout_constraintWidth_percent="0.45"
+            android:layout_marginTop="12dp"/>
+
+
+        <Button
+            android:id="@+id/btnNotYet"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Not In Yet"
+            android:textAllCaps="false"
+            android:textColor="#5E35B1"
+            android:textStyle="bold"
+            android:backgroundTint="#EEE9FF"
+            app:layout_constraintTop_toTopOf="@id/btnAbsent"
+            app:layout_constraintStart_toEndOf="@id/btnAbsent"
+            app:layout_constraintEnd_toStartOf="@id/btnCall"
+            app:layout_constraintWidth_percent="0.35"
+            android:layout_marginStart="8dp"/>
+
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_call"
+            android:background="@drawable/bg_circle_blue"
+            app:layout_constraintTop_toTopOf="@id/btnAbsent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            tools:ignore="ExtraText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

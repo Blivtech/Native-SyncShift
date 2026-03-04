@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Mirror horizontally -->
+    <group
+        android:scaleX="-1"
+        android:pivotX="12"
+        android:pivotY="12">
+
+        <path
+            android:fillColor="#7f83f1"
+            android:pathData="
+M13.589,21.659
+c-3.873,1.038 -8.517,-0.545 -10.98,-3.632
+a1,1 0 0 1 0.751,-1.623
+c3.984,-0.118 6.662,-1.485 8.17,-4.098
+c1.51,-2.613 1.354,-5.616 -0.535,-9.125
+a1,1 0 0 1 1.03,-1.463
+c3.904,0.59 7.597,3.82 8.635,7.694
+c1.43,5.334 -1.737,10.818 -7.071,12.247
+z"/>
+    </group>
+</vector>
