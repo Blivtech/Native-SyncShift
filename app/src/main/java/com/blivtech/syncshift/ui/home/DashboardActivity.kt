@@ -1,6 +1,5 @@
 package com.blivtech.syncshift.ui.home
 
-import android.content.pm.ActivityInfo
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
@@ -48,6 +47,7 @@ class DashboardActivity : BaseActivity() {
         binding.tabMenu.setOnClickListener {
             navigateTo(R.id.menuFragment)
         }
+
 
         // Default tab
         highlightTab(1)

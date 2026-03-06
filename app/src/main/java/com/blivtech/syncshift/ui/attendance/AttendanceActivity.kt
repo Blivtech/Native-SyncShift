@@ -1,20 +1,16 @@
 package com.blivtech.syncshift.ui.attendance
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.data.enumi.DayPlanType
 import com.blivtech.syncshift.data.enumi.DurationType
-import com.blivtech.syncshift.data.model.request.AttendanceRequest
 import com.blivtech.syncshift.data.model.request.DayPlanRequest
 import com.blivtech.syncshift.data.model.response.ShiftTiming
 import com.blivtech.syncshift.databinding.ActivityAttendanceBinding
 import com.blivtech.syncshift.ui.BaseActivity
-import com.blivtech.syncshift.ui.addEmployee.EmployeeViewModel
 import com.blivtech.syncshift.ui.bottomsheet.ShiftTimingBottomSheet
 import com.blivtech.syncshift.utils.CommonClass
 import com.blivtech.syncshift.utils.SharedPreferencesManager
@@ -161,8 +157,8 @@ class AttendanceActivity : BaseActivity() {
         }
        val userData=SharedPreferencesManager.getLoginData(context = this)
         val requestData = DayPlanRequest(
-            planid ="${userData.btcode}-${TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_21)}-${shiftTiming.code}" ,
-            btcode = userData.btcode,
+            planid ="${userData.btCode}-${TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_21)}-${shiftTiming.code}" ,
+            btcode = userData.btCode,
             activityDate = TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_5),
             shiftCode = shiftTiming.code,
             shiftName = shiftTiming.name,
@@ -174,7 +170,7 @@ class AttendanceActivity : BaseActivity() {
             AppMode =getString(R.string.app_mode),
             AppVersion = getString(R.string.app_version_number),
             DeviceName = CommonClass.getDeviceName(),
-            created_by =userData.btcode,
+            created_by =userData.btCode,
             attendance =emptyList()
         )
         viewModel.submitAttendance(requestData)

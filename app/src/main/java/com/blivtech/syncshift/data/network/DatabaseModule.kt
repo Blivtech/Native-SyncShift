@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.blivtech.syncshift.data.model.local.AppDatabase
 import com.blivtech.syncshift.data.model.local.Dao.AttendanceDao
 import com.blivtech.syncshift.data.model.local.Dao.EmployeeDao
+import com.blivtech.syncshift.ui.company.CompanyDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,4 +36,9 @@ object DatabaseModule {
     fun provideAttendanceDao(
         database: AppDatabase
     ): AttendanceDao = database.attendanceDao()
+
+    @Provides
+    fun provideCompanyDao(database: AppDatabase): CompanyDao {
+        return database.companyDao()
+    }
 }

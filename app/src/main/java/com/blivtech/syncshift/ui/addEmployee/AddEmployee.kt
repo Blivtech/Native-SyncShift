@@ -96,7 +96,7 @@ class AddEmployee : BaseActivity() {
 
             val employee = EmployeeRequest(
                 employee_id = "",
-                bt_code = userdata.btcode,
+                bt_code = userdata.btCode,
                 employee_name = etName.text.toString(),
                 city = etCity.text.toString(),
                 salary_type = salaryType,

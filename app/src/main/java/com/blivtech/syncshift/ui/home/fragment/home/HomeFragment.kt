@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.FragmentHomeBinding
 import com.blivtech.syncshift.ui.addEmployee.AddEmployee
+import com.blivtech.syncshift.ui.company.CompanyActivity
 import com.blivtech.syncshift.ui.login.LoginActivity
 import com.blivtech.syncshift.utils.CommonClass
 import com.blivtech.syncshift.utils.SharedPreferencesManager
@@ -34,11 +35,24 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setCompanyHead()
+        binding.ivComArrow.setOnClickListener{
+            CommonClass.launchActivity(requireContext(),CompanyActivity::class.java)
+        }
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setCompanyHead(){
+        val name =SharedPreferencesManager.getActiveCompanyName(requireContext())
+        val type =SharedPreferencesManager.getActiveCompanyIndustryName(requireContext())
+
+        binding.txtCompany.text=name
+        binding.txtRole.text=type
+
     }
 }

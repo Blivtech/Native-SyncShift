@@ -108,6 +108,7 @@
 
                 <ImageView
                     android:layout_width="48dp"
+                    android:padding="10dp"
                     android:layout_height="48dp"
                     android:src="@drawable/ic_building"
                     android:scaleType="centerCrop"
@@ -128,6 +129,7 @@
                 android:layout_marginStart="12dp">
 
                 <TextView
+                    android:id="@+id/txtCompanyName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Acme Corp"
@@ -136,6 +138,7 @@
                     android:textColor="#000"/>
 
                 <TextView
+                    android:id="@+id/txtIndustry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Shift Supervisor"

@@ -7,11 +7,13 @@ import com.blivtech.syncshift.data.model.local.Dao.AttendanceDao
 import com.blivtech.syncshift.data.model.local.Dao.EmployeeDao
 import com.blivtech.syncshift.data.model.local.Entity.AttendanceEntity
 import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
+import com.blivtech.syncshift.ui.company.CompanyDao
+import com.blivtech.syncshift.ui.company.CompanyEntity
 
 @Database(
     entities = [
         EmployeeEntity::class,
-        AttendanceEntity::class
+        AttendanceEntity::class, CompanyEntity::class
     ],
     version = 1,
     exportSchema = false
@@ -21,4 +23,5 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun employeeDao(): EmployeeDao
     abstract fun attendanceDao(): AttendanceDao
+    abstract fun companyDao(): CompanyDao
 }

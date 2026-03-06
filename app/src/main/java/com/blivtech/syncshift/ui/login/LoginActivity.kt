@@ -44,6 +44,11 @@ class LoginActivity : BaseActivity() {
                     progress.dismiss(this.window)
                     it.data?.let { it1 ->
                         SharedPreferencesManager.insertLoginData(this, it1)
+                        if(it1.companyDetails.isNotEmpty()){
+                            SharedPreferencesManager.setActiveCompanyName(this,it1.companyDetails[0].companyName)
+                            SharedPreferencesManager.setActiveCompanyCode(this,it1.companyDetails[0].companyCode)
+                            SharedPreferencesManager.setActiveCompanyIndustryName(this,it1.companyDetails[0].companyType)
+                        }
                     }
                     CommonClass.launchActivity(this, DashboardActivity::class.java)
                     finish()
@@ -65,11 +70,11 @@ class LoginActivity : BaseActivity() {
       binding.btnLogin.setOnClickListener {
           if(CommonClass.isInternetAvailable(this)){
               val request = LoginRequest(
-                  username = binding.etUsername.text.toString().trim(),
+                  userName = binding.etUsername.text.toString().trim(),
                   password = binding.etPassword.text.toString().trim(),
                   mode = "Android-App",
-                  app_version = "1.0.1",
-                  updated_date = ""   // Auto added in UseCase
+                  appVersion = "1.0.1",
+                  updatedDate = ""   // Auto added in UseCase
               )
 
               viewModel.login(request)

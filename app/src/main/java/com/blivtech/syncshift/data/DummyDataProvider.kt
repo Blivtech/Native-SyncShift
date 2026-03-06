@@ -1,7 +1,5 @@
 package com.blivtech.syncshift.data
 
-import com.blivtech.syncshift.Product
-import com.blivtech.syncshift.ShopModel
 
 object DummyDataProvider {
 
