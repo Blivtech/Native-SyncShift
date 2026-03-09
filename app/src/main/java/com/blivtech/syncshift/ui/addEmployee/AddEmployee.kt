@@ -1,14 +1,16 @@
 package com.blivtech.syncshift.ui.addEmployee
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.blivtech.syncshift.R
-import com.blivtech.syncshift.data.model.Resource
+import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
+import com.blivtech.syncshift.ui.BaseActivity
 import com.blivtech.syncshift.ui.components.ProgressDialog
 import com.blivtech.syncshift.utils.SharedPreferencesManager
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -18,18 +20,24 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
 @AndroidEntryPoint
-class AddEmployee : AppCompatActivity() {
+class AddEmployee : BaseActivity() {
 
     private val viewModel: EmployeeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_employee)
-
+        applyDisplayCutout(findViewById<TextInputEditText>(R.id.main))
+        application
         observeViewModel()
         setupClick()
+        val tittle = findViewById<TextView>(R.id.tv_tittle)
+
+        tittle.text="Add Employee"
+
     }
 
+    @SuppressLint("WrongViewCast")
     private fun setupClick() {
         val etName = findViewById<TextInputEditText>(R.id.etName)
         val etMobile = findViewById<TextInputEditText>(R.id.etMobile)
@@ -76,7 +84,7 @@ class AddEmployee : AppCompatActivity() {
             }
 
 
-            val userdata=SharedPreferencesManager.getLoginData(this)
+            val userdata= SharedPreferencesManager.getLoginData(this)
             val salaryType = when (togglePay.checkedButtonId) {
                 R.id.btnDaily -> "Daily"
                 R.id.btnWeekly -> "Weekly"
@@ -88,7 +96,7 @@ class AddEmployee : AppCompatActivity() {
 
             val employee = EmployeeRequest(
                 employee_id = "",
-                bt_code = userdata.bt_code,
+                bt_code = userdata.btCode,
                 employee_name = etName.text.toString(),
                 city = etCity.text.toString(),
                 salary_type = salaryType,
@@ -108,6 +116,29 @@ class AddEmployee : AppCompatActivity() {
     }
 
 
+    private fun observeViewModel() {
+        val progress= ProgressDialog(this)
+
+        viewModel.employeeState.observe(this) {
+            when (it) {
+                is UiState.Loading -> {
+                    progress.show(this.window)
+                }
+
+                is UiState.Success -> {
+                    progress.dismiss(this.window)
+                    Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT).show()
+                    finish()
+
+                }
+
+                is UiState.Error -> {
+                    progress.dismiss(this.window)
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 
     private fun showDatePicker(onDateSelected: (String) -> Unit) {
         val cal = Calendar.getInstance()
@@ -125,28 +156,4 @@ class AddEmployee : AppCompatActivity() {
         ).show()
     }
 
-    private fun observeViewModel() {
-        val progress= ProgressDialog(this)
-
-        viewModel.employeeState.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                    progress.show(this.window)
-                }
-
-                is Resource.Success -> {
-                    progress.dismiss(this.window)
-                    Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT).show()
-                    finish()
-
-                }
-
-                is Resource.Error -> {
-                    progress.dismiss(this.window)
-                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-
-                }
-            }
-        }
-    }
 }

@@ -1,59 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:padding="16dp"
-    android:background="@color/white">
+    android:background="@color/background_color"
+    android:padding="10dp"
+    android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:padding="5dp"
         android:layout_height="wrap_content">
 
-        <!-- Header -->
-        <TextView
+        <include
             android:id="@+id/tvHeader"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Add Employee"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
+            layout="@layout/toolbar_layout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-        <!-- Employee Name -->
         <TextView
             android:id="@+id/labelName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Employee Name"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelName"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Enter employee name"
-                android:paddingStart="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
 
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter employee name"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelName" />
 
 
         <!-- Mobile Number -->
@@ -61,93 +53,86 @@
             android:id="@+id/labelMobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Mobile Number"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilName"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilMobile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelMobile"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/etName" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etMobile"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Enter mobile number"
-                android:inputType="phone"
-                android:maxLength="10"
-                android:paddingStart="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter Mobile Number"
 
+            android:padding="10dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelMobile"></com.google.android.material.textfield.TextInputEditText>
 
-
-
-        <!-- Email -->
         <TextView
             android:id="@+id/labelEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Email"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilMobile"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelEmail"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Enter email"
-                android:inputType="textEmailAddress"
-                android:paddingStart="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/etMobile" />
 
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter email"
 
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelEmail" />
 
-        <!-- City -->
         <TextView
             android:id="@+id/labelCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="City"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilEmail"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilCity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelCity"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCity"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Enter city"
-                android:paddingStart="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter city"
+
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCity" />
 
 
         <!-- Department -->
@@ -155,32 +140,31 @@
             android:id="@+id/labelDept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Department"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilCity"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDepartment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelDept"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/etCity" />
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/etDepartment"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Select department"
-                android:drawableEnd="@drawable/ic_arrow_down"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:drawableEnd="@drawable/svg_calendar"
+            android:fontFamily="@font/poppins_medium"
 
-
+            android:hint="Select department"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDept" />
 
 
         <!-- Designation -->
@@ -188,225 +172,229 @@
             android:id="@+id/labelDesignation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Designation"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilDepartment"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDesignation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelDesignation"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/etDesignation"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Select designation"
-                android:drawableEnd="@drawable/ic_arrow_down"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/etDepartment" />
 
 
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etDesignation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:drawableEnd="@drawable/svg_down_arrow"
+            android:fontFamily="@font/poppins_medium"
 
+            android:hint="Select designation"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDesignation" />
 
-        <!-- DATE OF BIRTH -->
         <TextView
             android:id="@+id/labelDOB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Date of Birth"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilDesignation"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDob"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelDOB"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/etDesignation" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDob"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Select date"
-                android:drawableEnd="@drawable/ic_ccalendar"
-                android:focusable="false"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:drawableEnd="@drawable/svg_calendar"
+            android:focusable="false"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Select date"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDOB" />
 
-
-
-
-        <!-- JOINING DATE -->
         <TextView
             android:id="@+id/labelJoin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Joining Date"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilDob"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilJoin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelJoin"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/etDob" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etJoiningDate"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Select date"
-                android:drawableEnd="@drawable/ic_ccalendar"
-                android:focusable="false"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Payment -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etJoiningDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:drawableEnd="@drawable/svg_calendar"
+            android:focusable="false"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Select date"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelJoin" />
+
         <TextView
             android:id="@+id/tvSalarytype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/payment_details"
-            android:textSize="16sp"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             android:textStyle="bold"
-            android:layout_marginTop="18dp"
-            app:layout_constraintTop_toBottomOf="@id/tilJoin"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etJoiningDate" />
 
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/togglePay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:singleSelection="true"
-            app:selectionRequired="true"
-            app:layout_constraintTop_toBottomOf="@id/tvSalarytype"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tvSalarytype"
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMonthly"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/toggle_bg_selector"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
                 android:text="Monthly"
                 android:textAllCaps="false"
-                android:backgroundTint="@color/toggle_bg_selector"
-                android:textColor="@color/toggle_text_selector"/>
+                android:textColor="@color/toggle_text_selector"
+                android:textSize="@dimen/text_normal_14sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDaily"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/toggle_bg_selector"
+
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
                 android:text="Daily"
                 android:textAllCaps="false"
-                android:backgroundTint="@color/toggle_bg_selector"
-                android:textColor="@color/toggle_text_selector"/>
+                android:textColor="@color/toggle_text_selector"
+                android:textSize="@dimen/text_normal_14sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnWeekly"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/toggle_bg_selector"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="10dp"
                 android:text="Weekly"
                 android:textAllCaps="false"
-                android:backgroundTint="@color/toggle_bg_selector"
-                android:textColor="@color/toggle_text_selector"/>
+                android:textColor="@color/toggle_text_selector"
+                android:textSize="@dimen/text_normal_14sp" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
         <!-- Salary -->
         <TextView
             android:id="@+id/labelSalary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/label_salary"
-            android:textSize="13sp"
-            android:textColor="#7A7A7A"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/togglePay"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilSalary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelSalary"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/togglePay" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSalary"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Enter salary amount"
-                android:inputType="number"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter salary amount"
+            android:inputType="number"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelSalary" />
+
         <TextView
             android:id="@+id/labelLeaves"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Leaves in / Month / Daily / Weekly"
-            android:textSize="13sp"
-            android:textColor="#7A7A7A"
-            android:layout_marginTop="14dp"
-            app:layout_constraintTop_toBottomOf="@id/tilSalary"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilLeaves"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="none"
-            app:layout_constraintTop_toBottomOf="@id/labelLeaves"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/etSalary" />
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/etLeaves"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="0"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etLeaves"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="0"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelLeaves" />
 
-        <!-- Submit -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSubmit"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:background="@drawable/bg_button_blue"
+            android:fontFamily="@font/poppins_medium"
             android:text="Submit"
             android:textColor="@color/white"
-            android:backgroundTint="@color/blue"
-            app:layout_constraintTop_toBottomOf="@id/tilLeaves"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/etLeaves" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

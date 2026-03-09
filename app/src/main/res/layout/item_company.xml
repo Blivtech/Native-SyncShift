@@ -26,18 +26,18 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtCompanyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="Beta Logistics"
                 android:textStyle="bold"
                 android:textSize="16sp"/>
 
             <TextView
+                android:id="@+id/txtIndustry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="Delivery Driver"
+                android:text=""
                 android:textSize="14sp"
                 android:textColor="#777"/>
         </LinearLayout>

@@ -34,7 +34,7 @@ class SplashViewModel @Inject constructor(
 
             delay(splashDelay)
 
-            val isLoggedIn = SharedPreferencesManager.getLogInStatus(
+            val isLoggedIn = SharedPreferencesManager.getLoginStatus(
                 getApplication<Application>().applicationContext
             )
 

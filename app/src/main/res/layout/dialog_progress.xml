@@ -20,7 +20,7 @@
             android:id="@+id/iv_progress"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@drawable/background_progress" />
+            android:background="@drawable/bg_progress" />
 
         <TextView
             android:id="@+id/tv_label_progress"

@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-
 }
 
 android {
@@ -44,6 +43,8 @@ android {
         jvmTarget = "11"
     }
 }
+
+
 
 dependencies {
 
@@ -93,6 +94,9 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-fragment:1.1.0")
     implementation("androidx.hilt:hilt-work:1.1.0")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
