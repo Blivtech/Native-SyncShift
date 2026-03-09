@@ -1,11 +1,12 @@
 package com.blivtech.syncshift.data.repository
 
 import com.blivtech.syncshift.data.model.request.LoginRequest
+import com.blivtech.syncshift.data.model.response.CompanyDetails
 import com.blivtech.syncshift.data.model.response.LoginResponse
 import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.network.ApiService
 import com.blivtech.syncshift.ui.company.CompanyDao
-import com.blivtech.syncshift.ui.company.toCompanyEntity
+import com.blivtech.syncshift.ui.company.toListCompanyEntity
 import javax.inject.Inject
 
 class LoginRepository @Inject constructor(private val api: ApiService,private val companyDao: CompanyDao) {
@@ -20,7 +21,7 @@ class LoginRepository @Inject constructor(private val api: ApiService,private va
                 val body = response.body()
                 if (body != null) {
                     if (body.successCode) {
-                        companyDao.insertCompanyList(body.response!!.companyDetails.toCompanyEntity())
+                        insertCompanyDetails(body.response!!.companyDetails)
                         UiState.Success(body.response!!,body.message)
                     } else {
                         UiState.Error(body.message)
@@ -37,5 +38,15 @@ class LoginRepository @Inject constructor(private val api: ApiService,private va
             UiState.Error(e.message ?: "Network Error")
         }
     }
+
+
+    private suspend fun insertCompanyDetails(data :List<CompanyDetails>){
+        companyDao.insertCompanyList(data.toListCompanyEntity())
+        data.forEach {
+            companyDao.insertShifts(it.shiftDetails)
+
+        }
+    }
+
 
 }

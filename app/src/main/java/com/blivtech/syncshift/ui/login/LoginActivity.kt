@@ -74,7 +74,6 @@ class LoginActivity : BaseActivity() {
                   password = binding.etPassword.text.toString().trim(),
                   mode = "Android-App",
                   appVersion = "1.0.1",
-                  updatedDate = ""   // Auto added in UseCase
               )
 
               viewModel.login(request)

@@ -98,6 +98,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelName" />
 
+        <TextView
+            android:id="@+id/labelTownCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="City"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTownName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_box"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Enter City"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/text_normal_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelName" />
 
         <TextView
             android:layout_width="wrap_content"

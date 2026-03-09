@@ -3,8 +3,10 @@ package com.blivtech.syncshift.ui.company
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.blivtech.syncshift.data.model.response.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -17,8 +19,8 @@ class CompanyViewModel @Inject constructor(
 
 
 
-    private val _shiftList = MutableLiveData<List<ShiftItem>>()
-    val shiftList: LiveData<List<ShiftItem>> = _shiftList
+    private val _shiftList = MutableLiveData<List<ShiftEntity>>()
+    val shiftList: LiveData<List<ShiftEntity>> = _shiftList
 
     private val _saveResult = MutableLiveData<UiState<Boolean>>()
     val saveResult: LiveData<UiState<Boolean>> = _saveResult
@@ -27,26 +29,24 @@ class CompanyViewModel @Inject constructor(
         generateRandomShifts()
     }
 
-    fun generateRandomShifts() {
+    private fun generateRandomShifts() {
 
         val shifts = listOf(
-            ShiftItem("General Shift", "GS01", "09:00 AM - 05:00 PM"),
-            ShiftItem("First Shift", "FS01", "06:00 AM - 02:00 PM"),
-            ShiftItem("Second Shift", "SS01", "02:00 PM - 10:00 PM"),
-            ShiftItem("Third Shift", "TS01", "10:00 PM - 06:00 AM"),
-            ShiftItem("Morning Shift", "MS01", "08:00 AM - 12:00 PM"),
-            ShiftItem("Night Shift", "NS01", "08:00 PM - 04:00 AM")
+            ShiftEntity("General Shift", "","GS01", "09:00:00","05:00:00"),
+            ShiftEntity("First Shift", "","FS01", "06:00:00","02:00:00"),
+            ShiftEntity("Second Shift","", "SS01", "02:00:00","10:00:00"),
+            ShiftEntity("Third Shift", "","TS01", "10:00:00","06:00:00"),
+            ShiftEntity("Morning Shift","", "MS01", "08:00:00","12:00:00"),
+            ShiftEntity("Night Shift", "","NS01", "08:00:00","04:00:00")
         )
 
-        val randomList = shifts.shuffled(Random(System.currentTimeMillis()))
-
-        _shiftList.value = randomList
+        _shiftList.value = shifts
     }
 
 
-        fun saveComapanyDetails(data:CompanySaveRequestItem){
-
-
+        fun saveCompany(data:CompanySaveRequestItem){
+            viewModelScope.launch {
+                _saveResult.value= repository.saveCompany(data)}
         }
 
 }

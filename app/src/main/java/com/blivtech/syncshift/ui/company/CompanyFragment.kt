@@ -47,9 +47,9 @@ class CompanyFragment : Fragment() {
     private fun setupRecyclerView() {
 
         adapter = ActiveCompanyAdapter { company ->
-            val name = company.companyname
-            val code = company.companycode
-            val industry = company.industry_type
+            val name = company.companyName
+            val code = company.companyCode
+            val industry = company.companyType
 
         }
 
@@ -67,7 +67,7 @@ class CompanyFragment : Fragment() {
     private fun observe() {
         val  companyCode=SharedPreferencesManager.getActiveCompanyCode(requireContext())
         viewModel.companyList.observe(viewLifecycleOwner) { companies ->
-            val filtered=companies.filter { it.companycode !=companyCode}
+            val filtered=companies.filter { it.companyCode !=companyCode}
             adapter.submitList(filtered)
         }
     }

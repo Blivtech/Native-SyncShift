@@ -63,10 +63,11 @@ class AttendanceViewModel @Inject constructor(
 
 
     fun submitAttendance(request: DayPlanRequest) {
-        viewModelScope.launch {
-            repository.saveDayPlan(request).collect {
-                _saveState.value = it
-            }
-        }}
+//        viewModelScope.launch {
+//            repository.saveDayPlan(request).collect {
+//                _saveState.value = it
+//            }
+//        }}
+    }
 }
 

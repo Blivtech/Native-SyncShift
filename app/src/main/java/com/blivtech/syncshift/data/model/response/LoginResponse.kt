@@ -1,5 +1,7 @@
 package com.blivtech.syncshift.data.model.response
 
+import com.blivtech.syncshift.ui.company.ShiftEntity
+
 data class LoginResponse(
     val btCode: String,
     val btName: String,
@@ -16,6 +18,4 @@ data class CompanyDetails(
     val townCode: String,
     val townName: String,
     val companyType: String,
-    val createdAt: String
-)
-
+    val shiftDetails: List<ShiftEntity> = emptyList())

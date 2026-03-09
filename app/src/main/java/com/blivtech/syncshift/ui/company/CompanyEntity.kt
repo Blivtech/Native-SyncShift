@@ -3,19 +3,14 @@ package com.blivtech.syncshift.ui.company
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "company_master")
+@Entity(tableName = "CompanyEntity")
 data class CompanyEntity(
-
     @PrimaryKey
-    val companycode: String,
+    val companyCode: String,
+    val companyName: String,
+    val townCode: String,
+    val townName: String,
+    val companyType: String,
 
-    val companyname: String,
-
-    val towncode: String,
-
-    val townname: String,
-
-    val industry_type: String,
-
-    val shift_details: String
 )
+

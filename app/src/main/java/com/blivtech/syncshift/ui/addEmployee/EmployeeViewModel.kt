@@ -39,7 +39,6 @@ class EmployeeViewModel @Inject constructor(
             )
 
 
-    /* -------------------- SEARCH -------------------- */
 
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery

@@ -5,5 +5,4 @@ data class LoginRequest(
     val password: String,
     val mode: String,
     val appVersion: String,
-    val updatedDate: String
 )

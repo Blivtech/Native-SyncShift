@@ -16,8 +16,8 @@ class ActiveCompanyAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(company: CompanyEntity) {
-            val name = company.companyname
-            val industry = company.industry_type
+            val name = company.companyName
+            val industry = company.companyType
 
             binding.txtCompanyName.text = name
             binding.txtIndustry.text = industry
@@ -53,7 +53,7 @@ class CompanyDiffCallback : DiffUtil.ItemCallback<CompanyEntity>() {
         oldItem: CompanyEntity,
         newItem: CompanyEntity
     ): Boolean {
-        return oldItem.companycode == newItem.companycode
+        return oldItem.companyCode == newItem.companyCode
     }
 
     override fun areContentsTheSame(

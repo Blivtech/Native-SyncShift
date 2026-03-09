@@ -7,7 +7,6 @@ data class CompanySaveRequestItem(
     val companyType:String,
     val townCode:String,
     val townName:String,
-    val shiftDetails:List<ShiftDetails>
+    val shiftDetails:List<ShiftEntity>
 
 )
-  data class ShiftDetails(val code :String,val name :String,val time:String)

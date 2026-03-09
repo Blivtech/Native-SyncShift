@@ -9,11 +9,12 @@ import com.blivtech.syncshift.data.model.local.Entity.AttendanceEntity
 import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
 import com.blivtech.syncshift.ui.company.CompanyDao
 import com.blivtech.syncshift.ui.company.CompanyEntity
+import com.blivtech.syncshift.ui.company.ShiftEntity
 
 @Database(
     entities = [
         EmployeeEntity::class,
-        AttendanceEntity::class, CompanyEntity::class
+        AttendanceEntity::class, CompanyEntity::class,ShiftEntity::class
     ],
     version = 1,
     exportSchema = false

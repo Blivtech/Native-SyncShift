@@ -42,26 +42,26 @@ class AttendanceRepository @Inject constructor(
     }
 
 
-
-    fun saveDayPlan(request: DayPlanRequest): Flow<UiState<Unit>> = flow {
-
-        val finalrequest=request.copy(attendance = getAttendanceList())
-        try {
-            val response = api.saveDayPlan(finalrequest)
-
-            if (response.isSuccessful) {
-
-            } else {
-                emit(
-                    UiState.Error(
-                        response.message().ifEmpty { "Failed to save attendance" }
-                    )
-                )
-            }
-        } catch (e: Exception) {
-            emit(UiState.Error(e.localizedMessage ?: "Something went wrong"))
-        }
-    }
+//
+//    fun saveDayPlan(request: DayPlanRequest): Flow<UiState<Unit>> = flow {
+//
+//        val finalrequest=request.copy(attendance = getAttendanceList())
+//        try {
+//         //   val response = api.saveDayPlan(finalrequest)
+//
+//            if (response.isSuccessful) {
+//
+//            } else {
+//                emit(
+//                    UiState.Error(
+//                        response.message().ifEmpty { "Failed to save attendance" }
+//                    )
+//                )
+//            }
+//        } catch (e: Exception) {
+//            emit(UiState.Error(e.localizedMessage ?: "Something went wrong"))
+//        }
+//    }
 
 }
 

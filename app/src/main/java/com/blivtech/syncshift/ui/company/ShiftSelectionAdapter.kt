@@ -7,29 +7,31 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.blivtech.syncshift.databinding.ChildItemShilftSelectionBinding
 
-class ShiftSelectionAdapter() : ListAdapter<ShiftItem, ShiftSelectionAdapter.CompanyViewHolder>(DiffCallback()) {
+class ShiftSelectionAdapter :
+    ListAdapter<ShiftEntity, ShiftSelectionAdapter.ShiftViewHolder>(DiffCallback()) {
 
-    inner class CompanyViewHolder(private val binding: ChildItemShilftSelectionBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    private val selectedShiftCodes = mutableSetOf<String>()
 
-        fun bind(item: ShiftItem) {
+    inner class ShiftViewHolder(
+        private val binding: ChildItemShilftSelectionBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-            binding.txtShiftName.text = item.name
-            binding.txtShiftTime.text = item.time
-            binding.checkBox.isChecked = item.isSelected
+        fun bind(item: ShiftEntity) {
+
+            binding.txtShiftName.text = item.shiftName
+            binding.txtShiftTime.text = "${item.startTime.substring(0,5)} - ${item.endTime.substring(0,5)}"
 
             binding.checkBox.setOnCheckedChangeListener(null)
 
-            binding.checkBox.isChecked = item.isSelected
+            binding.checkBox.isChecked = selectedShiftCodes.contains(item.shiftCode)
 
             binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
 
-                val updatedList = currentList.toMutableList()
-                updatedList[adapterPosition] =
-                    updatedList[adapterPosition].copy(isSelected = isChecked)
-
-                submitList(updatedList)
-
+                if (isChecked) {
+                    selectedShiftCodes.add(item.shiftCode)
+                } else {
+                    selectedShiftCodes.remove(item.shiftCode)
+                }
             }
 
             binding.root.setOnClickListener {
@@ -38,7 +40,7 @@ class ShiftSelectionAdapter() : ListAdapter<ShiftItem, ShiftSelectionAdapter.Com
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShiftViewHolder {
 
         val binding = ChildItemShilftSelectionBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -46,25 +48,36 @@ class ShiftSelectionAdapter() : ListAdapter<ShiftItem, ShiftSelectionAdapter.Com
             false
         )
 
-        return CompanyViewHolder(binding)
+        return ShiftViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShiftViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<ShiftItem>() {
+
+    fun getSelectedItems(): List<ShiftEntity> {
+        return currentList.filter { selectedShiftCodes.contains(it.shiftCode) }
+    }
+
+    fun setSelectedShifts(shiftCodes: List<String>) {
+        selectedShiftCodes.clear()
+        selectedShiftCodes.addAll(shiftCodes)
+        notifyDataSetChanged()
+    }
+
+    class DiffCallback : DiffUtil.ItemCallback<ShiftEntity>() {
 
         override fun areItemsTheSame(
-            oldItem: ShiftItem,
-            newItem: ShiftItem
+            oldItem: ShiftEntity,
+            newItem: ShiftEntity
         ): Boolean {
-            return oldItem.code == newItem.code
+            return oldItem.shiftCode == newItem.shiftCode
         }
 
         override fun areContentsTheSame(
-            oldItem: ShiftItem,
-            newItem: ShiftItem
+            oldItem: ShiftEntity,
+            newItem: ShiftEntity
         ): Boolean {
             return oldItem == newItem
         }
