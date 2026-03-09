@@ -14,29 +14,29 @@ class AddEmployeeUseCase @Inject constructor(
 ) {
 
 
-    suspend fun save(employee: EmployeeRequest): UiState<AddEmployeeResponse> {
+    suspend fun save(employee: EmployeeEntity): UiState<Boolean> {
 
-        if (employee.employee_name.isBlank()) {
+        if (employee.employeeName.isBlank()) {
             return UiState.Error("Employee name is required")
         }
 
-        if (employee.phone.length != 10) {
+        if (employee.mobileNumber.length != 10) {
             return UiState.Error("Enter valid mobile number")
         }
 
-        if (employee.salary_type.isBlank()) {
+        if (employee.salaryType.isBlank()) {
             return UiState.Error("Select salary type")
         }
 
-        if (employee.date_of_birth.isBlank()) {
+        if (employee.dateOfBirth.isBlank()) {
             return UiState.Error("Select date of birth")
         }
 
-        if (employee.joining_date.isBlank()) {
+        if (employee.joiningDate.isBlank()) {
             return UiState.Error("Select joining date")
         }
 
-        val salaryCode = when (employee.salary_type.lowercase()) {
+        val salaryCode = when (employee.salaryType.lowercase()) {
             "daily" -> "1"
             "weekly" -> "2"
             "monthly" -> "3"
@@ -44,7 +44,7 @@ class AddEmployeeUseCase @Inject constructor(
         }
 
         val finalRequest = employee.copy(
-            salary_code = salaryCode
+            salaryCode = salaryCode
         )
 
         return repository.addEmployee(finalRequest)
@@ -54,11 +54,7 @@ class AddEmployeeUseCase @Inject constructor(
     fun observeEmployees(): Flow<List<EmployeeEntity>> = repository.observeEmployees()
 
 
-    suspend fun get(btcode: String): UiState<Unit> {
-        val localData = repository.observeEmployees().firstOrNull()
-        if (!localData.isNullOrEmpty()) {
-            return UiState.Success(Unit,"")
-        }
-        return repository.syncEmployees(btcode)
+    suspend fun get(companyCode: String): UiState<Boolean> {
+        return repository.syncEmployees(companyCode = companyCode)
     }
 }

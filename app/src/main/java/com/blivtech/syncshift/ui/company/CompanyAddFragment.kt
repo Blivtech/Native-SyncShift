@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blivtech.syncshift.R
 import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.databinding.FragmentAddCompanyBinding
 import com.blivtech.syncshift.ui.components.ProgressDialog
@@ -50,6 +52,7 @@ class CompanyAddFragment :Fragment() {
     private fun listener() {
       binding.btnSubmit.setOnClickListener {
           saveCompanyDetails()
+          findNavController().navigate(R.id.companyAddFragment)
       }
     }
 

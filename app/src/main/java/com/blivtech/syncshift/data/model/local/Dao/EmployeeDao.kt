@@ -14,7 +14,7 @@ interface EmployeeDao {
     suspend fun insertEmployees(list: List<EmployeeEntity>)
     @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
     suspend fun insertEmployee(data: EmployeeEntity)
-    @Query("SELECT * FROM employee ORDER BY employee_name ASC")
+    @Query("SELECT * FROM employee ORDER BY employeeName ASC")
     fun getEmployees(): Flow<List<EmployeeEntity>>
 
     @Query("DELETE FROM employee")

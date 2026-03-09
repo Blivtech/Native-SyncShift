@@ -14,19 +14,18 @@ class EmployeeRepository @Inject constructor(
 
 ) {
 
-    suspend fun addEmployee(employee: EmployeeRequest): UiState<AddEmployeeResponse> {
+    suspend fun addEmployee(employee: EmployeeEntity): UiState<Boolean> {
         return try {
-            val response = api.addEmployee(employee)
+            val response = api.saveEmployee(employee)
 
             if (response.isSuccessful && response.body() != null) {
-
                 val body = response.body()!!
-
-                body.data?.let { dto ->
-                    dao.insertEmployee(dto.toEntity())
+                if( body.successCode){
+                    body.response?.let { insertEmployee(it) }
+                    UiState.Success(true,"")
+                }else{
+                    UiState.Error(body.message)
                 }
-
-                UiState.Success(body,"")
 
             } else {
                 UiState.Error("Error: ${response.code()} ${response.message()}")
@@ -39,24 +38,25 @@ class EmployeeRepository @Inject constructor(
 
     fun observeEmployees(): Flow<List<EmployeeEntity>> = dao.getEmployees()
 
-     suspend  fun insertEmployee(data: EmployeeEntity) {
+   private  suspend  fun insertEmployee(data: EmployeeEntity) {
          dao.insertEmployee(data)
 
     }
 
-    suspend fun syncEmployees(btcode: String): UiState<Unit> {
+    suspend fun syncEmployees(companyCode: String): UiState<Boolean> {
         return try {
-            val response = api.getEmployees(btcode)
+            val response = api.getEmployeesByCompanyCode(companyCode)
             if (response.isSuccessful && response.body() != null) {
 
-                val entityList = response.body()!!.data.map {
-                    it.toEntity()
+                val body = response.body()!!
+                if( body.successCode){
+                    dao.clearEmployees()
+                    body.response?.let {  dao.insertEmployees(it) }
+                    UiState.Success(true,body.message)
+                }else{
+                    UiState.Error(body.message)
                 }
 
-                dao.clearEmployees()
-                dao.insertEmployees(entityList)
-
-                UiState.Success(Unit,"")
             } else {
                 UiState.Error("API Error ${response.code()}")
             }
@@ -65,24 +65,6 @@ class EmployeeRepository @Inject constructor(
             UiState.Error(e.message ?: "Unknown error")
         }
     }
-    private fun EmployeeRequest.toEntity(): EmployeeEntity {
-        return EmployeeEntity(
-            employee_id = this.employee_id,
-            bt_code = this.bt_code,
-            employee_name = this.employee_name,
-            city = this.city,
-            salary_type = this.salary_type,
-            salary_code = this.salary_code,
-            email = this.email,
-            phone = this.phone,
-            department = this.department,
-            designation = this.designation,
-            date_of_birth = this.date_of_birth,
-            joining_date = this.joining_date,
-            address = this.address,
-            pincode = this.pincode,
-            status = this.status
-        )
-    }
+
 
 }

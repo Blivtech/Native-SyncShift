@@ -19,14 +19,12 @@ class EmployeeViewModel @Inject constructor(
     private val addEmployeeUseCase: AddEmployeeUseCase
 ) : ViewModel() {
 
-    private val _employeeState = MutableLiveData<UiState<AddEmployeeResponse>>()
-    val employeeState: LiveData<UiState<AddEmployeeResponse>> get() = _employeeState
+    private val _employeeState = MutableLiveData<UiState<Boolean>>()
+    val employeeState: LiveData<UiState<Boolean>> get() = _employeeState
 
 
-
-    private val _employeeSyncState =
-        MutableStateFlow<UiState<Unit>>(UiState.Loading)
-    val employeeSyncState: StateFlow<UiState<Unit>> = _employeeSyncState
+    private val _employeeSyncState = MutableStateFlow<UiState<Boolean>>(UiState.Loading)
+    val employeeSyncState: StateFlow<UiState<Boolean>> = _employeeSyncState
 
 
 
@@ -56,9 +54,9 @@ class EmployeeViewModel @Inject constructor(
                 employees
             } else {
                 employees.filter {
-                    it.employee_name.contains(query, true) ||
-                            it.employee_id.contains(query, true) ||
-                            it.phone.contains(query, true) ||
+                    it.employeeName.contains(query, true) ||
+                            it.employeeCode.contains(query, true) ||
+                            it.mobileNumber.contains(query, true) ||
                             it.designation.contains(query, true)
                 }
             }
@@ -72,7 +70,7 @@ class EmployeeViewModel @Inject constructor(
 
     /* -------------------- ADD EMPLOYEE -------------------- */
 
-    fun addEmployee(employee: EmployeeRequest) {
+    fun addEmployee(employee: EmployeeEntity) {
         viewModelScope.launch {
             _employeeState.value = UiState.Loading
             _employeeState.value = addEmployeeUseCase.save(employee)
@@ -82,10 +80,10 @@ class EmployeeViewModel @Inject constructor(
 
     /* -------------------- FETCH / SYNC EMPLOYEES -------------------- */
 
-    fun fetchEmployees(btCode: String) {
+    fun fetchEmployees(companyCode: String) {
         viewModelScope.launch {
             _employeeSyncState.value = UiState.Loading
-            _employeeSyncState.value = addEmployeeUseCase.get(btCode)
+            _employeeSyncState.value = addEmployeeUseCase.get(companyCode)
         }
     }
 }

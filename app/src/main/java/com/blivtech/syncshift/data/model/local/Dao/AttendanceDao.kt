@@ -13,17 +13,17 @@ interface AttendanceDao {
 
     @Query("""
         SELECT 
-            e.employee_id AS employeeId,
-            e.employee_name AS name,
+            e.employeeCode AS employeeId,
+            e.employeeName AS name,
             e.designation AS designation,
-            e.phone AS phone,
+            e.mobileNumber AS phone,
             CASE 
                 WHEN a.status IS NULL THEN 'NOT_IN_YET'
                 ELSE a.status
             END AS status
         FROM employee e
         LEFT JOIN attendance a
-            ON e.employee_id = a.employee_id
+            ON e.employeeCode = a.employee_id
             AND a.attendance_date = :date
     """)
     fun getAttendanceForDate(date: String): Flow<List<EmployeeAttendanceUI>>
@@ -33,7 +33,7 @@ interface AttendanceDao {
 
     @Query("""
         SELECT 
-            e.employee_name AS name,
+            e.employeeName AS name,
             a.employee_id   AS code,
             CASE 
                 WHEN a.status = 'PRESENT' THEN 0
@@ -41,7 +41,7 @@ interface AttendanceDao {
             END AS status
         FROM attendance a
         INNER JOIN employee e
-            ON a.employee_id = e.employee_id
+            ON a.employee_id = e.employeeCode
     """)
     suspend fun getAttendanceRequestList(): List<AttendanceRequest>
 }
