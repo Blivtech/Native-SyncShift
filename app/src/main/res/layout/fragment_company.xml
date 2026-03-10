@@ -28,16 +28,7 @@
         app:layout_constraintStart_toEndOf="@id/icClose"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/tvEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        android:textColor="#1A73E8"
-        android:textStyle="bold"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+
 
 
     <TextView
@@ -146,10 +137,15 @@
                     android:textColor="#1A73E8"/>
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="28dp"
+            <TextView
+                android:layout_width="70dp"
                 android:layout_height="28dp"
-                android:src="@drawable/ic_check_circle"/>
+                android:text="ACTIVE"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/bg_active_badge"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.blivtech.syncshift.databinding.ItemCompanyBinding
+import android.widget.PopupMenu
+import com.blivtech.syncshift.R
 
 class ActiveCompanyAdapter(
     private val onCompanyClick: (CompanyEntity) -> Unit
@@ -25,6 +27,7 @@ class ActiveCompanyAdapter(
             binding.root.setOnClickListener {
                 onCompanyClick(company)
             }
+
         }
     }
 

@@ -2,6 +2,7 @@ package com.blivtech.syncshift.ui.company
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.room.Insert
 import kotlinx.coroutines.flow.Flow
 
 @Dao
