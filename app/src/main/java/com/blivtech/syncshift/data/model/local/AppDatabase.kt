@@ -16,7 +16,7 @@ import com.blivtech.syncshift.ui.company.ShiftEntity
         EmployeeEntity::class,
         AttendanceEntity::class, CompanyEntity::class,ShiftEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(AttendanceStatusConverter::class)

@@ -46,12 +46,52 @@ class CompanyFragment : Fragment() {
     }
     private fun setupRecyclerView() {
 
-        adapter = ActiveCompanyAdapter { company ->
-            val name = company.companyName
-            val code = company.companyCode
-            val industry = company.companyType
 
-        }
+        adapter = ActiveCompanyAdapter(
+
+            onCompanyClick = { company ->
+                val name = company.companyName
+                val code = company.companyCode
+                val industry = company.companyType
+            },
+
+            onActiveClick = { company ->
+
+
+                SharedPreferencesManager.setActiveCompanyCode(
+                    requireContext(),
+                    company.companyCode
+                )
+
+                SharedPreferencesManager.setActiveCompanyName(
+                    requireContext(),
+                    company.companyName
+                )
+
+                SharedPreferencesManager.setActiveCompanyIndustryName(
+                    requireContext(),
+                    company.companyType
+                )
+
+
+                binding.txtCompanyName.text = company.companyName
+                binding.txtIndustry.text = company.companyType
+
+
+                observe()
+            },
+
+            onEditClick = { company ->
+
+                val bundle = Bundle().apply {
+                    putString("companyCode", company.companyCode)
+                }
+
+                findNavController().navigate(R.id.companyAddFragment, bundle)
+            }
+
+        )
+
 
         binding.rvCompanies.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCompanies.adapter = adapter

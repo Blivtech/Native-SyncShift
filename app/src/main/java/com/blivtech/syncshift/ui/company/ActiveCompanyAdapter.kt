@@ -2,15 +2,17 @@ package com.blivtech.syncshift.ui.company
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.blivtech.syncshift.databinding.ItemCompanyBinding
-import android.widget.PopupMenu
 import com.blivtech.syncshift.R
+import com.blivtech.syncshift.databinding.ItemCompanyBinding
 
 class ActiveCompanyAdapter(
-    private val onCompanyClick: (CompanyEntity) -> Unit
+    private val onCompanyClick: (CompanyEntity) -> Unit,
+    private val onActiveClick: (CompanyEntity) -> Unit,
+    private val onEditClick: (CompanyEntity) -> Unit
 ) : ListAdapter<CompanyEntity, ActiveCompanyAdapter.CompanyViewHolder>(CompanyDiffCallback()) {
 
     inner class CompanyViewHolder(
@@ -27,6 +29,35 @@ class ActiveCompanyAdapter(
             binding.root.setOnClickListener {
                 onCompanyClick(company)
             }
+            binding.btnMenu.setOnClickListener { view ->
+
+                val popup = PopupMenu(view.context, view)
+                popup.inflate(R.menu.company_menu)
+
+                popup.setOnMenuItemClickListener { item ->
+
+                    when (item.itemId) {
+
+                        R.id.menu_active -> {
+                            onActiveClick(company)
+                            true
+                        }
+
+                        R.id.menu_edit -> {
+                            onEditClick(company)
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+
+                popup.show()
+            }
+
+
+
+
 
         }
     }
