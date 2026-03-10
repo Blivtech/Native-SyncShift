@@ -52,6 +52,7 @@ class CompanyAddFragment :Fragment() {
     private fun listener() {
       binding.btnSubmit.setOnClickListener {
           saveCompanyDetails()
+          findNavController().navigate(R.id.companyAddFragment)
       }
 
     }

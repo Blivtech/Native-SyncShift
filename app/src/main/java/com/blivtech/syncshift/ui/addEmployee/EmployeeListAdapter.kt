@@ -19,19 +19,19 @@ class EmployeeListAdapter :
 
         fun bind(item: EmployeeEntity) = binding.apply {
 
-            txtName.text = "${item.employee_name} (${item.employee_id})"
+            txtName.text = "${item.employeeName} (${item.employeeCode})"
             txtRole.text = item.designation
-            txtPhonenumber.text = item.phone
+            txtPhonenumber.text = item.mobileNumber
             txtJoined.text = TimeUtils.getConvertedDate(
                 TimeUtils.FORMAT_5,
                 TimeUtils.FORMAT_9,
-                item.joining_date
+                item.joiningDate.toString()
             )
 
-            val initials = getInitials(item.employee_name)
+            val initials = getInitials(item.employeeName)
             tvInitials.text = initials
 
-            val avatarColor = getWhatsAppColor(item.employee_name)
+            val avatarColor = getWhatsAppColor(item.employeeName)
 
             bgCircle.background.setTint(avatarColor.bgColor)
             tvInitials.setTextColor(avatarColor.textColor)
@@ -55,7 +55,7 @@ class EmployeeListAdapter :
         override fun areItemsTheSame(
             oldItem: EmployeeEntity,
             newItem: EmployeeEntity
-        ) = oldItem.employee_id == newItem.employee_id
+        ) = oldItem.employeeCode == newItem.employeeCode
 
         override fun areContentsTheSame(
             oldItem: EmployeeEntity,

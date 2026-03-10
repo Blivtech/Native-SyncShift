@@ -3,15 +3,18 @@ package com.blivtech.syncshift.ui.addEmployee
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.blivtech.syncshift.R
+import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
 import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.ui.BaseActivity
 import com.blivtech.syncshift.ui.components.ProgressDialog
+import com.blivtech.syncshift.utils.CommonClass
 import com.blivtech.syncshift.utils.SharedPreferencesManager
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -32,7 +35,6 @@ class AddEmployee : BaseActivity() {
         observeViewModel()
         setupClick()
         val tittle = findViewById<TextView>(R.id.tv_tittle)
-
         tittle.text="Add Employee"
 
     }
@@ -49,6 +51,7 @@ class AddEmployee : BaseActivity() {
             findViewById<MaterialAutoCompleteTextView>(R.id.etDesignation)
 
         val etDob = findViewById<TextInputEditText>(R.id.etDob)
+        val etSalary = findViewById<TextInputEditText>(R.id.etSalary)
         val etJoiningDate = findViewById<TextInputEditText>(R.id.etJoiningDate)
         val togglePay = findViewById<MaterialButtonToggleGroup>(R.id.togglePay)
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
@@ -92,24 +95,30 @@ class AddEmployee : BaseActivity() {
                 else -> ""
             }
 
-
-
-            val employee = EmployeeRequest(
-                employee_id = "",
-                bt_code = userdata.btCode,
-                employee_name = etName.text.toString(),
-                city = etCity.text.toString(),
-                salary_type = salaryType,
-                salary_code = "",
+          val salary=etSalary.toString().toDoubleOrNull() ?: 0.0
+          val companyCode=SharedPreferencesManager.getActiveCompanyCode(this)
+            val employee = EmployeeEntity(
+                employeeCode = "",
+                companyCode = companyCode,
+                employeeName = etName.text.toString(),
+                address = etCity.text.toString(),
                 email = etEmail.text.toString(),
-                phone = etMobile.text.toString(),
+                mobileNumber = etMobile.text.toString(),
                 department = etDepartment.text.toString(),
                 designation = etDesignation.text.toString(),
-                date_of_birth = etDob.text.toString(),
-                joining_date = etJoiningDate.text.toString(),
-                address = "erode",
-                pincode = "600001",
-                status = "Active"
+                dateOfBirth = etDob.text.toString(),
+                joiningDate = etJoiningDate.text.toString(),
+                gender = "Male",
+                district = "Erode",
+                taluk = "Bhavani",
+                state = "TamilNadu",
+                mode = "Android-App",
+                basicSalary = salary,
+                salaryType = salaryType,
+                salaryCode = "",
+                leaveCount = 0,
+                employeeType = "permanent",
+                activeStatus = 1,
             )
             viewModel.addEmployee(employee)
         }
@@ -124,14 +133,11 @@ class AddEmployee : BaseActivity() {
                 is UiState.Loading -> {
                     progress.show(this.window)
                 }
-
                 is UiState.Success -> {
                     progress.dismiss(this.window)
-                    Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT).show()
+                    showToast(it.message)
                     finish()
-
                 }
-
                 is UiState.Error -> {
                     progress.dismiss(this.window)
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
@@ -154,6 +160,11 @@ class AddEmployee : BaseActivity() {
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH)
         ).show()
+    }
+
+
+    fun showToast(msg:String){
+        CommonClass.showToast(this,msg)
     }
 
 }
