@@ -73,82 +73,110 @@
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Active Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvActive"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/tvActive"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <!-- Active Card --><androidx.cardview.widget.CardView
+    android:id="@+id/cvActive"
+    android:layout_width="0dp"
+    android:layout_height="72dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="6dp"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
-            android:background="@drawable/bg_active_border">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="#FFFFFF"
 
-            <FrameLayout
+    app:layout_constraintTop_toBottomOf="@id/tvActive"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/bg_active_border">
+
+        <!-- ICON -->
+
+        <FrameLayout
+            android:id="@+id/iconContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
                 android:layout_width="48dp"
-                android:layout_height="48dp">
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle"
+                android:padding="10dp"
+                android:src="@drawable/ic_building"/>
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:padding="10dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_building"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/bg_circle"/>
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/bg_online_dot"/>
+        </FrameLayout>
 
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="bottom|end"
-                    android:background="@drawable/bg_online_dot"/>
-            </FrameLayout>
+        <!-- COMPANY NAME -->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp">
+        <TextView
+            android:id="@+id/txtCompanyName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/txtCompanyName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Acme Corp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#000"/>
+            android:text="Acme Corp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000"
 
-                <TextView
-                    android:id="@+id/txtIndustry"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Shift Supervisor"
-                    android:textSize="14sp"
-                    android:textColor="#1A73E8"/>
-            </LinearLayout>
+            android:layout_marginStart="12dp"
 
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="28dp"
-                android:text="ACTIVE"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="@drawable/bg_active_badge"/>
-        </LinearLayout>
+            app:layout_constraintStart_toEndOf="@id/iconContainer"
+            app:layout_constraintTop_toTopOf="@id/iconContainer"
+            app:layout_constraintEnd_toStartOf="@id/btnActive"/>
 
-    </androidx.cardview.widget.CardView>
+        <!-- INDUSTRY -->
+
+        <TextView
+            android:id="@+id/txtIndustry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Shift Supervisor"
+            android:textSize="14sp"
+            android:textColor="#1A73E8"
+
+            android:layout_marginStart="12dp"
+
+            app:layout_constraintStart_toEndOf="@id/iconContainer"
+            app:layout_constraintTop_toBottomOf="@id/txtCompanyName"/>
+
+        <!-- ACTIVE BUTTON -->
+
+        <TextView
+            android:id="@+id/btnActive"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+
+            android:text="ACTIVE"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+            android:gravity="center"
+            android:background="@drawable/bg_active_badge"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iconContainer"
+            app:layout_constraintBottom_toBottomOf="@id/iconContainer"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
 
 
     <TextView
@@ -158,6 +186,7 @@
         android:text="SWITCH TO"
         android:textSize="12sp"
         android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:textColor="#9AA0A6"
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toBottomOf="@id/cvActive"

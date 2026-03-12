@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blivtech.syncshift.R
+import com.blivtech.syncshift.databinding.BottomSheetCompanyMenuBinding
 import com.blivtech.syncshift.databinding.FragmentCompanyBinding
+import com.blivtech.syncshift.utils.CommonClass
 import com.blivtech.syncshift.utils.SharedPreferencesManager
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,56 +49,76 @@ class CompanyFragment : Fragment() {
     private fun setupRecyclerView() {
 
 
-        adapter = ActiveCompanyAdapter(
+        adapter = ActiveCompanyAdapter{ company ->
 
-            onCompanyClick = { company ->
-                val name = company.companyName
-                val code = company.companyCode
-                val industry = company.companyType
-            },
-
-            onActiveClick = { company ->
-
-
-                SharedPreferencesManager.setActiveCompanyCode(
-                    requireContext(),
-                    company.companyCode
-                )
-
-                SharedPreferencesManager.setActiveCompanyName(
-                    requireContext(),
-                    company.companyName
-                )
-
-                SharedPreferencesManager.setActiveCompanyIndustryName(
-                    requireContext(),
-                    company.companyType
-                )
-
-
-                binding.txtCompanyName.text = company.companyName
-                binding.txtIndustry.text = company.companyType
-
-
-                observe()
-            },
-
-            onEditClick = { company ->
-
-                val bundle = Bundle().apply {
-                    putString("companyCode", company.companyCode)
-                }
-
-                findNavController().navigate(R.id.companyAddFragment, bundle)
+            showCompanyMenu(company)
             }
 
-        )
+
 
 
         binding.rvCompanies.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCompanies.adapter = adapter
     }
 
+    private fun showCompanyMenu(company: CompanyEntity) {
+
+        val dialog = com.google.android.material.bottomsheet.BottomSheetDialog(requireContext())
+
+        val bindingSheet = BottomSheetCompanyMenuBinding.inflate(layoutInflater)
+
+        dialog.setContentView(bindingSheet.root)
+
+        bindingSheet.txtCompanyTitle.text = company.companyName
+
+
+        bindingSheet.btnEdit.setOnClickListener {
+
+            val bundle = Bundle().apply {
+                putString("companyCode", company.companyCode)
+            }
+
+            findNavController().navigate(
+                R.id.companyAddFragment,
+                bundle
+            )
+
+            dialog.dismiss()
+        }
+
+        bindingSheet.btnActivate.setOnClickListener {
+
+            SharedPreferencesManager.setActiveCompanyCode(
+                requireContext(),
+                company.companyCode
+            )
+
+            SharedPreferencesManager.setActiveCompanyName(
+                requireContext(),
+                company.companyName
+            )
+
+            SharedPreferencesManager.setActiveCompanyIndustryName(
+                requireContext(),
+                company.companyType
+            )
+
+            setCompanyHead()
+
+            CommonClass.showToast(requireContext(),"Company Activated")
+
+            dialog.dismiss()
+        }
+
+        bindingSheet.btnRemove.setOnClickListener {
+
+            CommonClass.showToast(requireContext(),"Company Deleted")
+
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
     private fun setCompanyHead(){
         val name =SharedPreferencesManager.getActiveCompanyName(requireContext())
         val type =SharedPreferencesManager.getActiveCompanyIndustryName(requireContext())

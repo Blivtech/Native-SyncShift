@@ -1,4 +1,5 @@
 package com.blivtech.syncshift.ui.login
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -18,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private var isPasswordVisible = false
     private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +30,7 @@ class LoginActivity : BaseActivity() {
 
         observeLogin()
         onClickListener()
+        setupPasswordToggle()
 
     }
 
@@ -66,6 +69,7 @@ class LoginActivity : BaseActivity() {
     }
 
 
+
   private  fun onClickListener(){
       binding.btnLogin.setOnClickListener {
           if(CommonClass.isInternetAvailable(this)){
@@ -83,6 +87,50 @@ class LoginActivity : BaseActivity() {
           }
       }
   }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupPasswordToggle() {
+
+        var isPasswordVisible = false
+
+        binding.etPassword.setOnTouchListener { _, event ->
+
+            if (event.action == android.view.MotionEvent.ACTION_UP) {
+
+                val drawableEnd = 2
+
+                if (event.rawX >= binding.etPassword.right -
+                    binding.etPassword.compoundDrawables[drawableEnd].bounds.width()
+                ) {
+
+                    isPasswordVisible = !isPasswordVisible
+
+                    if (isPasswordVisible) {
+                        binding.etPassword.inputType =
+                            android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                        binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(
+                            R.drawable.ic_lock, 0, R.drawable.ic_eye_off, 0
+                        )
+                    } else {
+                        binding.etPassword.inputType =
+                            android.text.InputType.TYPE_CLASS_TEXT or
+                                    android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                        binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(
+                            R.drawable.ic_lock, 0, R.drawable.ic_eye, 0
+                        )
+                    }
+
+                    binding.etPassword.setSelection(binding.etPassword.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+
+            false
+        }
+
+
+    }
+
 
 
 }

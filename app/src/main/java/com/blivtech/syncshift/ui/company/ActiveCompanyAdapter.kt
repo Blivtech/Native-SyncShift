@@ -10,9 +10,7 @@ import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ItemCompanyBinding
 
 class ActiveCompanyAdapter(
-    private val onCompanyClick: (CompanyEntity) -> Unit,
-    private val onActiveClick: (CompanyEntity) -> Unit,
-    private val onEditClick: (CompanyEntity) -> Unit
+    private val onMenuClick: (CompanyEntity) -> Unit
 ) : ListAdapter<CompanyEntity, ActiveCompanyAdapter.CompanyViewHolder>(CompanyDiffCallback()) {
 
     inner class CompanyViewHolder(
@@ -27,37 +25,12 @@ class ActiveCompanyAdapter(
             binding.txtIndustry.text = industry
 
             binding.root.setOnClickListener {
-                onCompanyClick(company)
-            }
-            binding.btnMenu.setOnClickListener { view ->
-
-                val popup = PopupMenu(view.context, view)
-                popup.inflate(R.menu.company_menu)
-
-                popup.setOnMenuItemClickListener { item ->
-
-                    when (item.itemId) {
-
-                        R.id.menu_active -> {
-                            onActiveClick(company)
-                            true
-                        }
-
-                        R.id.menu_edit -> {
-                            onEditClick(company)
-                            true
-                        }
-
-                        else -> false
-                    }
-                }
-
-                popup.show()
+                onMenuClick(company)
             }
 
-
-
-
+            binding.btnMenu.setOnClickListener {
+                onMenuClick(company)
+            }
 
         }
     }
