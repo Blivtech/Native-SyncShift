@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
-import com.blivtech.syncshift.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.blivtech.syncshift.databinding.FragmentHomeBinding
-import com.blivtech.syncshift.ui.addEmployee.AddEmployee
+import com.blivtech.syncshift.ui.attendance.AttendanceActivity
 import com.blivtech.syncshift.ui.company.CompanyActivity
-import com.blivtech.syncshift.ui.login.LoginActivity
 import com.blivtech.syncshift.utils.CommonClass
 import com.blivtech.syncshift.utils.SharedPreferencesManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +19,8 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private val homeViewModel: HomeViewModel by viewModels()
+    private lateinit var shiftAdapter: ShiftAdapter
 
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setCompanyHead()
+        function()
         binding.ivComArrow.setOnClickListener{
             CommonClass.launchActivity(requireContext(),CompanyActivity::class.java)
         }
@@ -54,5 +54,35 @@ class HomeFragment : Fragment() {
         binding.txtCompany.text=name
         binding.txtRole.text=type
 
+    }
+
+    private fun function(){
+        setCompanyHead()
+        setRecyclerView()
+        observe()
+    }
+
+   private fun setRecyclerView(){
+        shiftAdapter = ShiftAdapter(){
+
+           val bundle=Bundle()
+            bundle.putString("shiftCode",it.shiftCode)
+            bundle.putString("shiftName",it.shiftName)
+            bundle.putBoolean("isEdit",false)
+            CommonClass.launchActivity(requireContext(),bundle,AttendanceActivity::class.java)
+         }
+
+        binding.rvAttendance.apply {
+            layoutManager=LinearLayoutManager(requireContext())
+            adapter = shiftAdapter
+        }
+
+    }
+
+    private fun observe(){
+
+        homeViewModel.shiftList.observe(viewLifecycleOwner) { shiftList ->
+            shiftAdapter.submitList(shiftList)
+        }
     }
 }

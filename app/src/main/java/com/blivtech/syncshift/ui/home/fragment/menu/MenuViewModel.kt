@@ -1,4 +1,4 @@
-package com.blivtech.syncshift.ui.home.fragment.home
+package com.blivtech.syncshift.ui.home.fragment.menu
 
 import android.content.Context
 import androidx.lifecycle.LiveData

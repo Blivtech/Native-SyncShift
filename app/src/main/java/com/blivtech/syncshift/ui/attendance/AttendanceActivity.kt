@@ -35,10 +35,9 @@ class AttendanceActivity : BaseActivity() {
         binding = ActivityAttendanceBinding.inflate(layoutInflater)
         setContentView(binding.root)
         applyDisplayCutout(binding.main)
-
+        setupShiftData()
         setupDayPlanClicks()
         setupDurationClicks()
-        setupShiftClick()
         setupPresenceClick()
 
         binding.toolbar.tvTittle.text="Attendance"
@@ -136,13 +135,11 @@ class AttendanceActivity : BaseActivity() {
     }
 
 
-    private fun setupShiftClick() = with(binding) {
-        binding.cardShiftType.setOnClickListener {
-            ShiftTimingBottomSheet { shift ->
-                binding.tvShiftName.text = shift.name
-                shiftTiming=shift
-            }.show(supportFragmentManager, "ShiftTimingBottomSheet")
-        }
+    private fun setupShiftData() {
+        val bundle = intent.extras
+        val shiftCode = bundle?.getString("shiftCode")?:""
+        val shiftName = bundle?.getString("shiftName")?:""
+        binding.tvShiftName.text=shiftName
     }
 
 

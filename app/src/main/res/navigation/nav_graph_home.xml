@@ -21,7 +21,7 @@
         android:label="Reports" />
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.blivtech.syncshift.ui.home.fragment.home.MenuFragment"
+        android:name="com.blivtech.syncshift.ui.home.fragment.menu.MenuFragment"
         android:label="Reports" />
 
 </navigation>
