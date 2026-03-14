@@ -26,7 +26,9 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             "syncshift_db"   // single DB name
-        ).build()
+        )  .fallbackToDestructiveMigration()
+            .build()
+
     }
 
     @Provides

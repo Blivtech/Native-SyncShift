@@ -2,13 +2,15 @@ package com.blivtech.syncshift.ui.company
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.blivtech.syncshift.R
 import com.blivtech.syncshift.databinding.ItemCompanyBinding
 
 class ActiveCompanyAdapter(
-    private val onCompanyClick: (CompanyEntity) -> Unit
+    private val onMenuClick: (CompanyEntity) -> Unit
 ) : ListAdapter<CompanyEntity, ActiveCompanyAdapter.CompanyViewHolder>(CompanyDiffCallback()) {
 
     inner class CompanyViewHolder(
@@ -23,8 +25,13 @@ class ActiveCompanyAdapter(
             binding.txtIndustry.text = industry
 
             binding.root.setOnClickListener {
-                onCompanyClick(company)
+                onMenuClick(company)
             }
+
+            binding.btnMenu.setOnClickListener {
+                onMenuClick(company)
+            }
+
         }
     }
 

@@ -18,7 +18,7 @@ import com.blivtech.syncshift.ui.home.fragment.home.ShiftDao
         EmployeeEntity::class,
         AttendanceEntity::class, CompanyEntity::class,ShiftEntity::class,ShiftAttendanceEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(AttendanceStatusConverter::class)

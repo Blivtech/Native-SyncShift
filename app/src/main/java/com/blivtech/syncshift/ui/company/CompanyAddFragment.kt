@@ -54,6 +54,7 @@ class CompanyAddFragment :Fragment() {
           saveCompanyDetails()
           findNavController().navigate(R.id.companyAddFragment)
       }
+
     }
 
     private fun setupRecyclerView() {
@@ -85,6 +86,7 @@ class CompanyAddFragment :Fragment() {
 
                     if (state.data) {
                         showToast(state.message)
+                        findNavController().navigate(R.id.companyAddFragment)
                     } else {
                         showToast("Something went wrong")
                     }
