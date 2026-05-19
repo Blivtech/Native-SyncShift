@@ -14,7 +14,7 @@ import com.blivtech.syncshift.databinding.ChildItemAttendanceBinding
 
 
 class EmployeeAttendanceAdapter(
-    private val onStatusClick: (String, AttendanceStatus) -> Unit
+    private val onStatusClick: (EmployeeAttendanceUI, AttendanceStatus) -> Unit
 ) : ListAdapter<EmployeeAttendanceUI, EmployeeAttendanceAdapter.VH>(Diff()) {
 
     private var fullList: List<EmployeeAttendanceUI> = emptyList()
@@ -63,15 +63,15 @@ class EmployeeAttendanceAdapter(
             }
 
             btnPresent.setOnClickListener {
-                onStatusClick(item.employeeId, AttendanceStatus.PRESENT)
+                onStatusClick(item, AttendanceStatus.PRESENT)
             }
 
             btnAbsent.setOnClickListener {
-                onStatusClick(item.employeeId, AttendanceStatus.ABSENT)
+                onStatusClick(item, AttendanceStatus.ABSENT)
             }
 
             btnNotIn.setOnClickListener {
-                onStatusClick(item.employeeId, AttendanceStatus.NOT_IN_YET)
+                onStatusClick(item, AttendanceStatus.NOT_IN_YET)
             }
             val initials = getInitials(item.name)
             tvInitials.text = initials
@@ -151,6 +151,11 @@ class EmployeeAttendanceAdapter(
 
         val index = kotlin.math.abs(name.hashCode()) % colors.size
         return colors[index]
+    }
+
+
+    fun getAttendanceList():List<EmployeeAttendanceUI>{
+        return fullList
     }
 }
 

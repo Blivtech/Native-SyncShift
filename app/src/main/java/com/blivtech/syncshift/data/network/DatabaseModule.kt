@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.blivtech.syncshift.data.model.local.AppDatabase
 import com.blivtech.syncshift.data.model.local.Dao.AttendanceDao
+import com.blivtech.syncshift.data.model.local.Dao.CurrentDayPlanDao
 import com.blivtech.syncshift.data.model.local.Dao.EmployeeDao
 import com.blivtech.syncshift.ui.company.CompanyDao
+import com.blivtech.syncshift.ui.home.fragment.home.ShiftDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,4 +45,17 @@ object DatabaseModule {
     fun provideCompanyDao(database: AppDatabase): CompanyDao {
         return database.companyDao()
     }
+
+    @Provides
+    fun provideShiftDao(database: AppDatabase): ShiftDao {
+        return database.shiftDao()
+    }
+
+
+    @Provides
+    fun provideCurrentDayPlanDao(database: AppDatabase): CurrentDayPlanDao {
+        return database.currentDayPlanDao()
+    }
+
+
 }

@@ -5,10 +5,12 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blivtech.syncshift.data.enumi.AttendanceStatus
+import com.blivtech.syncshift.data.model.request.EmployeeAttendanceRequest
 import com.blivtech.syncshift.databinding.ActivityAttendanceSelectionBinding
 import com.blivtech.syncshift.ui.BaseActivity
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AttendanceSelectionActvity: BaseActivity() {
@@ -27,6 +29,30 @@ class AttendanceSelectionActvity: BaseActivity() {
         observeData()
         setupTabs()
         setToolbar()
+
+        setOnClick()
+    }
+
+    private fun setOnClick() {
+
+        binding.btnSubmit.setOnClickListener {
+            lifecycleScope.launch {
+                val requestList = adapter.getAttendanceList()
+                    .filter { it.status == AttendanceStatus.PRESENT || it.status == AttendanceStatus.ABSENT }
+                    .map {
+                        EmployeeAttendanceRequest(
+                            employeeName = it.name,
+                            employeeCode = it.employeeId,
+                            status = it.status.name
+                        )
+                    }
+
+            viewModel.insertAttendanceData(requestList)
+                finish()
+            }
+
+
+        }
     }
 
     private fun setToolbar() {
@@ -34,8 +60,8 @@ class AttendanceSelectionActvity: BaseActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = EmployeeAttendanceAdapter { employeeId, status ->
-            viewModel.markAttendance(employeeId, status)
+        adapter = EmployeeAttendanceAdapter { data, status ->
+            viewModel.markAttendance(data, status)
         }
 
         binding.rvAttendance.layoutManager = LinearLayoutManager(this)

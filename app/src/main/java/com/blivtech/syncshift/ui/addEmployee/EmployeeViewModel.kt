@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
-import com.blivtech.syncshift.data.model.request.EmployeeRequest
-import com.blivtech.syncshift.data.model.response.AddEmployeeResponse
 import com.blivtech.syncshift.domain.usecase.AddEmployeeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -25,7 +23,6 @@ class EmployeeViewModel @Inject constructor(
 
     private val _employeeSyncState = MutableStateFlow<UiState<Boolean>>(UiState.Loading)
     val employeeSyncState: StateFlow<UiState<Boolean>> = _employeeSyncState
-
 
 
     private val employeesFlow: StateFlow<List<EmployeeEntity>> =
@@ -68,7 +65,6 @@ class EmployeeViewModel @Inject constructor(
 
 
 
-    /* -------------------- ADD EMPLOYEE -------------------- */
 
     fun addEmployee(employee: EmployeeEntity) {
         viewModelScope.launch {
@@ -78,7 +74,6 @@ class EmployeeViewModel @Inject constructor(
     }
 
 
-    /* -------------------- FETCH / SYNC EMPLOYEES -------------------- */
 
     fun fetchEmployees(companyCode: String) {
         viewModelScope.launch {

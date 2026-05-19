@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginVertical="5dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvNotCompleted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:background="@drawable/bg_dotted_border">
+            <ImageView
+                android:id="@+id/imgShiftIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_shift_icon"
+                android:padding="8dp"
+                android:src="@drawable/ic_nightshift"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvShiftName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Night Shift"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                app:layout_constraintStart_toEndOf="@id/imgShiftIcon"
+                app:layout_constraintTop_toTopOf="@id/imgShiftIcon"
+                app:layout_constraintEnd_toStartOf="@id/layoutStatus"/>
+
+            <TextView
+                android:id="@+id/tvShiftTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:00 AM - 08:00 AM"
+                android:textSize="13sp"
+                android:textColor="#757575"
+                app:layout_constraintStart_toStartOf="@id/tvShiftName"
+                app:layout_constraintTop_toBottomOf="@id/tvShiftName"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                app:layout_constraintTop_toTopOf="@id/imgShiftIcon"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgClock"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_clock"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="NOT COMPLETED"
+                    android:textSize="12sp"
+                    android:textColor="#F57C00"
+                    app:layout_constraintStart_toEndOf="@id/imgClock"
+                    app:layout_constraintTop_toTopOf="@id/imgClock"
+                    app:layout_constraintBottom_toBottomOf="@id/imgClock"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- DO ATTENDANCE BUTTON -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDoAttendance"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="16dp"
+                android:text="Do Attendance"
+                android:textAllCaps="false"
+                android:textSize="15sp"
+                android:textColor="@android:color/white"
+                app:backgroundTint="#1E88E5"
+                app:cornerRadius="12dp"
+                app:layout_constraintTop_toBottomOf="@id/imgShiftIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCompleted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+
+            <View
+                android:id="@+id/viewTopStrip"
+                android:layout_width="0dp"
+                android:layout_height="6dp"
+                android:background="#4CAF50"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <ImageView
+                android:id="@+id/imgShiftIconCD"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_shift_icon"
+                android:padding="8dp"
+                android:src="@drawable/ic_moringshift"
+                app:layout_constraintTop_toBottomOf="@id/viewTopStrip"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/tvShiftNameCD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Morning Shift"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                app:layout_constraintStart_toEndOf="@id/imgShiftIconCD"
+                app:layout_constraintTop_toTopOf="@id/imgShiftIconCD"
+                app:layout_constraintEnd_toStartOf="@id/layoutStatusCD"/>
+
+            <TextView
+                android:id="@+id/tvShiftTimeCD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08:00 AM - 04:00 PM"
+                android:layout_marginStart="5dp"
+                android:textSize="13sp"
+                android:textColor="#757575"
+                app:layout_constraintStart_toStartOf="@id/tvShiftNameCD"
+                app:layout_constraintTop_toBottomOf="@id/tvShiftNameCD"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutStatusCD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:background="@drawable/bg_completed"
+                app:layout_constraintTop_toTopOf="@id/tvShiftTimeCD"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgtick"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_complete"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="COMPLETED"
+                    android:textSize="12sp"
+                    android:textColor="#2E7D32"
+                    app:layout_constraintStart_toEndOf="@id/imgtick"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutCount"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_count"
+                android:padding="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvShiftTimeCD"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- PRESENT LAYOUT -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutPresent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <View
+                        android:id="@+id/viewPresentDot"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/dot_green"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvPresentText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Present"
+                        android:textSize="14sp"
+                        android:textColor="#2E7D32"
+                        android:layout_marginStart="6dp"
+                        app:layout_constraintStart_toEndOf="@id/viewPresentDot"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvPresentCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="42"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#212121"
+                        android:layout_marginStart="6dp"
+                        app:layout_constraintStart_toEndOf="@id/tvPresentText"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- CENTER DIVIDER -->
+                <View
+                    android:id="@+id/viewDivider"
+                    android:layout_width="1dp"
+                    android:layout_height="18dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginHorizontal="20dp"
+                    app:layout_constraintStart_toEndOf="@id/layoutPresent"
+                    app:layout_constraintEnd_toStartOf="@id/layoutAbsent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <!-- ABSENT LAYOUT -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutAbsent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <View
+                        android:id="@+id/viewAbsentDot"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/dot_red"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvAbsentText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Absent"
+                        android:textSize="14sp"
+                        android:textColor="#D32F2F"
+                        android:layout_marginStart="6dp"
+                        app:layout_constraintStart_toEndOf="@id/viewAbsentDot"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvAbsentCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#212121"
+                        android:layout_marginStart="6dp"
+                        app:layout_constraintStart_toEndOf="@id/tvAbsentText"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutActions"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/layoutCount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- DETAILS (LEFT HALF) -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_outline_button_light"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/layoutEdit"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgDetails"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_detailseye"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Details"
+                        android:textSize="14sp"
+                        android:textColor="#546E7A"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintStart_toEndOf="@id/imgDetails"
+                        app:layout_constraintTop_toTopOf="@id/imgDetails"
+                        app:layout_constraintBottom_toBottomOf="@id/imgDetails"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- EDIT (RIGHT HALF) -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    app:layout_constraintStart_toEndOf="@id/layoutDetails"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgEdit"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"
+                        android:textSize="14sp"
+                        android:textColor="#546E7A"
+                        android:layout_marginStart="6dp"
+                        app:layout_constraintStart_toEndOf="@id/imgEdit"
+                        app:layout_constraintTop_toTopOf="@id/imgEdit"
+                        app:layout_constraintBottom_toBottomOf="@id/imgEdit"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

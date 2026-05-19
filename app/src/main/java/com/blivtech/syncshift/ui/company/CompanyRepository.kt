@@ -1,7 +1,7 @@
 package com.blivtech.syncshift.ui.company
 
 
-import com.blivtech.syncshift.data.model.ApiResponse
+import android.annotation.SuppressLint
 import com.blivtech.syncshift.data.model.response.CompanyDetails
 import com.blivtech.syncshift.data.model.response.UiState
 import com.blivtech.syncshift.data.network.ApiService
@@ -42,6 +42,7 @@ class CompanyRepository @Inject constructor(
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     private suspend fun insertCompanyDetails(data :CompanyDetails){
 
       val mData=  CompanyEntity(

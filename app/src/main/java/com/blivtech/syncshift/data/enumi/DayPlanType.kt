@@ -4,9 +4,9 @@ enum class DayPlanType(
     val code: String,
     val label: String
 ) {
-    WORKING_DAY("W", "Working Day"),
+    WORKING_DAY("WD", "Working Day"),
     HOLIDAY("H", "Holiday"),
-    WEEKLY_OFF("W", "Weekly Off"),
+    WEEKLY_OFF("WO", "Weekly Off"),
     LEAVE("L", "Leave")
 }
 

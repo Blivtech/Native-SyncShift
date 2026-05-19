@@ -10,7 +10,9 @@ import com.blivtech.syncshift.data.enumi.AttendanceStatus
     indices = [Index("employee_id"), Index("attendance_date")]
 )
 data class AttendanceEntity(
+
     val employee_id: String,
+    val employeeName: String,
     val attendance_date: String, // yyyy-MM-dd
     val status: AttendanceStatus
 )
