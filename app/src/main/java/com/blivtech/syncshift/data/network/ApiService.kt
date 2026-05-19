@@ -45,9 +45,12 @@ interface ApiService {
         @Path("companyCode") companyCode: String
     ): Response<ApiResponse<List<EmployeeEntity>>>
 
-    @POST("?action=save_attendance")
+
+
+    @POST("dayplan/save")
     suspend fun saveDayPlan(
         @Body request: DayPlanRequest
-    ): Response<SaveAttendaceResponse>
+    ):  Response<ApiResponse<EmployeeEntity>>
+
 
 }

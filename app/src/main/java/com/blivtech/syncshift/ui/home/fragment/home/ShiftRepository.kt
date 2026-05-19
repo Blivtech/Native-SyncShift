@@ -10,8 +10,8 @@ class ShiftRepository @Inject constructor(
 ) {
 
     /** Get Shift List With Attendance */
-    fun getShiftWithAttendance(): LiveData<List<ShiftItem>> {
-        return shiftDao.getShiftWithAttendance()
+    fun getShiftWithAttendance(comCode:String): LiveData<List<ShiftItem>> {
+        return shiftDao.getShiftWithAttendance(comCode)
     }
 
     /** Insert Shift Master */

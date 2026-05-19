@@ -51,8 +51,15 @@ class CompanyAddFragment :Fragment() {
 
     private fun listener() {
       binding.btnSubmit.setOnClickListener {
-          saveCompanyDetails()
-          findNavController().navigate(R.id.companyAddFragment)
+
+          if(CommonClass.isInternetAvailable(requireContext())){
+              saveCompanyDetails()
+          }else{
+              showToast("Please Check the Internet")
+
+          }
+
+
       }
 
     }
@@ -83,10 +90,9 @@ class CompanyAddFragment :Fragment() {
 
                 is UiState.Success -> {
                     progress.dismiss(requireActivity().window)
-
                     if (state.data) {
                         showToast(state.message)
-                        findNavController().navigate(R.id.companyAddFragment)
+                        findNavController().popBackStack()
                     } else {
                         showToast("Something went wrong")
                     }
@@ -131,12 +137,14 @@ class CompanyAddFragment :Fragment() {
                     shiftDetails = shiftDetails
                 )
                 viewModel.saveCompany(data)
+
             }
         }
     }
 
     private  fun showToast(msg:String){
         CommonClass.showToast(requireContext(),msg)
+        return
     }
 }
 

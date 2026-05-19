@@ -40,7 +40,7 @@ interface ShiftDao {
             '' as shiftImage
         FROM ShiftEntity sm
         LEFT JOIN shift_attendance sa 
-        ON sm.shiftCode = sa.shiftCode 
+        ON sm.shiftCode = sa.shiftCode  where sm.companyCode=:comCode
     """)
-    fun getShiftWithAttendance(): LiveData<List<ShiftItem>>
+    fun getShiftWithAttendance(comCode:String): LiveData<List<ShiftItem>>
 }

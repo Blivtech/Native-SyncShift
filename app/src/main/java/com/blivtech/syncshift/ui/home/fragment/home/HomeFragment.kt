@@ -54,14 +54,7 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun setCompanyHead(){
-        val name =SharedPreferencesManager.getActiveCompanyName(requireContext())
-        val type =SharedPreferencesManager.getActiveCompanyIndustryName(requireContext())
 
-        binding.txtCompany.text=name
-        binding.txtRole.text=type
-
-    }
 
     private fun function(){
         setCompanyHead()
@@ -88,8 +81,26 @@ class HomeFragment : Fragment() {
 
     private fun observe(){
 
-        homeViewModel.shiftList.observe(viewLifecycleOwner) { shiftList ->
+
+    }
+
+
+    private fun setCompanyHead(){
+
+        val name =SharedPreferencesManager.getActiveCompanyName(requireContext())
+        val type =SharedPreferencesManager.getActiveCompanyIndustryName(requireContext())
+
+        binding.txtCompany.text=name
+        binding.txtRole.text=type
+
+        val companyCode=SharedPreferencesManager.getActiveCompanyCode(requireContext())
+        homeViewModel.getShiftList(companyCode).observe(viewLifecycleOwner) { shiftList ->
             shiftAdapter.submitList(shiftList)
         }
+
+
+
     }
+
+
 }

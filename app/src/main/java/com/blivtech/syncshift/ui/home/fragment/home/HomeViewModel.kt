@@ -3,6 +3,7 @@ package com.blivtech.syncshift.ui.home.fragment.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.blivtech.syncshift.ui.company.ShiftItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -13,7 +14,9 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    val shiftList=repository.getShiftWithAttendance()
+    fun getShiftList(comCode: String): LiveData<List<ShiftItem>> {
+        return repository.getShiftWithAttendance(comCode)
+    }
 
     fun insertShiftAttendance(data: ShiftAttendanceEntity) {
 
@@ -40,4 +43,7 @@ class HomeViewModel @Inject constructor(
     fun getAttendanceByDate(date: String): LiveData<List<ShiftAttendanceEntity>> {
         return repository.getAttendanceByDate(date)
     }
+
+
+
 }

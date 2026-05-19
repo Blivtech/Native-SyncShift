@@ -1,9 +1,13 @@
 package com.blivtech.syncshift.ui.attendance
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.blivtech.syncshift.R
 import com.blivtech.syncshift.data.enumi.DayPlanType
 import com.blivtech.syncshift.data.enumi.DurationType
@@ -17,6 +21,7 @@ import com.blivtech.syncshift.utils.SharedPreferencesManager
 import com.blivtech.syncshift.utils.TimeUtils
 import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import kotlin.getValue
 
 @AndroidEntryPoint
@@ -27,7 +32,8 @@ class AttendanceActivity : BaseActivity() {
 
     private var selectedDayPlan: DayPlanType = DayPlanType.WORKING_DAY
     private var selectedDuration: DurationType = DurationType.FULL_DAY
-    private lateinit var shiftTiming: ShiftTiming
+    private lateinit var  shiftCode:String
+    private lateinit var  shiftName:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +45,8 @@ class AttendanceActivity : BaseActivity() {
         setupDayPlanClicks()
         setupDurationClicks()
         setupPresenceClick()
-
+        observe()
         binding.toolbar.tvTittle.text="Attendance"
-        selectDayPlan(binding.cardWorkingDay, DayPlanType.WORKING_DAY)
-
     }
 
     private fun setupPresenceClick() {
@@ -107,70 +111,99 @@ class AttendanceActivity : BaseActivity() {
     private fun setupDurationClicks() = with(binding) {
 
         tvFullDay.setOnClickListener {
-            selectDuration(DurationType.FULL_DAY)
+            selectDuration(DurationType.FULL_DAY.code)
         }
 
         tvHalfDay.setOnClickListener {
-            selectDuration(DurationType.HALF_DAY)
+            selectDuration(DurationType.HALF_DAY.code)
         }
     }
 
-    private fun selectDuration(type: DurationType) = with(binding) {
+    private fun selectDuration(type: String) = with(binding) {
 
-        selectedDuration = type
-
-        if (type == DurationType.FULL_DAY) {
+        if (type == DurationType.FULL_DAY.code) {
             tvFullDay.setBackgroundResource(R.drawable.bg_segment_selected)
             tvFullDay.setTextColor(getColor(R.color.button_color))
 
             tvHalfDay.background = null
             tvHalfDay.setTextColor(getColor(R.color.text_gray))
+            selectedDuration=DurationType.FULL_DAY
         } else {
             tvHalfDay.setBackgroundResource(R.drawable.bg_segment_selected)
             tvHalfDay.setTextColor(getColor(R.color.button_color))
 
             tvFullDay.background = null
             tvFullDay.setTextColor(getColor(R.color.text_gray))
+            selectedDuration=DurationType.HALF_DAY
         }
     }
 
-
     private fun setupShiftData() {
         val bundle = intent.extras
-        val shiftCode = bundle?.getString("shiftCode")?:""
-        val shiftName = bundle?.getString("shiftName")?:""
+        val activityDate = bundle?.getString("activityDate")?:""
+         shiftCode = bundle?.getString("shiftCode")?:""
+         shiftName = bundle?.getString("shiftName")?:""
+
         binding.tvShiftName.text=shiftName
+
+         viewModel.insertNewDayPlan(shiftCode,shiftName,activityDate)
     }
 
 
     private fun submit() {
-        if(shiftTiming==null){
-            Toast.makeText(this, "Select Shift", Toast.LENGTH_SHORT).show()
-            return
-        }
-        if (selectedDayPlan == null) {
+
+        if (selectedDayPlan.name == null) {
             Toast.makeText(this, "Select Day Plan", Toast.LENGTH_SHORT).show()
             return
         }
        val userData=SharedPreferencesManager.getLoginData(context = this)
+       val companyCode=SharedPreferencesManager.getActiveCompanyCode(context = this)
+       val companyName=SharedPreferencesManager.getActiveCompanyName(context = this)
         val requestData = DayPlanRequest(
-            planid ="${userData.btCode}-${TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_21)}-${shiftTiming.code}" ,
-            btcode = userData.btCode,
+            planId ="${userData.btCode}-${TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_21)}-${shiftCode}" ,
+            btCode = userData.btCode,
             activityDate = TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_5),
-            shiftCode = shiftTiming.code,
-            shiftName = shiftTiming.name,
-            workPlan = selectedDayPlan.label,
+            shiftCode = shiftCode,
+            shiftName = shiftName,
+            companyCode = companyCode,
+            companyName = companyName,
+            workplanName = selectedDayPlan.label,
             workplanCode = selectedDayPlan.code,
-            durationType = selectedDuration.label,
-            durationCode = selectedDuration.code,
-            Remark = binding.etRemark.text.toString(),
-            AppMode =getString(R.string.app_mode),
-            AppVersion = getString(R.string.app_version_number),
-            DeviceName = CommonClass.getDeviceName(),
-            created_by =userData.btCode,
-            attendance =emptyList()
+            workplanFlag = selectedDayPlan.code,
+            dayType = selectedDuration.code,
+            remarks = binding.etRemark.text.toString(),
+            mode =getString(R.string.app_mode),
+            submittedAt =TimeUtils.getCurrentDateTime(TimeUtils.FORMAT_1),
+            attendanceDetails =emptyList()
         )
-        viewModel.submitAttendance(requestData)
+        viewModel.saveDayPlan(requestData)
 
+    }
+
+
+    private fun observe(){
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.dayPlanDetails.collect { data ->
+                    if (data != null) {
+                        shiftCode=data.shiftCode
+                        shiftName=data.shiftName
+                        selectDuration(data.duration)
+                        when (data.planCode) {
+                            "WD" -> selectDayPlan(binding.cardWorkingDay, DayPlanType.WORKING_DAY)
+                            "H" -> selectDayPlan(binding.cardHoliday, DayPlanType.HOLIDAY)
+                            "WO" -> selectDayPlan(binding.cardWeeklyOff, DayPlanType.WEEKLY_OFF)
+                            "L" -> selectDayPlan(binding.cardLeave, DayPlanType.LEAVE)
+                        }
+
+
+                        binding.txtAbsentCount.text= data.absentCount.toString()
+                        binding.txtPresentCount.text= data.presentCount.toString()
+                    }
+
+                }
+            }
+        }
     }
 }
