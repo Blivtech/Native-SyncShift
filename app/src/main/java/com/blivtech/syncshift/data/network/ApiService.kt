@@ -2,6 +2,7 @@ package com.blivtech.syncshift.data.network
 
 import com.blivtech.syncshift.data.model.ApiResponse
 import com.blivtech.syncshift.data.model.local.Entity.EmployeeEntity
+import com.blivtech.syncshift.data.model.request.AdvanceRequest
 import com.blivtech.syncshift.data.model.request.DayPlanRequest
 import com.blivtech.syncshift.data.model.request.EmployeeRequest
 import com.blivtech.syncshift.data.model.request.LoginRequest
@@ -51,6 +52,13 @@ interface ApiService {
     suspend fun saveDayPlan(
         @Body request: DayPlanRequest
     ):  Response<ApiResponse<EmployeeEntity>>
+
+
+    @POST("api/advance/save")
+    suspend fun saveAdvance(
+        @Body request:List<AdvanceRequest>
+
+    ):Response<ApiResponse<Any>>
 
 
 }
